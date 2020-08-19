@@ -1,4 +1,4 @@
-const dbConfig = require("../config/db.config.js");
+const dbConfig = require("../config/db.config");
 
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
@@ -6,8 +6,8 @@ mongoose.Promise = global.Promise;
 const db = {};
 db.mongoose = mongoose;
 db.url = dbConfig.url;
-db.user = require("./user.model.js")(mongoose);
-db.lesson = require("./lesson.model.js")(mongoose);
-db.student = require("./lesson.model")(mongoose);
+db.user = require("./user.model")(mongoose);
+db.lesson = require("./lesson.model")(mongoose);
+db.student = require("./student.model")(mongoose);
 
 module.exports = db;

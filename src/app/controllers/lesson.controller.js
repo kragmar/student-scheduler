@@ -29,7 +29,7 @@ exports.create = (req, res) => {
 exports.findAll = (req, res) => {
   Lesson.find()
     .then((data) => {
-      res.sned(data);
+      res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
