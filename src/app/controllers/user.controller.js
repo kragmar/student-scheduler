@@ -42,7 +42,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-  const id = req.params._id;
+  const id = req.params.id;
 
   User.findById(id)
     .then((data) => {
@@ -62,7 +62,7 @@ exports.update = (req, res) => {
     });
   }
 
-  const id = req.params._id;
+  const id = req.params.id;
 
   User.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then((data) => {
@@ -80,7 +80,7 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-  const id = req.params._id;
+  const id = req.params.id;
 
   User.findByIdAndRemove(id)
     .then((data) => {
