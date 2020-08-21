@@ -1,50 +1,48 @@
 const db = require("../models");
-const Student = db.student;
+const Teacher = db.teacher;
 
-// Create and save new student
+// Create and save new teacher
 exports.create = (req, res) => {
-  // Create a new student
-  const student = new Student({
+  // Create a new teacher
+  const teacher = new Teacher({
     name: req.body.name,
-    telNum: req.body.telNum,
-    email: req.body.email,
-    birthDate: req.body.birthDate,
   });
 
-  // Save student in the db
-  student
-    .save(student)
+  // Save teacher in the db
+  teacher
+    .save(teacher)
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while creating the lesonn.",
+        message:
+          err.message || "Some error occured while creating the teacher.",
       });
     });
 };
 
-// Find all students in the db
+// Find all teachers in the db
 exports.findAll = (req, res) => {
-  Student.find()
+  Teacher.find()
     .then((data) => {
       res.send(data);
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while retrieving students.",
+        message: err.message || "Some error occured while retrieving teachers.",
       });
     });
 };
 
-// Find student by id
+// Find teacher by id
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
-  Student.findById(id)
+  Teacher.findById(id)
     .then((data) => {
       if (!data) {
-        res.status(404).send({ message: "Not found student with id " + id });
+        res.status(404).send({ message: "Not found teacher with id " + id });
       } else {
         res.send(data);
       }
@@ -52,11 +50,11 @@ exports.findOne = (req, res) => {
     .catch((err) => {
       res
         .status(500)
-        .send({ message: "Error retrieving student with id=" + id });
+        .send({ message: "Error retrieving teacher with id=" + id });
     });
 };
 
-// Update student by id
+// Update teacher by id
 exports.update = (req, res) => {
   if (!req.body) {
     return res.status(400).send({
@@ -66,30 +64,30 @@ exports.update = (req, res) => {
 
   const id = req.params.id;
 
-  Student.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+  Teacher.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot update student with id=${id}. Maybe user was not found!`,
+          message: `Cannot update teacher with id=${id}. Maybe user was not found!`,
         });
-      } else res.send({ message: "student was updated succesfully." });
+      } else res.send({ message: "teacher was updated succesfully." });
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Error updating student with id=" + id,
+        message: "Error updating teacher with id=" + id,
       });
     });
 };
 
-// Delete student by id
+// Delete teacher by id
 exports.delete = (req, res) => {
   const id = req.params.id;
 
-  Student.findByIdAndRemove(id)
+  Teacher.findByIdAndRemove(id)
     .then((data) => {
       if (!data) {
         res.status(404).send({
-          message: `Cannot delete student with id=${id}. Maybe student was not found!`,
+          message: `Cannot delete teacher with id=${id}. Maybe teacher was not found!`,
         });
       } else {
         res.send({
@@ -99,7 +97,7 @@ exports.delete = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: "Could not delete student with id=" + id,
+        message: "Could not delete teacher with id=" + id,
       });
     });
 };

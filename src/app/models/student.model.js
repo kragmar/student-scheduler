@@ -1,5 +1,3 @@
-const { mongoose } = require(".");
-
 module.exports = (mongoose) => {
   const Student = mongoose.model(
     "student",
