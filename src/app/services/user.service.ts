@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { newUser } from '../models/new-user';
+import { NewUser } from '../models/new-user';
 import { User } from '../models/user';
 
 const httpOptions = {
@@ -21,7 +21,7 @@ export class UserService {
     return this.http.get(this.apiUrl);
   }
 
-  public postUser(newUser: newUser) {
+  public postUser(newUser: NewUser) {
     return this.http.post(this.apiUrl, newUser, httpOptions);
   }
 
