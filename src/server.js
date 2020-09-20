@@ -1,4 +1,4 @@
-const express = require("express");
+/* const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -42,5 +42,18 @@ require("./app/routes/student.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
+ */
+
+const app = require("./app/app");
+const http = require("http");
+
+var PORT = process.env.PORT || "8080";
+app.set("port", PORT);
+
+var server = http.createServer(app);
+
+server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

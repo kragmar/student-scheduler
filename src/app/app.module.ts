@@ -9,10 +9,13 @@ import { LessonService } from './services/lesson.service';
 import { StudentService } from './services/student.service';
 import { TeacherService } from './services/teacher.service';
 import { UserService } from './services/user.service';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent],
+  declarations: [AppComponent, DashboardComponent, LoginComponent, PageNotFoundComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [UserService, StudentService, LessonService, TeacherService],
   bootstrap: [AppComponent],
