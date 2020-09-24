@@ -13,10 +13,21 @@ import { UserService } from './services/user.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [AppComponent, DashboardComponent, LoginComponent, PageNotFoundComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [
+    AppComponent,
+    DashboardComponent,
+    LoginComponent,
+    PageNotFoundComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+  ],
   providers: [UserService, StudentService, LessonService, TeacherService],
   bootstrap: [AppComponent],
 })
