@@ -6,6 +6,7 @@ const dbUri =
 mongoose.connect(dbUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useCreateIndex: true,
 });
 
 // CONNECTION EVENTS
