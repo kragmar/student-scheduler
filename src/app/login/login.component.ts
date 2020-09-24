@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import { AuthService, TokenPayload } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,16 @@ export class LoginComponent implements OnInit {
     password: '',
   };
 
-  constructor(private auth: AuthService, private router: Router) {}
+  loginForm = this.formBuilder.group({
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+  });
+
+  constructor(
+    private auth: AuthService,
+    private router: Router,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {}
 
@@ -26,5 +36,14 @@ export class LoginComponent implements OnInit {
         console.error(err);
       }
     );
+  }
+
+  onSubmit() {
+    if (!this.loginForm.valid) {
+      return;
+    }
+
+    this.credentials = this.loginForm.value;
+    this.login();
   }
 }

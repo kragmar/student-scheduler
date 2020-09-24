@@ -5,6 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { LessonService } from './services/lesson.service';
 import { StudentService } from './services/student.service';
 import { TeacherService } from './services/teacher.service';
@@ -27,6 +32,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    // Material Imports
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   providers: [UserService, StudentService, LessonService, TeacherService],
   bootstrap: [AppComponent],
