@@ -1,0 +1,28 @@
+<nav>
+  <ul>
+    <li>
+      <a [routerLink]="['/dashboard']" routerLinkActive="nav-active"
+        ><mat-icon>dashboard</mat-icon>Irányítópult</a
+      >
+    </li>
+    <li>
+      <a [routerLink]="['/students']" routerLinkActive="nav-active"
+        ><mat-icon>people_alt</mat-icon>Tanulók</a
+      >
+    </li>
+    <li>
+      <a [routerLink]="['/lessons']" routerLinkActive="nav-active"
+        ><mat-icon>watch_later</mat-icon>Órák</a
+      >
+    </li>
+    <li>
+      <a [routerLink]="['/notifs']" routerLinkActive="nav-active"
+        ><mat-icon>notifications</mat-icon>Értesítések</a
+      >
+    </li>
+    <li class="nav-logout">
+      <a (click)="onLogout()"><mat-icon>meeting_room</mat-icon>Kilépés</a>
+    </li>
+  </ul>
+</nav>
+<div class="nav-bg"></div>

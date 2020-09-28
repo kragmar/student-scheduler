@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { LessonService } from './services/lesson.service';
@@ -19,6 +20,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DashboardComponent,
     LoginComponent,
     PageNotFoundComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatInputModule,
     MatCardModule,
     MatButtonModule,
+    MatIconModule,
   ],
   providers: [UserService, StudentService, LessonService, TeacherService],
   bootstrap: [AppComponent],
