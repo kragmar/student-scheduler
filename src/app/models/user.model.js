@@ -15,11 +15,11 @@
 };
  */
 
-const Mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 
-var userSchema = new Mongoose.Schema({
+var userSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
@@ -62,4 +62,4 @@ userSchema.methods.generateJwt = function () {
   );
 };
 
-Mongoose.model("User", userSchema);
+mongoose.model("User", userSchema);
