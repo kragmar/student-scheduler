@@ -72,9 +72,9 @@ export class AuthService {
     let base: Observable<Object>;
 
     if (method === 'post') {
-      base = this.http.post(`/api/${type}`, user);
+      base = this.http.post(`http://localhost:8080/api/${type}`, user);
     } else {
-      base = this.http.get(`/api/${type}`, {
+      base = this.http.get(`http://localhost:8080/api/${type}`, {
         headers: { Authorization: `Bearer ${this.getToken()}` },
       });
     }
