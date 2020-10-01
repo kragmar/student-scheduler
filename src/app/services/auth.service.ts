@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -28,7 +29,11 @@ export interface TokenPayload {
 export class AuthService {
   private token: string;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
   private saveToken(token: string) {
     localStorage.setItem('auth-token', token);
@@ -87,6 +92,9 @@ export class AuthService {
         return data;
       })
     );
+
+    let userDetails = this.getUserDetails();
+    this.userService.userDetails.next(userDetails);
 
     return request;
   }

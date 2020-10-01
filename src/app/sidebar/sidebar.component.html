@@ -1,4 +1,4 @@
-<nav>
+<nav *ngIf="authToken">
   <ul>
     <li>
       <a [routerLink]="['/dashboard']" routerLinkActive="nav-active"
@@ -16,7 +16,7 @@
       >
     </li>
     <li>
-      <a [routerLink]="['/notifs']" routerLinkActive="nav-active"
+      <a [routerLink]="['/notifications']" routerLinkActive="nav-active"
         ><mat-icon>notifications</mat-icon>Értesítések</a
       >
     </li>

@@ -21,6 +21,7 @@ import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { StudentsComponent } from './students/students.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     LoginComponent,
     PageNotFoundComponent,
     SidebarComponent,
+    StudentsComponent,
   ],
   imports: [
     BrowserModule,
