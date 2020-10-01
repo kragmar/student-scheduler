@@ -9,7 +9,7 @@ nav {
   overflow-x: hidden;
   background: #455691;
   transition: 0.3s ease;
-  width: 4em;
+  width: 4rem;
 }
 
 .nav-bg {
@@ -28,8 +28,8 @@ nav:hover ~ .nav-bg {
 }
 
 nav:hover {
-  width: 15em;
-  box-shadow: 0 0 1em 0 #091235c5;
+  width: 15rem;
+  box-shadow: 0 0 1rem 0 #091235c5;
 }
 
 nav ul {
@@ -41,11 +41,12 @@ nav ul {
 }
 
 nav a {
-  display: block;
-  font-size: 1em;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
   text-decoration: none;
   text-align: left;
-  padding: 1em;
+  padding: 1.25rem 1rem;
   white-space: nowrap;
   color: #fff;
 }
@@ -67,11 +68,11 @@ nav a:hover {
 
 nav mat-icon {
   text-align: center;
-  font-size: 1.75em;
-  margin-right: 1em;
+  font-size: 1.75rem;
+  margin-right: 1.5rem;
 }
 
 .nav-active {
   background: #7291ff;
-  border-right: 0.5em solid #b5c5ff;
+  border-right: 0.5rem solid #b5c5ff;
 }
