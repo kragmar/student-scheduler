@@ -1,1 +1,15 @@
-<p>students works!</p>
+<form (ngSubmit)="onSubmit()" [formGroup]="studentForm">
+  <mat-form-field>
+    <input matInput placeholder="Név" required />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Email" required />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Telefonszám" required />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Születési dátum" />
+  </mat-form-field>
+  <button mat-raised-button type="submit">Mentés</button>
+</form>
