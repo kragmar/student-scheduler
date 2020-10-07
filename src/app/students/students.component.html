@@ -1,15 +1,41 @@
-<form (ngSubmit)="onSubmit()" [formGroup]="studentForm">
+<form class="student-form" (ngSubmit)="onSubmit()" [formGroup]="studentForm">
   <mat-form-field>
-    <input matInput placeholder="Név" required />
+    <input
+      matInput
+      type="text"
+      placeholder="Név"
+      formControlName="name"
+      value=""
+      required
+    />
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Email" required />
+    <input
+      matInput
+      type="email"
+      placeholder="Email"
+      formControlName="email"
+      value=""
+      required
+    />
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Telefonszám" required />
+    <input
+      matInput
+      type="tel"
+      placeholder="Telefonszám"
+      formControlName="telnum"
+      value=""
+      required
+    />
   </mat-form-field>
   <mat-form-field>
-    <input matInput placeholder="Születési dátum" />
+    <input
+      matInput
+      placeholder="Születési dátum"
+      formControlName="birthdate"
+      value=""
+    />
   </mat-form-field>
   <button mat-raised-button type="submit">Mentés</button>
 </form>

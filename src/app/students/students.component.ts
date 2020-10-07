@@ -8,11 +8,18 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class StudentsComponent implements OnInit {
   studentForm = this.fb.group({
     name: ['', Validators.required],
+    email: ['', Validators.required],
+    telnum: ['', Validators.required],
+    birthdate: [''],
   });
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {}
 
-  onSubmit() {}
+  onSubmit() {
+    if (this.studentForm.invalid) {
+      return;
+    }
+  }
 }

@@ -9,6 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { LessonService } from './services/lesson.service';
@@ -43,6 +44,7 @@ import { StudentsComponent } from './students/students.component';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatFormFieldModule,
   ],
   providers: [UserService, StudentService, LessonService, TeacherService],
   bootstrap: [AppComponent],
