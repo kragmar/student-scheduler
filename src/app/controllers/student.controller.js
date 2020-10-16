@@ -1,5 +1,5 @@
-const db = require("../models");
-const Student = db.student;
+const mongoose = require("mongoose");
+const Student = mongoose.model("Student");
 
 // Create and save new student
 exports.create = (req, res) => {
