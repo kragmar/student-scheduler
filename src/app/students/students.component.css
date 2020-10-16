@@ -1,4 +1,10 @@
-.student-form {
+.new-student-card {
+  width: fit-content;
+  padding: 2rem;
+}
+
+.new-student-form {
   display: flex;
   flex-direction: column;
+  width: 20rem;
 }
