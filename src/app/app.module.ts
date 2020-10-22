@@ -13,6 +13,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
@@ -20,6 +21,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { StudentsComponent } from './students/students.component';
+import { NewStudentComponent } from './new-student/new-student.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { StudentsComponent } from './students/students.component';
     PageNotFoundComponent,
     SidebarComponent,
     StudentsComponent,
+    NewStudentComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +47,7 @@ import { StudentsComponent } from './students/students.component';
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatDialogModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'hu-HU' }],
   bootstrap: [AppComponent],
