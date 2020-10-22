@@ -2,4 +2,5 @@
   display: block;
   margin-left: 4rem;
   padding: 1rem;
+  max-height: 100%;
 }
