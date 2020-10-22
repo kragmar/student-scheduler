@@ -1,10 +1,36 @@
-.new-student-card {
-  width: fit-content;
+.student-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 10% 90%;
+  grid-template-areas:
+    "options ."
+    "card .";
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.student-options {
+  grid-area: options;
+}
+
+.student-options > button {
+  margin-right: 0.5rem;
+}
+
+.student-card {
+  grid-area: card;
+  height: 100%;
   padding: 2rem;
 }
 
-.new-student-form {
+.student-form {
   display: flex;
   flex-direction: column;
-  width: 20rem;
+}
+
+.student-img {
+  margin-bottom: 1rem;
+  width: 128px;
+  border: 1px solid #dfdfdf;
+  border-radius: 6px;
 }

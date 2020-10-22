@@ -1,5 +1,7 @@
+import { NewStudentComponent } from './../new-student/new-student.component';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   templateUrl: './students.component.html',
@@ -7,19 +9,21 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class StudentsComponent implements OnInit {
   studentForm = this.fb.group({
-    name: ['', Validators.required],
-    email: ['', Validators.required],
-    telnum: ['', Validators.required],
+    name: [''],
+    email: [''],
+    telnum: [''],
     birthdate: [''],
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
-  onSubmit() {
-    if (this.studentForm.invalid) {
-      return;
-    }
+  openDialog() {
+    const dialogRef = this.dialog.open(NewStudentComponent, {
+      width: 'fit-content',
+    });
   }
+
+  onSubmit() {}
 }
