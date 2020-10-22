@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Student = mongoose.model("Student");
 
 // Create and save new student
-exports.create = (req, res) => {
+module.exports.create = (req, res) => {
   // Create a new student
   const student = new Student({
     name: req.body.name,
@@ -25,7 +25,7 @@ exports.create = (req, res) => {
 };
 
 // Find all students in the db
-exports.findAll = (req, res) => {
+module.exports.findAll = (req, res) => {
   Student.find()
     .then((data) => {
       res.send(data);
@@ -38,7 +38,7 @@ exports.findAll = (req, res) => {
 };
 
 // Find student by id
-exports.findOne = (req, res) => {
+module.exports.findOne = (req, res) => {
   const id = req.params.id;
 
   Student.findById(id)
@@ -57,7 +57,7 @@ exports.findOne = (req, res) => {
 };
 
 // Update student by id
-exports.update = (req, res) => {
+module.exports.update = (req, res) => {
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update can not be empty!",
@@ -82,7 +82,7 @@ exports.update = (req, res) => {
 };
 
 // Delete student by id
-exports.delete = (req, res) => {
+module.exports.delete = (req, res) => {
   const id = req.params.id;
 
   Student.findByIdAndRemove(id)
