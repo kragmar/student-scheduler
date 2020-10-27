@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 const Student = mongoose.model("Student");
 
 // Create and save new student
-module.exports.create = (req, res) => {
+module.exports.create = function (req, res) {
   // Create a new student
   const student = new Student({
     name: req.body.name,
-    telNum: req.body.telNum,
     email: req.body.email,
+    telNum: req.body.telNum,
     birthDate: req.body.birthDate,
   });
 

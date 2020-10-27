@@ -1,32 +1,19 @@
-var router = require("express").Router();
-const mongoose = require("mongoose");
-const Student = mongoose.model("Student");
+const router = require("express").Router();
 const ctrlStudent = require("../controllers/student.controller");
 
 // Create a new student
-router.post("/", function (req, res) {
-  /* Student.create(); */
-  ctrlStudent.create;
-});
+router.post("/", ctrlStudent.create);
 
 // Retrieve all student
-router.get("/", function (req, res) {
-  Student.findAll();
-});
+router.get("/", ctrlStudent.findAll);
 
 // Retrieve a single student with id
-router.get("/:id", function (req, res) {
-  Student.findOne();
-});
+router.get("/:id", ctrlStudent.findOne);
 
 // Update a student with id
-router.put("/:id", function (req, res) {
-  Student.update();
-});
+router.put("/:id", ctrlStudent.update);
 
 // Delete a student with id
-router.delete("/:id", function (req, res) {
-  Student.delete();
-});
+router.delete("/:id", ctrlStudent.delete);
 
 module.exports = router;

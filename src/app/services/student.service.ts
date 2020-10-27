@@ -21,44 +21,29 @@ export class StudentService {
 
   constructor(private http: HttpClient) {}
 
-  private request(
-    method: 'post' | 'get' | 'getId' | 'put' | 'delete',
-    student?: StudentPayload
-  ): Observable<any> {
-    let base: Observable<Object>;
-
-    switch (method) {
-      case 'post':
-        base = this.http.post(this.apiUrl, student);
-        break;
-
-      case 'get':
-        base = this.http.get(this.apiUrl);
-        break;
-
-      case 'put':
-        base = this.http.put(this.apiUrl + student._id, student);
-        break;
-
-      case 'delete':
-        base = this.http.delete(this.apiUrl + student._id);
-        break;
-
-      default:
-        break;
-    }
-
-    const request = base.pipe(
-      map((data: StudentPayload) => {
-        console.log(data);
-        return data;
-      })
-    );
-
-    return request;
-  }
-
   public create(student: StudentPayload): Observable<any> {
     return this.http.post(this.apiUrl, student);
+  }
+
+  public findAll(): Observable<any> {
+    return this.http.get(this.apiUrl);
+  }
+
+  public findOne(student: StudentPayload): Observable<any> {
+    const id = student._id;
+
+    return this.http.get(this.apiUrl + id);
+  }
+
+  public update(student: StudentPayload): Observable<any> {
+    const id = student._id;
+
+    return this.http.put(this.apiUrl + id, student);
+  }
+
+  public delete(student: StudentPayload): Observable<any> {
+    const id = student._id;
+
+    return this.http.delete(this.apiUrl + id);
   }
 }
