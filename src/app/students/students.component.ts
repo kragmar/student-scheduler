@@ -1,6 +1,7 @@
+import { StudentPayload, StudentService } from './../services/student.service';
 import { NewStudentComponent } from './../new-student/new-student.component';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 
 @Component({
@@ -15,9 +16,34 @@ export class StudentsComponent implements OnInit {
     birthdate: [''],
   });
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog) {}
+  search = false;
+  students: StudentPayload[];
+  selectedStudent: StudentPayload = {
+    name: '',
+    email: '',
+    telNum: '',
+    birthDate: null,
+  };
 
-  ngOnInit(): void {}
+  constructor(
+    private fb: FormBuilder,
+    private studentService: StudentService,
+    public dialog: MatDialog
+  ) {}
+
+  ngOnInit(): void {
+    this.studentService.findAll().subscribe((data) => (this.students = data));
+  }
+
+  setInputValues() {
+    console.log(this.selectedStudent);
+    this.studentForm.setValue({
+      name: this.selectedStudent.name,
+      email: this.selectedStudent.email,
+      telNum: this.selectedStudent.telNum,
+      birthDate: this.selectedStudent.birthDate,
+    });
+  }
 
   openDialog() {
     const dialogRef = this.dialog.open(NewStudentComponent, {

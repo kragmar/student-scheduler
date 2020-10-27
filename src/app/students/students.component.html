@@ -1,9 +1,31 @@
 <div class="student-grid">
-  <mat-card class="student-options">
-    <button mat-raised-button>Keresés</button>
+  <mat-card class="student-options" *ngIf="!search; else searching">
+    <button mat-raised-button (click)="search = true">Keresés</button>
     <button mat-raised-button (click)="openDialog()">Új tanuló</button>
     <button mat-raised-button>Törlés</button>
   </mat-card>
+  <ng-template #searching>
+    <mat-card class="student-search">
+      <button
+        class="search-back-arrow"
+        mat-button
+        mat-icon-button
+        aria-label="Back"
+        (click)="search = false"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <mat-select
+        placeholder="Tanuló neve"
+        [(ngModel)]="selectedStudent"
+        name="student"
+      >
+        <mat-option *ngFor="let student of students" [value]="student">
+          {{ student.name }}
+        </mat-option>
+      </mat-select>
+    </mat-card>
+  </ng-template>
   <mat-card class="student-card">
     <mat-card-header>
       <mat-card-title>Tanuló adatai</mat-card-title>
@@ -27,7 +49,8 @@
             type="text"
             placeholder="Vezetéknév Keresztnév"
             formControlName="name"
-            value=""
+            [value]="selectedStudent.name"
+            readonly
           />
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -37,7 +60,8 @@
             type="email"
             placeholder="pelda@email.hu"
             formControlName="email"
-            value=""
+            [value]="selectedStudent.email"
+            readonly
           />
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -47,7 +71,8 @@
             type="tel"
             placeholder="201234567"
             formControlName="telnum"
-            value=""
+            [value]="selectedStudent.telNum"
+            readonly
           />
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -57,6 +82,8 @@
             [matDatepicker]="datepicker"
             placeholder="1970. 01. 01."
             formControlName="birthdate"
+            [value]="selectedStudent.birthDate"
+            readonly
           />
           <mat-datepicker-toggle
             matSuffix

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
@@ -39,6 +40,7 @@ import { NewStudentComponent } from './new-student/new-student.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
     // Material Imports
     MatInputModule,
     MatCardModule,
@@ -48,6 +50,7 @@ import { NewStudentComponent } from './new-student/new-student.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatDialogModule,
+    MatSelectModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'hu-HU' }],
   bootstrap: [AppComponent],
