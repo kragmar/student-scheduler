@@ -11,8 +11,8 @@ export class NewStudentComponent implements OnInit {
   newStudentForm = this.fb.group({
     name: ['', Validators.required],
     email: ['', Validators.required],
-    telnum: ['', Validators.required],
-    birthdate: [''],
+    telNum: ['', Validators.required],
+    birthDate: [''],
   });
 
   newStudent: StudentPayload = {
