@@ -17,6 +17,17 @@
   margin-right: 0.5rem;
 }
 
+.student-search {
+  grid-area: options;
+  display: flex;
+  align-items: center;
+  padding: 0.875rem;
+}
+
+.search-back-arrow {
+  margin-right: 0.5rem;
+}
+
 .student-card {
   grid-area: card;
   height: 100%;
