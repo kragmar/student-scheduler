@@ -45,3 +45,15 @@
   border: 1px solid #dfdfdf;
   border-radius: 6px;
 }
+
+::ng-deep .mat-form-field-wrapper .mat-form-field-flex {
+  align-items: center;
+}
+
+mat-icon {
+  color: #dfdfdf;
+}
+
+mat-icon:hover {
+  color: #000;
+}

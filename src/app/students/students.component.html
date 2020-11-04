@@ -50,7 +50,7 @@
             placeholder="Vezetéknév Keresztnév"
             formControlName="name"
             [value]="selectedStudent.name"
-            readonly
+            [readonly]="!editing"
           />
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -61,7 +61,7 @@
             placeholder="pelda@email.hu"
             formControlName="email"
             [value]="selectedStudent.email"
-            readonly
+            [readonly]="!editing"
           />
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -72,7 +72,7 @@
             placeholder="201234567"
             formControlName="telnum"
             [value]="selectedStudent.telNum"
-            readonly
+            [readonly]="!editing"
           />
         </mat-form-field>
         <mat-form-field appearance="outline">
@@ -83,7 +83,7 @@
             placeholder="1970. 01. 01."
             formControlName="birthdate"
             [value]="selectedStudent.birthDate"
-            readonly
+            [readonly]="!editing"
           />
           <mat-datepicker-toggle
             matSuffix
@@ -91,7 +91,17 @@
           ></mat-datepicker-toggle>
           <mat-datepicker #datepicker disabled="false"></mat-datepicker>
         </mat-form-field>
-        <button mat-raised-button type="submit">Mentés</button>
+        <button
+          mat-raised-button
+          type="submit"
+          *ngIf="!editing; else save"
+          (click)="editing = true"
+        >
+          Adatok szerkesztése
+        </button>
+        <ng-template #save>
+          <button mat-raised-button (click)="updateStudent()">Mentés</button>
+        </ng-template>
       </form>
     </mat-card-content>
   </mat-card>

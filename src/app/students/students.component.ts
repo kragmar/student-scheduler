@@ -25,6 +25,8 @@ export class StudentsComponent implements OnInit {
     birthDate: null,
   };
 
+  editing = false;
+
   constructor(
     private fb: FormBuilder,
     private studentService: StudentService,
@@ -36,7 +38,6 @@ export class StudentsComponent implements OnInit {
   }
 
   setInputValues() {
-    console.log(this.selectedStudent);
     this.studentForm.setValue({
       name: this.selectedStudent.name,
       email: this.selectedStudent.email,
@@ -49,6 +50,14 @@ export class StudentsComponent implements OnInit {
     const dialogRef = this.dialog.open(NewStudentComponent, {
       width: 'fit-content',
     });
+  }
+
+  updateStudent() {
+    console.log('ASD');
+
+    let student: StudentPayload = this.studentForm.value;
+
+    console.log(student);
   }
 
   onSubmit() {}
