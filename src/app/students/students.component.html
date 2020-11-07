@@ -53,6 +53,7 @@
             [value]="selectedStudent.name"
             [readonly]="!editing"
           />
+          <mat-icon matSuffix *ngIf="editing">editing</mat-icon>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
@@ -64,6 +65,7 @@
             [value]="selectedStudent.email"
             [readonly]="!editing"
           />
+          <mat-icon matSuffix *ngIf="editing">editing</mat-icon>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Telefonszám</mat-label>
@@ -75,6 +77,7 @@
             [value]="selectedStudent.telNum"
             [readonly]="!editing"
           />
+          <mat-icon matSuffix *ngIf="editing">editing</mat-icon>
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Születési dátum</mat-label>
@@ -90,19 +93,21 @@
             matSuffix
             [for]="datepicker"
           ></mat-datepicker-toggle>
-          <mat-datepicker #datepicker disabled="false"></mat-datepicker>
+          <mat-datepicker #datepicker [disabled]="!editing"></mat-datepicker>
         </mat-form-field>
-        <button
-          mat-raised-button
-          type="submit"
-          *ngIf="!editing; else save"
-          (click)="editing = true"
-        >
-          Adatok szerkesztése
-        </button>
-        <ng-template #save>
-          <button mat-raised-button (click)="updateStudent()">Mentés</button>
-        </ng-template>
+        <div *ngIf="selectedStudent.name !== ''">
+          <button
+            mat-raised-button
+            type="submit"
+            *ngIf="!editing; else save"
+            (click)="editing = true"
+          >
+            Adatok szerkesztése
+          </button>
+          <ng-template #save>
+            <button mat-raised-button (click)="updateStudent()">Mentés</button>
+          </ng-template>
+        </div>
       </form>
     </mat-card-content>
   </mat-card>

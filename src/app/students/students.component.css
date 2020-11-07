@@ -54,6 +54,6 @@ mat-icon {
   color: #dfdfdf;
 }
 
-mat-icon:hover {
+::ng-deep .mat-focused mat-icon {
   color: #000;
 }

@@ -11,9 +11,9 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class StudentsComponent implements OnInit {
   studentForm = this.fb.group({
-    name: [''],
+    name: ['', Validators.pattern('[a-zA-Z\u0080-\uFFFF ]*')],
     email: [''],
-    telnum: [''],
+    telnum: ['', Validators.pattern('[2357][0][0-9]{7}')],
     birthdate: [''],
   });
 
@@ -61,7 +61,20 @@ export class StudentsComponent implements OnInit {
   }
 
   updateStudent() {
+    if (this.studentForm.invalid) {
+      return;
+    }
+
     let student: StudentPayload = this.studentForm.value;
+    student._id = this.selectedStudent._id;
+    this.studentService.update(student).subscribe(
+      (data) => {
+        console.log(data);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   onSubmit() {}
