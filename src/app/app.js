@@ -10,6 +10,7 @@ require("./config/passport.config");
 // api imports
 const authApi = require("./routes/index.routes");
 const studentsApi = require("./routes/student.routes");
+const imagesApi = require("./routes/image.routes");
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.use(passport.initialize());
 // api routes
 app.use("/api", authApi);
 app.use("/api/students", studentsApi);
+app.use("/api/images", imagesApi);
 
 app.use(function (req, res, next) {
   var err = new Error("Not found");
