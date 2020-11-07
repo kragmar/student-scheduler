@@ -22,7 +22,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { StudentsComponent } from './students/students.component';
-import { NewStudentComponent } from './new-student/new-student.component';
+import { NewStudentDialogComponent } from './new-student-dialog/new-student-dialog.component';
+import { DeleteStudentDialogComponent } from './delete-student-dialog/delete-student-dialog.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { NewStudentComponent } from './new-student/new-student.component';
     PageNotFoundComponent,
     SidebarComponent,
     StudentsComponent,
-    NewStudentComponent,
+    NewStudentDialogComponent,
+    DeleteStudentDialogComponent,
   ],
   imports: [
     BrowserModule,

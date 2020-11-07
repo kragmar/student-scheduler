@@ -1,8 +1,9 @@
 <div class="student-grid">
   <mat-card class="student-options" *ngIf="!search; else searching">
     <button mat-raised-button (click)="search = true">Keresés</button>
-    <button mat-raised-button (click)="openDialog()">Új tanuló</button>
-    <button mat-raised-button>Törlés</button>
+    <button mat-raised-button (click)="openNewStudentDialog()">
+      Új tanuló
+    </button>
   </mat-card>
   <ng-template #searching>
     <mat-card class="student-search">

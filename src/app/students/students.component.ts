@@ -1,5 +1,6 @@
+import { DeleteStudentDialogComponent } from './../delete-student-dialog/delete-student-dialog.component';
 import { StudentPayload, StudentService } from './../services/student.service';
-import { NewStudentComponent } from './../new-student/new-student.component';
+import { NewStudentDialogComponent } from '../new-student-dialog/new-student-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
@@ -46,18 +47,21 @@ export class StudentsComponent implements OnInit {
     });
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(NewStudentComponent, {
+  openNewStudentDialog() {
+    const dialogRef = this.dialog.open(NewStudentDialogComponent, {
       width: 'fit-content',
     });
   }
 
+  openDeleteStudentDialog() {
+    const dialogRef = this.dialog.open(DeleteStudentDialogComponent, {
+      width: 'fit-content',
+      data: { studentsValue: this.students },
+    });
+  }
+
   updateStudent() {
-    console.log('ASD');
-
     let student: StudentPayload = this.studentForm.value;
-
-    console.log(student);
   }
 
   onSubmit() {}
