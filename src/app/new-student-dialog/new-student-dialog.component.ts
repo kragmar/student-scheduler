@@ -19,7 +19,7 @@ export class NewStudentDialogComponent implements OnInit {
   newStudent: StudentPayload = {
     name: '',
     email: '',
-    telNum: '',
+    phone: '',
     birthDate: null,
   };
 

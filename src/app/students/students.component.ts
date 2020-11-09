@@ -13,7 +13,7 @@ export class StudentsComponent implements OnInit {
   studentForm = this.fb.group({
     name: ['', Validators.pattern('[a-zA-Z\u0080-\uFFFF ]*')],
     email: [''],
-    telnum: ['', Validators.pattern('[2357][0][0-9]{7}')],
+    phone: ['', Validators.pattern('[2357][0][0-9]{7}')],
     birthdate: [''],
   });
 
@@ -22,7 +22,7 @@ export class StudentsComponent implements OnInit {
   selectedStudent: StudentPayload = {
     name: '',
     email: '',
-    telNum: '',
+    phone: '',
     birthDate: null,
   };
 
@@ -42,7 +42,7 @@ export class StudentsComponent implements OnInit {
     this.studentForm.setValue({
       name: this.selectedStudent.name,
       email: this.selectedStudent.email,
-      telNum: this.selectedStudent.telNum,
+      phone: this.selectedStudent.phone,
       birthDate: this.selectedStudent.birthDate,
     });
   }
@@ -65,7 +65,13 @@ export class StudentsComponent implements OnInit {
       return;
     }
 
-    let student: StudentPayload = this.studentForm.value;
+    let student: StudentPayload = {
+      _id: this.selectedStudent._id,
+      name: this.studentForm.get('name').value,
+      email: this.studentForm.get('email').value,
+      phone: this.studentForm.get('phone').value,
+      birthDate: this.studentForm.get('birthDate').value,
+    };
     student._id = this.selectedStudent._id;
     this.studentService.update(student).subscribe(
       (data) => {

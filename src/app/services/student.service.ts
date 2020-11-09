@@ -9,7 +9,7 @@ export interface StudentPayload {
   _id?: string;
   name: string;
   email: string;
-  telNum: string;
+  phone: string;
   birthDate: Date;
 }
 
