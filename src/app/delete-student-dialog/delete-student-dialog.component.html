@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Tanuló törlése</h2>
+<mat-dialog-content>
+  <form (ngSubmit)="onSubmit()" [formGroup]="deleteStudentForm">
+    <mat-select
+      placeholder="Tanuló neve"
+      [(ngModel)]="selectedStudent"
+      name="student"
+    >
+      <mat-option *ngFor="let student of studentsFromPage" [value]="student">
+        {{ student.name }}
+      </mat-option>
+    </mat-select>
+  </form>
+</mat-dialog-content>

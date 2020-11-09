@@ -1,0 +1,18 @@
+.new-student-dialog {
+  width: fit-content;
+  padding: 2rem;
+}
+
+.new-student-form {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+.first-time {
+  display: flex;
+}
+
+.first-time--date {
+  margin-right: 1rem;
+}

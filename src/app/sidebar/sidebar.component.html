@@ -1,27 +1,34 @@
 <nav *ngIf="authToken">
   <ul>
     <li>
-      <a [routerLink]="['/dashboard']" routerLinkActive="nav-active"
-        ><mat-icon>dashboard</mat-icon>Irányítópult</a
-      >
+      <a [routerLink]="['/dashboard']" routerLinkActive="nav-active">
+        <mat-icon>dashboard</mat-icon>
+        <div class="nav-title">Irányítópult</div>
+      </a>
     </li>
     <li>
-      <a [routerLink]="['/students']" routerLinkActive="nav-active"
-        ><mat-icon>people_alt</mat-icon>Tanulók</a
-      >
+      <a [routerLink]="['/students']" routerLinkActive="nav-active">
+        <mat-icon>people_alt</mat-icon>
+        <div class="nav-title">Tanulók</div>
+      </a>
     </li>
     <li>
-      <a [routerLink]="['/lessons']" routerLinkActive="nav-active"
-        ><mat-icon>watch_later</mat-icon>Órák</a
-      >
+      <a [routerLink]="['/lessons']" routerLinkActive="nav-active">
+        <mat-icon>watch_later</mat-icon>
+        <div class="nav-title">Órák</div>
+      </a>
     </li>
     <li>
-      <a [routerLink]="['/notifications']" routerLinkActive="nav-active"
-        ><mat-icon>notifications</mat-icon>Értesítések</a
-      >
+      <a [routerLink]="['/notifications']" routerLinkActive="nav-active">
+        <mat-icon>notifications</mat-icon>
+        <div class="nav-title">Értesítések</div>
+      </a>
     </li>
     <li class="nav-logout">
-      <a (click)="onLogout()"><mat-icon>meeting_room</mat-icon>Kilépés</a>
+      <a (click)="onLogout()">
+        <mat-icon>meeting_room</mat-icon>
+        <div class="nav-title">Kilépés</div>
+      </a>
     </li>
   </ul>
 </nav>

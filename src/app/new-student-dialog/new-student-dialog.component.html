@@ -1,0 +1,86 @@
+<h2 mat-dialog-title>Új tanuló</h2>
+<mat-dialog-content class="new-student-dialog">
+  <form
+    class="new-student-form"
+    (ngSubmit)="onSubmit()"
+    [formGroup]="newStudentForm"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Tanuló neve</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Vezetéknév Keresztnév"
+        formControlName="name"
+        value=""
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input
+        matInput
+        type="email"
+        placeholder="pelda@email.hu"
+        formControlName="email"
+        value=""
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Telefonszám</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="201234567"
+        formControlName="telNum"
+        value=""
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Születési dátum</mat-label>
+      <input
+        matInput
+        [matDatepicker]="datepicker"
+        placeholder="1970. 01. 01."
+        formControlName="birthDate"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="datepicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #datepicker disabled="false"></mat-datepicker>
+    </mat-form-field>
+    <div class="first-time">
+      <mat-form-field class="first-time--date" appearance="outline">
+        <mat-label>Bemutató óra dátuma</mat-label>
+        <input
+          matInput
+          [matDatepicker]="firstTimePicker"
+          placeholder="1970. 01. 01."
+          formControlName="firstTimeDate"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="firstTimePicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #firstTimePicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Bemutató óra időpontja</mat-label>
+        <mat-select
+          placeholder="12:30"
+          [(ngModel)]="selectedTime"
+          name="time"
+          formControlName="firstTimeTime"
+        >
+          <mat-option *ngFor="let time of times" [value]="time">
+            {{ time.hours }}:{{ time.minutes }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button type="submit">Mentés</button>
+  </form>
+</mat-dialog-content>

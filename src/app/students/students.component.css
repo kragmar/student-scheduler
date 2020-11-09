@@ -1,0 +1,79 @@
+.student-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 10% 90%;
+  grid-template-areas:
+    "options ."
+    "card .";
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.student-options {
+  grid-area: options;
+}
+
+.student-options > button {
+  margin-right: 0.5rem;
+}
+
+.student-search {
+  grid-area: options;
+  display: flex;
+  align-items: center;
+  padding: 0.875rem;
+}
+
+.search-back-arrow {
+  margin-right: 0.5rem;
+}
+
+.student-card {
+  grid-area: card;
+  height: 100%;
+  padding: 2rem;
+}
+
+.student-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.student-img {
+  margin-bottom: 1rem;
+  width: 128px;
+  border: 1px solid #dfdfdf;
+  border-radius: 6px;
+}
+
+::ng-deep .mat-form-field-wrapper .mat-form-field-flex {
+  align-items: center;
+}
+
+.edit-icon {
+  color: #dfdfdf;
+}
+
+::ng-deep .mat-focused .edit-icon {
+  color: #000;
+}
+
+.save-btn {
+  margin-right: 1rem;
+}
+
+.save-btn:hover {
+  background-color: #2ecc40;
+}
+
+.save-btn:hover ::ng-deep .mat-button-wrapper {
+  color: #fff;
+}
+
+.cancel-btn:hover {
+  background-color: #ff4136;
+}
+
+.cancel-btn:hover ::ng-deep .mat-button-wrapper {
+  color: #fff;
+}

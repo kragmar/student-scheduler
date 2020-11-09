@@ -5,16 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ReactiveFormsModule } from '@angular/forms';
-
-import { LessonService } from './services/lesson.service';
-import { StudentService } from './services/student.service';
-import { TeacherService } from './services/teacher.service';
-import { UserService } from './services/user.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSelectModule } from '@angular/material/select';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
@@ -22,6 +22,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { StudentsComponent } from './students/students.component';
+import { NewStudentDialogComponent } from './new-student-dialog/new-student-dialog.component';
+import { DeleteStudentDialogComponent } from './delete-student-dialog/delete-student-dialog.component';
+import { OkDialogComponent } from './ok-dialog/ok-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +34,9 @@ import { StudentsComponent } from './students/students.component';
     PageNotFoundComponent,
     SidebarComponent,
     StudentsComponent,
+    NewStudentDialogComponent,
+    DeleteStudentDialogComponent,
+    OkDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,13 +44,19 @@ import { StudentsComponent } from './students/students.component';
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
     // Material Imports
     MatInputModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule,
+    MatSelectModule,
   ],
-  providers: [UserService, StudentService, LessonService, TeacherService],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'hu-HU' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

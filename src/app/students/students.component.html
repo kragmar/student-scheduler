@@ -1,1 +1,130 @@
-<p>students works!</p>
+<div class="student-grid">
+  <mat-card class="student-options" *ngIf="!search; else searching">
+    <button mat-raised-button (click)="search = true">Keresés</button>
+    <button mat-raised-button (click)="openNewStudentDialog()">
+      Új tanuló
+    </button>
+  </mat-card>
+  <ng-template #searching>
+    <mat-card class="student-search">
+      <button
+        class="search-back-arrow"
+        mat-button
+        mat-icon-button
+        aria-label="Back"
+        (click)="search = false"
+      >
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+      <mat-select
+        placeholder="Tanuló neve"
+        [(ngModel)]="selectedStudent"
+        (selectionChange)="updateForm()"
+        name="student"
+      >
+        <mat-option *ngFor="let student of students" [value]="student">
+          {{ student.name }}
+        </mat-option>
+      </mat-select>
+    </mat-card>
+  </ng-template>
+  <mat-card class="student-card">
+    <mat-card-header>
+      <mat-card-title>Tanuló adatai</mat-card-title>
+      <mat-card-subtitle>subtitle</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <form
+        class="student-form"
+        (ngSubmit)="onSubmit()"
+        [formGroup]="studentForm"
+      >
+        <img
+          class="student-img"
+          src="../../assets/placeholder-prof.jpg"
+          alt="Placeholder image"
+        />
+        <mat-form-field appearance="outline">
+          <mat-label>Tanuló neve</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Vezetéknév Keresztnév"
+            formControlName="name"
+            [readonly]="!editing"
+          />
+          <mat-icon class="edit-icon" matSuffix *ngIf="editing"
+            >editing</mat-icon
+          >
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="pelda@email.hu"
+            formControlName="email"
+            [readonly]="!editing"
+          />
+          <mat-icon class="edit-icon" matSuffix *ngIf="editing"
+            >editing</mat-icon
+          >
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Telefonszám</mat-label>
+          <input
+            matInput
+            type="tel"
+            placeholder="201234567"
+            formControlName="phone"
+            [readonly]="!editing"
+          />
+          <mat-icon class="edit-icon" matSuffix *ngIf="editing"
+            >editing</mat-icon
+          >
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Születési dátum</mat-label>
+          <input
+            matInput
+            [matDatepicker]="datepicker"
+            placeholder="1970. 01. 01."
+            formControlName="birthDate"
+            readonly
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="datepicker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #datepicker [disabled]="!editing"></mat-datepicker>
+        </mat-form-field>
+        <div *ngIf="selectedStudent.name !== ''">
+          <button
+            mat-raised-button
+            type="submit"
+            *ngIf="!editing; else save"
+            (click)="editing = true"
+          >
+            Adatok szerkesztése
+          </button>
+          <ng-template #save>
+            <button
+              class="save-btn"
+              mat-raised-button
+              (click)="updateStudent()"
+            >
+              Mentés
+            </button>
+            <button
+              class="cancel-btn"
+              mat-raised-button
+              (click)="cancelUpdate()"
+            >
+              Mégse
+            </button>
+          </ng-template>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -2,12 +2,16 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { NewStudent } from '../models/new-student';
 import { Student } from './../models/student';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  }),
-};
+export interface StudentPayload {
+  _id?: string;
+  name: string;
+  email: string;
+  phone: string;
+  birthDate: Date;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -17,25 +21,29 @@ export class StudentService {
 
   constructor(private http: HttpClient) {}
 
-  public getAllStudents() {
+  public create(student: StudentPayload): Observable<any> {
+    return this.http.post(this.apiUrl, student);
+  }
+
+  public findAll(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
 
-  public postStudent(newStudent: NewStudent) {
-    return this.http.post(this.apiUrl, newStudent, httpOptions);
+  public findOne(student: StudentPayload): Observable<any> {
+    const id = student._id;
+
+    return this.http.get(this.apiUrl + id);
   }
 
-  public updateStudent(student: Student) {
-    var id = student._id;
-    let url = this.apiUrl + id;
+  public update(student: StudentPayload): Observable<any> {
+    const id = student._id;
 
-    return this.http.put(url, student, httpOptions);
+    return this.http.put(this.apiUrl + id, student);
   }
 
-  public deleteStudent(student: Student) {
-    let id = student._id;
-    let url = this.apiUrl + id;
+  public delete(student: StudentPayload): Observable<any> {
+    const id = student._id;
 
-    return this.http.delete(url, httpOptions);
+    return this.http.delete(this.apiUrl + id);
   }
 }

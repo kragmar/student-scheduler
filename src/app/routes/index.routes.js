@@ -6,10 +6,9 @@ const auth = jwt({
   userProperty: "payload",
   algorithms: ["HS256"],
 });
-
 const ctrlAuth = require("../controllers/authentication.controller");
 
-// authentication
+// authentication and registration
 router.post("/register", ctrlAuth.register);
 router.post("/login", ctrlAuth.login);
 
