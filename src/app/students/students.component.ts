@@ -13,7 +13,7 @@ import { OkDialogComponent } from '../ok-dialog/ok-dialog.component';
 export class StudentsComponent implements OnInit {
   studentForm = this.fb.group({
     name: ['', Validators.pattern('[a-zA-Z\u0080-\uFFFF ]*')],
-    email: [''],
+    email: ['', Validators.email],
     phone: ['', Validators.pattern('[2357][0][0-9]{7}')],
     birthDate: [''],
   });
@@ -101,6 +101,7 @@ export class StudentsComponent implements OnInit {
   }
 
   cancelUpdate() {
+    // Reset any changes
     this.updateForm();
     this.editing = false;
   }
