@@ -24,6 +24,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { StudentsComponent } from './students/students.component';
 import { NewStudentDialogComponent } from './new-student-dialog/new-student-dialog.component';
 import { DeleteStudentDialogComponent } from './delete-student-dialog/delete-student-dialog.component';
+import { OkDialogComponent } from './ok-dialog/ok-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DeleteStudentDialogComponent } from './delete-student-dialog/delete-stu
     StudentsComponent,
     NewStudentDialogComponent,
     DeleteStudentDialogComponent,
+    OkDialogComponent,
   ],
   imports: [
     BrowserModule,
