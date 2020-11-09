@@ -19,6 +19,7 @@
       <mat-select
         placeholder="Tanuló neve"
         [(ngModel)]="selectedStudent"
+        (selectionChange)="updateForm()"
         name="student"
       >
         <mat-option *ngFor="let student of students" [value]="student">
@@ -50,10 +51,11 @@
             type="text"
             placeholder="Vezetéknév Keresztnév"
             formControlName="name"
-            [value]="selectedStudent.name"
             [readonly]="!editing"
           />
-          <mat-icon matSuffix *ngIf="editing">editing</mat-icon>
+          <mat-icon class="edit-icon" matSuffix *ngIf="editing"
+            >editing</mat-icon
+          >
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Email</mat-label>
@@ -62,10 +64,11 @@
             type="email"
             placeholder="pelda@email.hu"
             formControlName="email"
-            [value]="selectedStudent.email"
             [readonly]="!editing"
           />
-          <mat-icon matSuffix *ngIf="editing">editing</mat-icon>
+          <mat-icon class="edit-icon" matSuffix *ngIf="editing"
+            >editing</mat-icon
+          >
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Telefonszám</mat-label>
@@ -74,10 +77,11 @@
             type="tel"
             placeholder="201234567"
             formControlName="phone"
-            [value]="selectedStudent.phone"
             [readonly]="!editing"
           />
-          <mat-icon matSuffix *ngIf="editing">editing</mat-icon>
+          <mat-icon class="edit-icon" matSuffix *ngIf="editing"
+            >editing</mat-icon
+          >
         </mat-form-field>
         <mat-form-field appearance="outline">
           <mat-label>Születési dátum</mat-label>
@@ -85,9 +89,8 @@
             matInput
             [matDatepicker]="datepicker"
             placeholder="1970. 01. 01."
-            formControlName="birthdate"
-            [value]="selectedStudent.birthDate"
-            [readonly]="!editing"
+            formControlName="birthDate"
+            readonly
           />
           <mat-datepicker-toggle
             matSuffix
@@ -105,7 +108,20 @@
             Adatok szerkesztése
           </button>
           <ng-template #save>
-            <button mat-raised-button (click)="updateStudent()">Mentés</button>
+            <button
+              class="save-btn"
+              mat-raised-button
+              (click)="updateStudent()"
+            >
+              Mentés
+            </button>
+            <button
+              class="cancel-btn"
+              mat-raised-button
+              (click)="cancelUpdate()"
+            >
+              Mégse
+            </button>
           </ng-template>
         </div>
       </form>

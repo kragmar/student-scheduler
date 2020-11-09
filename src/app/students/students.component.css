@@ -50,10 +50,30 @@
   align-items: center;
 }
 
-mat-icon {
+.edit-icon {
   color: #dfdfdf;
 }
 
-::ng-deep .mat-focused mat-icon {
+::ng-deep .mat-focused .edit-icon {
   color: #000;
+}
+
+.save-btn {
+  margin-right: 1rem;
+}
+
+.save-btn:hover {
+  background-color: #2ecc40;
+}
+
+.save-btn:hover ::ng-deep .mat-button-wrapper {
+  color: #fff;
+}
+
+.cancel-btn:hover {
+  background-color: #ff4136;
+}
+
+.cancel-btn:hover ::ng-deep .mat-button-wrapper {
+  color: #fff;
 }

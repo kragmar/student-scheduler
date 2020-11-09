@@ -4,6 +4,7 @@ import { NewStudentDialogComponent } from '../new-student-dialog/new-student-dia
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { OkDialogComponent } from '../ok-dialog/ok-dialog.component';
 
 @Component({
   templateUrl: './students.component.html',
@@ -14,7 +15,7 @@ export class StudentsComponent implements OnInit {
     name: ['', Validators.pattern('[a-zA-Z\u0080-\uFFFF ]*')],
     email: [''],
     phone: ['', Validators.pattern('[2357][0][0-9]{7}')],
-    birthdate: [''],
+    birthDate: [''],
   });
 
   search = false;
@@ -38,15 +39,6 @@ export class StudentsComponent implements OnInit {
     this.studentService.findAll().subscribe((data) => (this.students = data));
   }
 
-  setInputValues() {
-    this.studentForm.setValue({
-      name: this.selectedStudent.name,
-      email: this.selectedStudent.email,
-      phone: this.selectedStudent.phone,
-      birthDate: this.selectedStudent.birthDate,
-    });
-  }
-
   openNewStudentDialog() {
     const dialogRef = this.dialog.open(NewStudentDialogComponent, {
       width: 'fit-content',
@@ -60,7 +52,25 @@ export class StudentsComponent implements OnInit {
     });
   }
 
+  openOkDialog(message: string) {
+    const dialogRef = this.dialog.open(OkDialogComponent, {
+      width: 'fit-content',
+      data: { fromPage: message },
+    });
+  }
+
+  updateForm() {
+    // Update student form's values
+    this.studentForm.setValue({
+      name: this.selectedStudent.name,
+      email: this.selectedStudent.email,
+      phone: this.selectedStudent.phone,
+      birthDate: this.selectedStudent.birthDate,
+    });
+  }
+
   updateStudent() {
+    // Abort if student form is invalid
     if (this.studentForm.invalid) {
       return;
     }
@@ -72,7 +82,8 @@ export class StudentsComponent implements OnInit {
       phone: this.studentForm.get('phone').value,
       birthDate: this.studentForm.get('birthDate').value,
     };
-    student._id = this.selectedStudent._id;
+
+    // Update student data
     this.studentService.update(student).subscribe(
       (data) => {
         console.log(data);
@@ -81,6 +92,17 @@ export class StudentsComponent implements OnInit {
         console.log(err);
       }
     );
+
+    // Open dialog with OK message
+    this.openOkDialog('A tanuló adatai frissültek!');
+
+    // Reset editing button
+    this.editing = false;
+  }
+
+  cancelUpdate() {
+    this.updateForm();
+    this.editing = false;
   }
 
   onSubmit() {}
