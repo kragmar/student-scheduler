@@ -14,6 +14,8 @@ export class NewStudentDialogComponent implements OnInit {
     email: ['', Validators.required],
     telNum: ['', Validators.required],
     birthDate: [''],
+    firstTimeDate: [''],
+    firstTimeTime: [''],
   });
 
   newStudent: StudentPayload = {
