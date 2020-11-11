@@ -1,5 +1,6 @@
+import { Lesson, LessonService } from './../services/lesson.service';
 import { DeleteStudentDialogComponent } from './../delete-student-dialog/delete-student-dialog.component';
-import { StudentPayload, StudentService } from './../services/student.service';
+import { Student, StudentService } from './../services/student.service';
 import { NewStudentDialogComponent } from '../new-student-dialog/new-student-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -29,14 +30,18 @@ export class StudentsComponent implements OnInit {
 
   editing = false;
 
+  lessons: Lesson[];
+
   constructor(
     private fb: FormBuilder,
     private studentService: StudentService,
+    private lessonService: LessonService,
     public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.studentService.findAll().subscribe((data) => (this.students = data));
+    this.lessonService.findAll().subscribe((data) => (this.lessons = data));
   }
 
   openNewStudentDialog() {
