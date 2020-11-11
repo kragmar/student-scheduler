@@ -3,7 +3,7 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 10% 90%;
   grid-template-areas:
-    "options ."
+    "options lessopts"
     "card lessons";
   gap: 0.5rem;
   height: 100%;
@@ -76,6 +76,10 @@
 
 .cancel-btn:hover ::ng-deep .mat-button-wrapper {
   color: #fff;
+}
+
+.lessons-options {
+  grid-area: lessopts;
 }
 
 .lessons-card {
