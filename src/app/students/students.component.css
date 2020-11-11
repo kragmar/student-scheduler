@@ -4,7 +4,7 @@
   grid-template-rows: 10% 90%;
   grid-template-areas:
     "options ."
-    "card .";
+    "card lessons";
   gap: 0.5rem;
   height: 100%;
 }
@@ -76,4 +76,9 @@
 
 .cancel-btn:hover ::ng-deep .mat-button-wrapper {
   color: #fff;
+}
+
+.lessons-card {
+  grid-area: lessons;
+  padding: 2rem;
 }
