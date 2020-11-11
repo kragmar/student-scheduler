@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { NewStudent } from '../models/new-student';
-import { Student } from './../models/student';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
-export interface StudentPayload {
+export interface Student {
   _id?: string;
   name: string;
   email: string;
@@ -21,7 +18,7 @@ export class StudentService {
 
   constructor(private http: HttpClient) {}
 
-  public create(student: StudentPayload): Observable<any> {
+  public create(student: Student): Observable<any> {
     return this.http.post(this.apiUrl, student);
   }
 
@@ -29,19 +26,19 @@ export class StudentService {
     return this.http.get(this.apiUrl);
   }
 
-  public findOne(student: StudentPayload): Observable<any> {
+  public findOne(student: Student): Observable<any> {
     const id = student._id;
 
     return this.http.get(this.apiUrl + id);
   }
 
-  public update(student: StudentPayload): Observable<any> {
+  public update(student: Student): Observable<any> {
     const id = student._id;
 
     return this.http.put(this.apiUrl + id, student);
   }
 
-  public delete(student: StudentPayload): Observable<any> {
+  public delete(student: Student): Observable<any> {
     const id = student._id;
 
     return this.http.delete(this.apiUrl + id);

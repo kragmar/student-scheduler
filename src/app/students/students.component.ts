@@ -19,8 +19,8 @@ export class StudentsComponent implements OnInit {
   });
 
   search = false;
-  students: StudentPayload[];
-  selectedStudent: StudentPayload = {
+  students: Student[];
+  selectedStudent: Student = {
     name: '',
     email: '',
     phone: '',
@@ -75,7 +75,7 @@ export class StudentsComponent implements OnInit {
       return;
     }
 
-    let student: StudentPayload = {
+    let student: Student = {
       _id: this.selectedStudent._id,
       name: this.studentForm.get('name').value,
       email: this.studentForm.get('email').value,
