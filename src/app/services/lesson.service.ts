@@ -1,13 +1,18 @@
+import { Observable } from 'rxjs';
+import { UserDetails } from './auth.service';
 import { Injectable } from '@angular/core';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { NewLesson } from './../models/new-lesson';
-import { Lesson } from './../models/lesson';
+import { HttpClient } from '@angular/common/http';
+import { Time } from '@angular/common';
+import { Student } from './student.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  }),
-};
+export interface Lesson {
+  _id?: string;
+  lessonDate: Date;
+  lessonTime: Time;
+  lessonType: string;
+  student: Student;
+  teacher: UserDetails;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -17,25 +22,29 @@ export class LessonService {
 
   constructor(private http: HttpClient) {}
 
-  public getAllLessons() {
+  public create(lesson: Lesson): Observable<any> {
+    return this.http.post(this.apiUrl, lesson);
+  }
+
+  public findAll(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
 
-  public postLesson(newLesson: NewLesson) {
-    return this.http.post(this.apiUrl, newLesson, httpOptions);
+  public findOne(lesson: Lesson): Observable<any> {
+    const id = lesson._id;
+
+    return this.http.get(this.apiUrl + id);
   }
 
-  public updateLesson(lesson: Lesson) {
-    var id = lesson._id;
-    let url = this.apiUrl + id;
+  public update(lesson: Lesson): Observable<any> {
+    const id = lesson._id;
 
-    return this.http.put(url, lesson, httpOptions);
+    return this.http.put(this.apiUrl + id, lesson);
   }
 
-  public deleteLesson(lesson: Lesson) {
-    let id = lesson._id;
-    let url = this.apiUrl + id;
+  public delete(lesson: Lesson): Observable<any> {
+    const id = lesson._id;
 
-    return this.http.delete(url, httpOptions);
+    return this.http.delete(this.apiUrl + id);
   }
 }
