@@ -1,19 +1,19 @@
 const router = require("express").Router();
-const ctrlStudent = require("../controllers/student.controller");
+const studentCtrl = require("../controllers/student.controller");
 
 // Create a new student
-router.post("/", ctrlStudent.create);
+router.post("/", studentCtrl.create);
 
 // Retrieve all student
-router.get("/", ctrlStudent.findAll);
+router.get("/", studentCtrl.findAll);
 
 // Retrieve a single student with id
-router.get("/:id", ctrlStudent.findOne);
+router.get("/:id", studentCtrl.findOne);
 
 // Update a student with id
-router.put("/:id", ctrlStudent.update);
+router.put("/:id", studentCtrl.update);
 
 // Delete a student with id
-router.delete("/:id", ctrlStudent.delete);
+router.delete("/:id", studentCtrl.delete);
 
 module.exports = router;
