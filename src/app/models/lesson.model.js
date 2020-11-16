@@ -10,6 +10,10 @@ const lessonSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    recurring: {
+      type: Boolean,
+      required: true,
+    },
     studentId: {
       type: String,
       required: true,
