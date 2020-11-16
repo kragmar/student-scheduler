@@ -136,8 +136,7 @@
   <!-- Options for lessons card -->
   <mat-card class="lessons-options">
     <mat-card-content>
-      <button mat-raised-button>Új óra</button>
-      <mat-slide-toggle>Fix óra</mat-slide-toggle>
+      <button mat-raised-button (click)="openNewLessonDialog()">Új óra</button>
     </mat-card-content>
   </mat-card>
 
@@ -151,10 +150,10 @@
       <mat-accordion>
         <mat-expansion-panel *ngFor="let lesson of lessons">
           <mat-expansion-panel-header
-            >{{ lesson.lessonDate.getDay() }} |
-            {{ lesson.lessonTime }}</mat-expansion-panel-header
+            >{{ lesson.date.getDay() }} |
+            {{ lesson.date.getTime() }}</mat-expansion-panel-header
           >
-          {{ lesson.lessonType }}
+          {{ lesson.type }}
         </mat-expansion-panel>
       </mat-accordion>
     </mat-card-content>
