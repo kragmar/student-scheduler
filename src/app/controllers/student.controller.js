@@ -19,7 +19,8 @@ module.exports.create = function (req, res) {
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while creating the lesonn.",
+        message:
+          err.message || "Some error occured while creating the student.",
       });
     });
 };
