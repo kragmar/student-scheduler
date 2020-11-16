@@ -1,15 +1,15 @@
-const db = require("../models");
-const Lesson = db.lesson;
+const mongoose = require("mongoose");
+const Lesson = mongoose.model("Lesson");
 
 // Create and save new lesson
-exports.create = (req, res) => {
+module.exports.create = (req, res) => {
   // Create a new lesson
   const lesson = new Lesson({
     date: req.body.date,
-    start: req.body.start,
     type: req.body.type,
-    student: req.body.student,
-    teacher: req.body.teacher,
+    recurring: req.body.recurring,
+    studentId: req.body.studentId,
+    teacherId: req.body.teacherId,
   });
 
   // Save lesson in the db
@@ -20,13 +20,13 @@ exports.create = (req, res) => {
     })
     .catch((err) => {
       res.status(500).send({
-        message: err.message || "Some error occured while creating the lesonn.",
+        message: err.message || "Some error occured while creating the lesson.",
       });
     });
 };
 
 // Find all lessons in the db
-exports.findAll = (req, res) => {
+module.exports.findAll = (req, res) => {
   Lesson.find()
     .then((data) => {
       res.send(data);
@@ -39,7 +39,7 @@ exports.findAll = (req, res) => {
 };
 
 // Find lesson by id
-exports.findOne = (req, res) => {
+module.exports.findOne = (req, res) => {
   const id = req.params.id;
 
   Lesson.findById(id)
@@ -58,7 +58,7 @@ exports.findOne = (req, res) => {
 };
 
 // Update lesson by id
-exports.update = (req, res) => {
+module.exports.update = (req, res) => {
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update can not be empty!",
@@ -83,7 +83,7 @@ exports.update = (req, res) => {
 };
 
 // Delete lesson by id
-exports.delete = (req, res) => {
+module.exports.delete = (req, res) => {
   const id = req.params.id;
 
   Lesson.findByIdAndRemove(id)
