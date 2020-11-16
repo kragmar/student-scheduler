@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { OkDialogComponent } from '../ok-dialog/ok-dialog.component';
+import { NewLessonDialogComponent } from '../new-lesson-dialog/new-lesson-dialog.component';
 
 @Component({
   templateUrl: './students.component.html',
@@ -44,6 +45,13 @@ export class StudentsComponent implements OnInit {
     this.lessonService.findAll().subscribe((data) => (this.lessons = data));
   }
 
+  openOkDialog(message: string) {
+    const dialogRef = this.dialog.open(OkDialogComponent, {
+      width: 'fit-content',
+      data: { fromPage: message },
+    });
+  }
+
   openNewStudentDialog() {
     const dialogRef = this.dialog.open(NewStudentDialogComponent, {
       width: 'fit-content',
@@ -57,10 +65,9 @@ export class StudentsComponent implements OnInit {
     });
   }
 
-  openOkDialog(message: string) {
-    const dialogRef = this.dialog.open(OkDialogComponent, {
+  openNewLessonDialog() {
+    const dialogRef = this.dialog.open(NewLessonDialogComponent, {
       width: 'fit-content',
-      data: { fromPage: message },
     });
   }
 
