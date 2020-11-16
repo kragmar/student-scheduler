@@ -1,0 +1,14 @@
+.new-lesson-dialog {
+  width: fit-content;
+  padding: 2rem;
+}
+
+.new-lesson-form {
+  display: flex;
+  flex-direction: column;
+  width: 17rem;
+}
+
+.slide-toggle {
+  margin-bottom: 1.5rem;
+}
