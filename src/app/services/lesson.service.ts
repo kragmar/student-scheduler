@@ -7,11 +7,11 @@ import { Student } from './student.service';
 
 export interface Lesson {
   _id?: string;
-  lessonDate: Date;
-  lessonTime: Time;
-  lessonType: string;
-  student: Student;
-  teacher: UserDetails;
+  date: Date;
+  type: string;
+  recurring: boolean;
+  studentId: string;
+  teacherId: string;
 }
 
 @Injectable({
