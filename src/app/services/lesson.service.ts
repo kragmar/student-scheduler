@@ -36,6 +36,10 @@ export class LessonService {
     return this.http.get(this.apiUrl + id);
   }
 
+  public findAllAfterToday(date: any): Observable<any> {
+    return this.http.get(this.apiUrl + 'date/' + date);
+  }
+
   public update(lesson: Lesson): Observable<any> {
     const id = lesson._id;
 
