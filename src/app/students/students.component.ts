@@ -1,3 +1,4 @@
+import { DateCalculatorService } from './../services/date-calculator.service';
 import { Lesson, LessonService } from './../services/lesson.service';
 import { DeleteStudentDialogComponent } from './../delete-student-dialog/delete-student-dialog.component';
 import { Student, StudentService } from './../services/student.service';
@@ -7,6 +8,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { OkDialogComponent } from '../ok-dialog/ok-dialog.component';
 import { NewLessonDialogComponent } from '../new-lesson-dialog/new-lesson-dialog.component';
+
+// Date localization for date pipe
+import { registerLocaleData } from '@angular/common';
+import localeHu from '@angular/common/locales/hu';
+registerLocaleData(localeHu, 'hu');
 
 @Component({
   templateUrl: './students.component.html',
@@ -37,12 +43,15 @@ export class StudentsComponent implements OnInit {
     private fb: FormBuilder,
     private studentService: StudentService,
     private lessonService: LessonService,
+    private dateService: DateCalculatorService,
     public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.studentService.findAll().subscribe((data) => (this.students = data));
     this.lessonService.findAll().subscribe((data) => (this.lessons = data));
+
+    this.dateService.getEmptyDate();
   }
 
   openOkDialog(message: string) {
