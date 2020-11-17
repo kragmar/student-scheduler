@@ -150,8 +150,10 @@
       <mat-accordion>
         <mat-expansion-panel *ngFor="let lesson of lessons">
           <mat-expansion-panel-header
-            >{{ lesson.date.getDay() }} |
-            {{ lesson.date.getTime() }}</mat-expansion-panel-header
+            >{{ lesson.date | date: "EEEE":"":"hu" | uppercase }} |
+            {{
+              lesson.date | date: "HH:mm":"+0000"
+            }}</mat-expansion-panel-header
           >
           {{ lesson.type }}
         </mat-expansion-panel>
