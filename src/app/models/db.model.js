@@ -41,3 +41,4 @@ process.on("SIGINT", function () {
 // SCHEMAS AND MODELS
 require("./user.model");
 require("./student.model");
+require("./lesson.model");
