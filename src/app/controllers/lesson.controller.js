@@ -57,6 +57,29 @@ module.exports.findOne = (req, res) => {
     });
 };
 
+module.exports.findAllAfterToday = (req, res) => {
+  const datetime = req.params.datetime;
+  const num = new Number(datetime);
+  const date = new Date(num);
+
+  Lesson.find({ date: { $gt: date } })
+    .sort({ date: 1 })
+    .then((data) => {
+      if (!data) {
+        res
+          .status(404)
+          .send({ message: "Not found lesson with date greater than " + date });
+      } else {
+        res.send(data);
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving lesson with date greater than " + date,
+      });
+    });
+};
+
 // Update lesson by id
 module.exports.update = (req, res) => {
   if (!req.body) {
