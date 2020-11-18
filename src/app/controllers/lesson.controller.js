@@ -62,7 +62,7 @@ module.exports.findAllAfterToday = (req, res) => {
   const num = new Number(datetime);
   const date = new Date(num);
 
-  Lesson.find({ date: { $gt: date } })
+  Lesson.find({ date: { $gte: date } })
     .sort({ date: 1 })
     .then((data) => {
       if (!data) {
