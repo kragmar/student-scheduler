@@ -1,6 +1,7 @@
 import { Lesson, LessonService } from './lesson.service';
 import { Injectable } from '@angular/core';
 import * as dayjs from 'dayjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -73,7 +74,7 @@ export class DateCalculatorService {
     return emptyDates;
   }
 
-  public getEmptyDates() {
+  public getEmptyDates(): Observable<Date[]> {
     var today = new Date();
     today.setHours(12, 50, 0, 0);
 
@@ -81,7 +82,7 @@ export class DateCalculatorService {
     day = day.add(1, 'day');
 
     let datetime = day.toDate().getTime();
-    var emptyDates: Date[] = [];
+    var emptyDates: BehaviorSubject<Date[]> = null;
 
     let lessons: Lesson[] = [];
     this.lessonService.findAllAfterToday(datetime).subscribe(
@@ -93,10 +94,12 @@ export class DateCalculatorService {
       },
       () => {
         let dates = this.createDatesArray(day.toDate());
-        emptyDates = this.calculateEmptyDates(today, day, dates, lessons);
+        let arr = this.calculateEmptyDates(today, day, dates, lessons);
+        console.log(arr);
+        emptyDates.next(this.calculateEmptyDates(today, day, dates, lessons));
       }
     );
 
-    return emptyDates;
+    return emptyDates.asObservable();
   }
 }
