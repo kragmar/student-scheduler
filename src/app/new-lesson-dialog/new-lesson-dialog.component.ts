@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { DateCalculatorService } from './../services/date-calculator.service';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LessonService, Lesson } from './../services/lesson.service';
+import { Optional } from '@angular/core';
 
 @Component({
   templateUrl: './new-lesson-dialog.component.html',
@@ -14,26 +16,46 @@ export class NewLessonDialogComponent implements OnInit {
     recurring: [true],
   });
 
-  days = ['Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek'];
-  times = [
-    '12:50',
-    '13:40',
-    '14:30',
-    '15:20',
-    '16:10',
-    '17:00',
-    '17:50',
-    '18:40',
-  ];
+  days: string[];
+  times: string[];
+  emptyDates: Date[];
   types = ['Tanóra', 'Gyakorló óra'];
 
   constructor(
     private fb: FormBuilder,
     private lessonService: LessonService,
-    public dialogRef: MatDialogRef<NewLessonDialogComponent>
-  ) {}
+    private dateCalcService: DateCalculatorService,
+    public dialogRef: MatDialogRef<NewLessonDialogComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.emptyDates = data.emptyDates;
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.days = this.dateCalcService.days;
+    this.times = this.dateCalcService.times;
+    /* this.emptyDates = this.dateCalcService.getEmptyDates(); */
+    console.debug(this.emptyDates);
+  }
+
+  dateFilter = (date: Date): boolean => {
+    let x = false;
+    let y;
+    this.emptyDates.forEach((item) => {
+      y = item;
+      if (
+        item.getFullYear() == date.getFullYear() &&
+        item.getMonth() == date.getMonth() &&
+        item.getDate() == date.getDate()
+      ) {
+        console.debug('found valid day:' + date);
+        x = true;
+      }
+    });
+    console.debug('invalid day:' + date);
+    console.debug(y);
+    return x;
+  };
 
   getValue(control: string) {
     return this.newLessonForm.get(control).value;
