@@ -38,6 +38,7 @@ export class StudentsComponent implements OnInit {
   editing = false;
 
   lessons: Lesson[];
+  emptyDates$: Date[];
 
   constructor(
     private fb: FormBuilder,
@@ -51,7 +52,9 @@ export class StudentsComponent implements OnInit {
     this.studentService.findAll().subscribe((data) => (this.students = data));
     this.lessonService.findAll().subscribe((data) => (this.lessons = data));
 
-    this.dateService.getEmptyDate();
+    this.dateService
+      .getEmptyDates()
+      .subscribe((res) => (this.emptyDates$ = res));
   }
 
   openOkDialog(message: string) {
@@ -77,6 +80,7 @@ export class StudentsComponent implements OnInit {
   openNewLessonDialog() {
     const dialogRef = this.dialog.open(NewLessonDialogComponent, {
       width: 'fit-content',
+      data: { emptyDates: this.emptyDates$ },
     });
   }
 
