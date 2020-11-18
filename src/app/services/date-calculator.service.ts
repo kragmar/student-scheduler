@@ -26,24 +26,14 @@ export class DateCalculatorService {
   }
 
   getEmptyDate() {
-    let date = new Date();
+    var date = new Date();
     date.setHours(12, 50, 0, 0);
     let day = dayjs(date);
     day = day.add(1, 'day');
 
-    /**
-     * Set empty date to tomorrow
-     * If it's Friday then set it to Monday
-     */
-    /* if (date.getDay() === 4) {
-      date.setDate(date.getDate() + 3);
-    } else {
-      date.setDate(date.getDate() + 1);
-    } */
-
     console.log(day);
 
-    let datetime = date.getTime();
+    let datetime = day.toDate().getTime();
 
     let lessons: Lesson[] = [];
     this.lessonService.findAllAfterToday(datetime).subscribe(
