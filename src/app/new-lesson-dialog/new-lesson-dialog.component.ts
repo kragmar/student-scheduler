@@ -25,36 +25,29 @@ export class NewLessonDialogComponent implements OnInit {
     private fb: FormBuilder,
     private lessonService: LessonService,
     private dateCalcService: DateCalculatorService,
-    public dialogRef: MatDialogRef<NewLessonDialogComponent>,
-    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    this.emptyDates = data.emptyDates;
-  }
+    public dialogRef: MatDialogRef<NewLessonDialogComponent>
+  ) {}
 
   ngOnInit(): void {
     this.days = this.dateCalcService.days;
     this.times = this.dateCalcService.times;
-    /* this.emptyDates = this.dateCalcService.getEmptyDates(); */
-    console.debug(this.emptyDates);
+    this.dateCalcService
+      .getEmptyDates()
+      .subscribe((res) => (this.emptyDates = res));
   }
 
   dateFilter = (date: Date): boolean => {
-    let x = false;
-    let y;
+    let result = false;
     this.emptyDates.forEach((item) => {
-      y = item;
       if (
         item.getFullYear() == date.getFullYear() &&
         item.getMonth() == date.getMonth() &&
         item.getDate() == date.getDate()
       ) {
-        console.debug('found valid day:' + date);
-        x = true;
+        result = true;
       }
     });
-    console.debug('invalid day:' + date);
-    console.debug(y);
-    return x;
+    return result;
   };
 
   getValue(control: string) {
