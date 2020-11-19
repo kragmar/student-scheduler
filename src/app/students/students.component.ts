@@ -38,7 +38,7 @@ export class StudentsComponent implements OnInit {
   editing = false;
 
   lessons: Lesson[];
-  emptyDates$: Date[];
+  emptyDates$: Date[] = new Array();
 
   constructor(
     private fb: FormBuilder,
@@ -80,7 +80,6 @@ export class StudentsComponent implements OnInit {
   openNewLessonDialog() {
     const dialogRef = this.dialog.open(NewLessonDialogComponent, {
       width: 'fit-content',
-      data: { emptyDates: this.emptyDates$ },
     });
   }
 
