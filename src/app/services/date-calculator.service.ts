@@ -82,7 +82,7 @@ export class DateCalculatorService {
     day = day.add(1, 'day');
 
     let datetime = day.toDate().getTime();
-    var emptyDates: BehaviorSubject<Date[]> = null;
+    var emptyDates: BehaviorSubject<Date[]> = new BehaviorSubject([]);
 
     let lessons: Lesson[] = [];
     this.lessonService.findAllAfterToday(datetime).subscribe(
