@@ -36,15 +36,45 @@ export class DateCalculatorService {
       }
       date = date.add(50, 'minute');
     }
+
     return arr;
   }
 
+  private resetDate(dateParam: dayjs.Dayjs) {
+    let date = dayjs(dateParam);
+
+    date = date.set('hour', 12);
+    date = date.set('minute', 50);
+    date = date.set('second', 0);
+    date = date.set('millisecond', 0);
+
+    return date;
+  }
+
+  private addDays(dateParam: dayjs.Dayjs) {
+    let date = dayjs(dateParam);
+
+    date = this.resetDate(date);
+    if (date.day() === 5) {
+      date = date.add(3, 'day');
+    } else {
+      date = date.add(1, 'day');
+    }
+
+    return date;
+  }
+
   private calculateEmptyDates(
-    today: Date,
-    day: dayjs.Dayjs,
-    dates: Date[],
-    lessons: Lesson[]
+    todayParam: Date,
+    dateParam: dayjs.Dayjs,
+    datesParam: Date[],
+    lessonsParam: Lesson[]
   ) {
+    const today = new Date(todayParam);
+    let date = dayjs(dateParam);
+    let dates = new Array<Date>(...datesParam);
+    let lessons = new Array<Lesson>(...lessonsParam);
+
     let emptyDates: Date[] = [];
     let j = 0;
 
