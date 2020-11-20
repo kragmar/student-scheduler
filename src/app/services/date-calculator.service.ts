@@ -83,22 +83,29 @@ export class DateCalculatorService {
       let lessonDate = dayjs(lessons[j].date);
       lessonDate = lessonDate.add(-1, 'hour');
 
-      let sameDate = day.date() === lessonDate.date();
+      let sameDate = date.date() === lessonDate.date();
 
       if (sameDate && date.isSame(lessonDate)) {
         j++;
         if (j === lessons.length) {
           emptyDates.push(...dates.slice(i + 1, dates.length));
+
+          let diff = date.date() - today.getDate();
+          if (diff > 0) {
+            for (let i = 0; i < 14 - diff; i++) {
+              date = this.addDays(date);
+              dates = this.createDatesArray(date.toDate());
+              emptyDates.push(...dates);
+            }
+          }
         }
       } else if (sameDate && !date.isSame(lessonDate)) {
         emptyDates.push(date.toDate());
       } else if (!sameDate) {
         emptyDates.push(...dates.slice(i, dates.length));
 
-        let diff = day.date() - today.getDate();
-        day = dayjs(today);
-        day = day.add(diff + 1, 'day');
-        dates = this.createDatesArray(day.toDate());
+        date = this.addDays(date);
+        dates = this.createDatesArray(date.toDate());
         i = -1;
       }
     }
