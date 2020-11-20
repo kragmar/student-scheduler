@@ -13,7 +13,7 @@ export class NewLessonDialogComponent implements OnInit {
   newLessonForm = this.fb.group({
     date: ['', Validators.required],
     type: ['', Validators.required],
-    recurring: [true],
+    recurring: [false],
   });
 
   days: string[];
