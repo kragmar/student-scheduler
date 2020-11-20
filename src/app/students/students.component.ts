@@ -38,23 +38,17 @@ export class StudentsComponent implements OnInit {
   editing = false;
 
   lessons: Lesson[];
-  emptyDates$: Date[] = new Array();
 
   constructor(
     private fb: FormBuilder,
     private studentService: StudentService,
     private lessonService: LessonService,
-    private dateService: DateCalculatorService,
     public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.studentService.findAll().subscribe((data) => (this.students = data));
     this.lessonService.findAll().subscribe((data) => (this.lessons = data));
-
-    this.dateService
-      .getEmptyDates()
-      .subscribe((res) => (this.emptyDates$ = res));
   }
 
   openOkDialog(message: string) {
