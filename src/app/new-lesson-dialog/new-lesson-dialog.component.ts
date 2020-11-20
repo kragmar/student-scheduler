@@ -19,6 +19,7 @@ export class NewLessonDialogComponent implements OnInit {
   days: string[];
   times: string[];
   emptyDates: Date[];
+  emptyTimes: Date[];
   types = ['Tanóra', 'Gyakorló óra'];
 
   constructor(
@@ -31,9 +32,13 @@ export class NewLessonDialogComponent implements OnInit {
   ngOnInit(): void {
     this.days = this.dateCalcService.days;
     this.times = this.dateCalcService.times;
-    this.dateCalcService
-      .getEmptyDates()
-      .subscribe((res) => (this.emptyDates = res));
+    this.dateCalcService.getEmptyDates().subscribe(
+      (res) => (this.emptyDates = res),
+      (err) => console.log(err)
+    );
+    this.newLessonForm.get('date').valueChanges.subscribe((res) => {
+      this.getEmptyTimes(res);
+    });
   }
 
   dateFilter = (date: Date): boolean => {
@@ -50,6 +55,14 @@ export class NewLessonDialogComponent implements OnInit {
     return result;
   };
 
+  getEmptyTimes(date: Date) {
+    console.log(this.emptyDates);
+    this.emptyTimes = this.emptyDates.filter((emptyDate, index, self) => {
+      self.findIndex((d) => d.getDate() === date.getDate()) === index;
+    });
+    console.log(this.emptyTimes);
+  }
+
   getValue(control: string) {
     return this.newLessonForm.get(control).value;
   }
@@ -59,13 +72,7 @@ export class NewLessonDialogComponent implements OnInit {
       return;
     }
 
-    let newLesson: Lesson = {
-      date: null,
-      type: '',
-      recurring: null,
-      studentId: '',
-      teacherId: '',
-    };
+    let newLesson: Lesson;
 
     newLesson = this.newLessonForm.value;
   }
