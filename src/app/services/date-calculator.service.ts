@@ -114,14 +114,13 @@ export class DateCalculatorService {
   }
 
   public getEmptyDates(): Observable<Date[]> {
-    var today = new Date();
-    today.setHours(12, 50, 0, 0);
+    const today = new Date();
 
-    let day = dayjs(today);
-    day = day.add(1, 'day');
+    let date = dayjs(today);
+    date = this.addDays(date);
 
-    let datetime = day.toDate().getTime();
-    var emptyDates: BehaviorSubject<Date[]> = new BehaviorSubject([]);
+    let datetime = date.toDate().getTime();
+    let emptyDates: BehaviorSubject<Date[]> = new BehaviorSubject([]);
 
     let lessons: Lesson[] = [];
     this.lessonService.findAllAfterToday(datetime).subscribe(
@@ -132,10 +131,8 @@ export class DateCalculatorService {
         console.log(err);
       },
       () => {
-        let dates = this.createDatesArray(day.toDate());
-        let arr = this.calculateEmptyDates(today, day, dates, lessons);
-        console.log(arr);
-        emptyDates.next(this.calculateEmptyDates(today, day, dates, lessons));
+        let dates = this.createDatesArray(date.toDate());
+        emptyDates.next(this.calculateEmptyDates(today, date, dates, lessons));
       }
     );
 
