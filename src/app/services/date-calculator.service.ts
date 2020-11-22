@@ -64,56 +64,34 @@ export class DateCalculatorService {
     return date;
   }
 
-  private calculateEmptyDates(
-    todayParam: Date,
-    dateParam: dayjs.Dayjs,
-    datesParam: Date[],
-    lessonsParam: Lesson[]
-  ) {
-    const today = new Date(todayParam);
-    let date = dayjs(dateParam);
-    let dates = new Array<Date>(...datesParam);
+  private findFullDates(lessonsParam: Lesson[]) {
     let lessons = new Array<Lesson>(...lessonsParam);
 
     let emptyDates: Date[] = [];
+
     let j = 0;
+    let count = 0;
+    for (let i = 0; i < lessons.length; i++) {
+      let lessonDate = new Date(lessons[i].date);
+      let date = new Date(lessons[j].date);
 
-    for (let i = 0; j < lessons.length; i++) {
-      let date = dayjs(dates[i]);
-      let lessonDate = dayjs(lessons[j].date);
-      lessonDate = lessonDate.add(-1, 'hour');
+      if (lessonDate.getTime() === date.getTime()) {
+        count++;
+      } else {
+        j = i;
+        i -= 1;
+        count = 0;
+      }
 
-      let sameDate = date.date() === lessonDate.date();
-
-      if (sameDate && date.isSame(lessonDate)) {
-        j++;
-        if (j === lessons.length) {
-          emptyDates.push(...dates.slice(i + 1, dates.length));
-
-          let diff = date.date() - today.getDate();
-          if (diff > 0) {
-            for (let i = 0; i < 14 - diff; i++) {
-              date = this.addDays(date);
-              dates = this.createDatesArray(date.toDate());
-              emptyDates.push(...dates);
-            }
-          }
-        }
-      } else if (sameDate && !date.isSame(lessonDate)) {
-        emptyDates.push(date.toDate());
-      } else if (!sameDate) {
-        emptyDates.push(...dates.slice(i, dates.length));
-
-        date = this.addDays(date);
-        dates = this.createDatesArray(date.toDate());
-        i = -1;
+      if (count === 3) {
+        emptyDates.push(new Date(lessons[j].date));
       }
     }
 
     return emptyDates;
   }
 
-  public getEmptyDates(): Observable<Date[]> {
+  public getFullDates(): Observable<Date[]> {
     const today = new Date();
 
     let date = dayjs(today);
