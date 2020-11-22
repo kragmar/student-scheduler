@@ -44,7 +44,7 @@ export class NewLessonDialogComponent implements OnInit {
       (err) => console.log(err)
     );
     this.newLessonForm.get('date').valueChanges.subscribe((res) => {
-      this.getEmptyTimes(res);
+      this.emptyTimes = this.getEmptyTimes(res);
     });
   }
 
