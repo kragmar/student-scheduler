@@ -94,9 +94,19 @@ export class NewLessonDialogComponent implements OnInit {
       return;
     }
 
-    let newLesson: Lesson;
+    let date = new Date(this.getValue('time'));
+    console.log(date);
+    console.log(this.student._id);
 
-    newLesson = this.newLessonForm.value;
+    let newLesson: Lesson = {
+      date: date,
+      type: this.getValue('type'),
+      recurring: this.getValue('recurring'),
+      studentId: this.student._id,
+      teacherId: '',
+    };
+
+    this.createLesson(newLesson);
   }
 
   createLesson(lesson: Lesson) {
