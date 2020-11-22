@@ -55,12 +55,27 @@ export class NewLessonDialogComponent implements OnInit {
     return result;
   };
 
+  isDateInArray(date: Date, dates: Date[]) {
+    for (let i = 0; i < dates.length; i++) {
+      if (date.getTime() === dates[i].getTime()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   getEmptyTimes(date: Date) {
-    console.log(this.emptyDates);
-    this.emptyTimes = this.emptyDates.filter((emptyDate, index, self) => {
-      self.findIndex((d) => d.getDate() === date.getDate()) === index;
-    });
-    console.log(this.emptyTimes);
+    let emptyTimes: Date[] = [];
+
+    for (let i = 0; i < this.emptyDates.length; i++) {
+      if (this.emptyDates[i].getDate() === date.getDate()) {
+        if (!this.isDateInArray(this.emptyDates[i], emptyTimes)) {
+          emptyTimes.push(this.emptyDates[i]);
+        }
+      }
+    }
+
+    return emptyTimes;
   }
 
   getValue(control: string) {
