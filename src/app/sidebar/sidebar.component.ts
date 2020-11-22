@@ -18,7 +18,9 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.authToken = localStorage.getItem('auth-token');
-    this.userService.isLoggedIn.subscribe((data) => (this.userDetails = data));
+    this.userService.loggedInUser.subscribe(
+      (data) => (this.userDetails = data)
+    );
   }
 
   onLogout() {
