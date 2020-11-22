@@ -109,8 +109,7 @@ export class DateCalculatorService {
         console.log(err);
       },
       () => {
-        let dates = this.createDatesArray(date.toDate());
-        emptyDates.next(this.calculateEmptyDates(today, date, dates, lessons));
+        emptyDates.next(this.findFullDates(lessons));
       }
     );
 
