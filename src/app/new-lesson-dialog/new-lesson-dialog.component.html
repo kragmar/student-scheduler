@@ -26,9 +26,13 @@
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Óra időpontja</mat-label>
-      <mat-select placeholder="Óra időpontja" name="time">
+      <mat-select
+        placeholder="Óra időpontja"
+        name="time"
+        formControlName="time"
+      >
         <mat-option *ngFor="let time of emptyTimes" [value]="time">
-          {{ time.getHours() }}
+          {{ time | date: "HH:mm" }}
         </mat-option>
       </mat-select>
     </mat-form-field>
