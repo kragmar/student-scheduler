@@ -77,7 +77,7 @@ export class DateCalculatorService {
     return emptyDates;
   }
 
-  public getFullDates(): Observable<Date[]> {
+  public getFullTimes(): Observable<Date[]> {
     const today = new Date();
 
     let date = dayjs(today);
