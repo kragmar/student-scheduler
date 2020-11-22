@@ -50,7 +50,7 @@ export class DateCalculatorService {
     return date;
   }
 
-  private findFullDates(lessonsParam: Lesson[]) {
+  private findFullTimes(lessonsParam: Lesson[]) {
     let lessons = new Array<Lesson>(...lessonsParam);
 
     let emptyDates: Date[] = [];
@@ -95,7 +95,7 @@ export class DateCalculatorService {
         console.log(err);
       },
       () => {
-        emptyDates.next(this.findFullDates(lessons));
+        emptyDates.next(this.findFullTimes(lessons));
       }
     );
 
