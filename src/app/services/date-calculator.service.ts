@@ -26,20 +26,6 @@ export class DateCalculatorService {
     return ['Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek'];
   }
 
-  private createDatesArray(dateParam: Date) {
-    let date = dayjs(dateParam);
-    let arr: Date[] = [];
-
-    for (let i = 0; i < 8; i++) {
-      for (let j = 0; j < 3; j++) {
-        arr.push(date.toDate());
-      }
-      date = date.add(50, 'minute');
-    }
-
-    return arr;
-  }
-
   private resetDate(dateParam: dayjs.Dayjs) {
     let date = dayjs(dateParam);
 
