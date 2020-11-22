@@ -74,6 +74,7 @@ export class StudentsComponent implements OnInit {
   openNewLessonDialog() {
     const dialogRef = this.dialog.open(NewLessonDialogComponent, {
       width: 'fit-content',
+      data: { student: this.selectedStudent },
     });
   }
 
