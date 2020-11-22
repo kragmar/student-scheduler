@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LessonService, Lesson } from './../services/lesson.service';
 import { Optional } from '@angular/core';
+import { Student } from '../services/student.service';
 
 @Component({
   templateUrl: './new-lesson-dialog.component.html',
@@ -11,10 +12,13 @@ import { Optional } from '@angular/core';
 })
 export class NewLessonDialogComponent implements OnInit {
   newLessonForm = this.fb.group({
-    date: ['', Validators.required],
-    type: ['', Validators.required],
     recurring: [false],
+    date: ['', Validators.required],
+    time: ['', Validators.required],
+    type: ['', Validators.required],
   });
+
+  student: Student;
 
   days: string[];
   times: string[];
@@ -26,8 +30,11 @@ export class NewLessonDialogComponent implements OnInit {
     private fb: FormBuilder,
     private lessonService: LessonService,
     private dateCalcService: DateCalculatorService,
-    public dialogRef: MatDialogRef<NewLessonDialogComponent>
-  ) {}
+    public dialogRef: MatDialogRef<NewLessonDialogComponent>,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    this.student = data.student;
+  }
 
   ngOnInit(): void {
     this.days = this.dateCalcService.days;
