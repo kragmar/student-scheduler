@@ -136,7 +136,13 @@
   <!-- Options for lessons card -->
   <mat-card class="lessons-options">
     <mat-card-content>
-      <button mat-raised-button (click)="openNewLessonDialog()">Új óra</button>
+      <button
+        mat-raised-button
+        (click)="openNewLessonDialog()"
+        [disabled]="selectedStudent._id === undefined"
+      >
+        Új óra
+      </button>
     </mat-card-content>
   </mat-card>
 
