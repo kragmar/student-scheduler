@@ -76,14 +76,14 @@ export class NewLessonDialogComponent implements OnInit {
       date = date.add(50, 'minute');
     }
 
-    for (let i = 0; i < emptyTimes.length; i++) {
-      if (this.fullDates.length > 0) {
+    if (this.fullDates.length > 0) {
+      for (let i = 0; i < emptyTimes.length; i++) {
         if (this.fullDates[i].getTime() === emptyTimes[i].getTime()) {
           emptyTimes.splice(i, 1);
         }
-      } else {
-        break;
       }
+    } else {
+      return;
     }
 
     return emptyTimes;
