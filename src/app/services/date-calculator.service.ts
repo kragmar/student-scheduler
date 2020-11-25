@@ -77,19 +77,19 @@ export class DateCalculatorService {
     return this.fullTimes;
   }
 
-  private findFullDates(emptyTimes: Date[]) {
+  private findFullDates(fullTimes: Date[]) {
     let j = 0;
     let count = 0;
     let fullDates: Date[] = [];
 
-    if (emptyTimes.length > 0) {
-      for (let i = 0; i < emptyTimes.length; i++) {
-        let time = emptyTimes[j];
+    if (fullTimes.length > 0) {
+      for (let i = 0; i < fullTimes.length; i++) {
+        let time = fullTimes[j];
 
-        if (time.getDate() === emptyTimes[i].getDate()) {
+        if (time.getDate() === fullTimes[i].getDate()) {
           count++;
         } else if (count === this.times.length) {
-          fullDates.push(emptyTimes[i]);
+          fullDates.push(fullTimes[i]);
           count = 0;
           j = i;
         }
