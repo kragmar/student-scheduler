@@ -49,7 +49,6 @@ export class NewLessonDialogComponent implements OnInit {
     });
     this.newLessonForm.get('date').valueChanges.subscribe((data) => {
       this.emptyTimes = this.getEmptyTimes(data);
-      console.debug(this.emptyTimes);
     });
   }
 
@@ -121,13 +120,6 @@ export class NewLessonDialogComponent implements OnInit {
   }
 
   createLesson(lesson: Lesson) {
-    this.lessonService.create(lesson).subscribe(
-      (data) => {
-        console.log(data);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.lessonService.create(lesson).subscribe();
   }
 }
