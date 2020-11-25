@@ -40,46 +40,49 @@ export class NewLessonDialogComponent implements OnInit {
   ngOnInit(): void {
     this.days = this.dateCalcService.days;
     this.times = this.dateCalcService.times;
-    this.dateCalcService.getEmptyDates().subscribe(
-      (res) => (this.emptyDates = res),
+    this.dateCalcService.getFullTimes().subscribe(
+      (data) => (this.fullDates = data),
       (err) => console.log(err)
     );
-    this.newLessonForm.get('date').valueChanges.subscribe((res) => {
-      this.emptyTimes = this.getEmptyTimes(res);
+    this.newLessonForm.get('date').valueChanges.subscribe((data) => {
+      this.emptyTimes = this.getEmptyTimes(data);
     });
   }
 
   dateFilter = (date: Date): boolean => {
-    let result = false;
-    this.emptyDates.forEach((item) => {
+    let result = true;
+    this.fullDates.forEach((item) => {
       if (
         item.getFullYear() == date.getFullYear() &&
         item.getMonth() == date.getMonth() &&
         item.getDate() == date.getDate()
       ) {
-        result = true;
+        result = false;
       }
     });
-    return result;
+    return result && date.getDay() !== 0 && date.getDay() !== 6;
   };
 
-  isDateInArray(date: Date, dates: Date[]) {
-    for (let i = 0; i < dates.length; i++) {
-      if (date.getTime() === dates[i].getTime()) {
-        return true;
-      }
-    }
-    return false;
-  }
+  getEmptyTimes(dateParam: Date) {
+    let date = dayjs(dateParam);
+    date = date.set('hour', 12);
+    date = date.set('minute', 50);
+    date = date.set('second', 0);
 
-  getEmptyTimes(date: Date) {
     let emptyTimes: Date[] = [];
 
-    for (let i = 0; i < this.emptyDates.length; i++) {
-      if (this.emptyDates[i].getDate() === date.getDate()) {
-        if (!this.isDateInArray(this.emptyDates[i], emptyTimes)) {
-          emptyTimes.push(this.emptyDates[i]);
+    for (let i = 0; i < 8; i++) {
+      emptyTimes.push(date.toDate());
+      date = date.add(50, 'minute');
+    }
+
+    for (let i = 0; i < emptyTimes.length; i++) {
+      if (this.fullDates.length > 0) {
+        if (this.fullDates[i].getTime() === emptyTimes[i].getTime()) {
+          emptyTimes.splice(i, 1);
         }
+      } else {
+        break;
       }
     }
 
