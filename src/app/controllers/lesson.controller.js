@@ -57,6 +57,26 @@ module.exports.findOne = (req, res) => {
     });
 };
 
+module.exports.findAllByStudentId = (req, res) => {
+  const studentId = req.params.studentId;
+
+  Lesson.find({ studentId: studentId })
+    .then((data) => {
+      if (!data) {
+        res
+          .status(404)
+          .send({ message: "Not found lesson with student id " + studentId });
+      } else {
+        res.send(data);
+      }
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: "Error retrieving lesson with student id " + studentId,
+      });
+    });
+};
+
 module.exports.findAllAfterToday = (req, res) => {
   const datetime = req.params.datetime;
   const num = new Number(datetime);
