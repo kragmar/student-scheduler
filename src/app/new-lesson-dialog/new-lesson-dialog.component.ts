@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LessonService, Lesson } from './../services/lesson.service';
 import { Optional } from '@angular/core';
 import { Student } from '../services/student.service';
+import * as dayjs from 'dayjs';
 
 @Component({
   templateUrl: './new-lesson-dialog.component.html',
