@@ -76,6 +76,9 @@ export class StudentsComponent implements OnInit {
       width: 'fit-content',
       data: { student: this.selectedStudent },
     });
+    dialogRef.afterClosed().subscribe(() => {
+      this.openOkDialog('Új óra sikeresen hozzáadva');
+    });
   }
 
   updateForm() {
