@@ -1,8 +1,6 @@
 import { Observable } from 'rxjs';
-import { UserDetails } from './auth.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Time } from '@angular/common';
 import { Student } from './student.service';
 
 export interface Lesson {
@@ -34,6 +32,12 @@ export class LessonService {
     const id = lesson._id;
 
     return this.http.get(this.apiUrl + id);
+  }
+
+  public findAllByStudentId(student: Student): Observable<any> {
+    const studentId = student._id;
+
+    return this.http.get(this.apiUrl + 'student/' + studentId);
   }
 
   public findAllAfterToday(date: any): Observable<any> {
