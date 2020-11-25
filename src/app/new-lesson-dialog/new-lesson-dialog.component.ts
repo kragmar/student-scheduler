@@ -116,6 +116,8 @@ export class NewLessonDialogComponent implements OnInit {
     };
 
     this.createLesson(newLesson);
+
+    this.dialogRef.close();
   }
 
   createLesson(lesson: Lesson) {
