@@ -10,6 +10,9 @@ router.get("/", lessonCtrl.findAll);
 // Retrieve a single lesson with id
 router.get("/:id", lessonCtrl.findOne);
 
+// Retrieve all lessons by student id
+router.get("/student/:studentId", lessonCtrl.findAllByStudentId);
+
 // Retrieve all lessons after today
 router.get("/date/:datetime", lessonCtrl.findAllAfterToday);
 
