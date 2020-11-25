@@ -7,6 +7,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class DateCalculatorService {
+  private fullTimes: Date[] = [];
+
   constructor(private lessonService: LessonService) {}
 
   get times() {
@@ -53,8 +55,6 @@ export class DateCalculatorService {
   private findFullTimes(lessonsParam: Lesson[]) {
     let lessons = new Array<Lesson>(...lessonsParam);
 
-    let emptyTimes: Date[] = [];
-
     let j = 0;
     let count = 0;
     for (let i = 0; i < lessons.length; i++) {
@@ -70,11 +70,11 @@ export class DateCalculatorService {
       }
 
       if (count === 3) {
-        emptyTimes.push(new Date(lessons[j].date));
+        this.fullTimes.push(new Date(lessons[j].date));
       }
     }
 
-    return emptyTimes;
+    return this.fullTimes;
   }
 
   private findFullDates(emptyTimes: Date[]) {
