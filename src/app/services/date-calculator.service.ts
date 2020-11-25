@@ -53,7 +53,7 @@ export class DateCalculatorService {
   private findFullTimes(lessonsParam: Lesson[]) {
     let lessons = new Array<Lesson>(...lessonsParam);
 
-    let emptyDates: Date[] = [];
+    let emptyTimes: Date[] = [];
 
     let j = 0;
     let count = 0;
