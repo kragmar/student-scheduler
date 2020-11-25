@@ -86,7 +86,7 @@ export class NewLessonDialogComponent implements OnInit {
     }
 
     if (this.fullTimes.length > 0) {
-      for (let i = 0; i < emptyTimes.length; i++) {
+      for (let i = 0; i < this.fullTimes.length; i++) {
         if (this.fullTimes[i].getTime() === emptyTimes[i].getTime()) {
           emptyTimes.splice(i, 1);
         }
