@@ -24,6 +24,7 @@ export class NewLessonDialogComponent implements OnInit {
   days: string[];
   times: string[];
   fullDates: Date[];
+  fullTimes: Date[];
   emptyTimes: Date[];
   types = ['Tanóra', 'Gyakorló óra'];
 
@@ -40,27 +41,35 @@ export class NewLessonDialogComponent implements OnInit {
   ngOnInit(): void {
     this.days = this.dateCalcService.days;
     this.times = this.dateCalcService.times;
-    this.dateCalcService.getFullTimes().subscribe(
-      (data) => (this.fullDates = data),
-      (err) => console.log(err)
-    );
+    this.dateCalcService.getFullDates().subscribe((data) => {
+      this.fullDates = data;
+    });
+    this.dateCalcService.getFullTimes().subscribe((data) => {
+      this.fullTimes = data;
+    });
     this.newLessonForm.get('date').valueChanges.subscribe((data) => {
       this.emptyTimes = this.getEmptyTimes(data);
+      console.debug(this.emptyTimes);
     });
   }
 
   dateFilter = (date: Date): boolean => {
+    const today = new Date();
     let result = true;
+
     this.fullDates.forEach((item) => {
       if (
-        item.getFullYear() == date.getFullYear() &&
-        item.getMonth() == date.getMonth() &&
-        item.getDate() == date.getDate()
+        item.getFullYear() === date.getFullYear() &&
+        item.getMonth() === date.getMonth() &&
+        item.getDate() === date.getDate()
       ) {
         result = false;
       }
     });
-    return result && date.getDay() !== 0 && date.getDay() !== 6;
+
+    let futureDates = date.getTime() > today.getTime();
+
+    return result && date.getDay() !== 0 && date.getDay() !== 6 && futureDates;
   };
 
   getEmptyTimes(dateParam: Date) {
@@ -76,14 +85,12 @@ export class NewLessonDialogComponent implements OnInit {
       date = date.add(50, 'minute');
     }
 
-    if (this.fullDates.length > 0) {
+    if (this.fullTimes.length > 0) {
       for (let i = 0; i < emptyTimes.length; i++) {
-        if (this.fullDates[i].getTime() === emptyTimes[i].getTime()) {
+        if (this.fullTimes[i].getTime() === emptyTimes[i].getTime()) {
           emptyTimes.splice(i, 1);
         }
       }
-    } else {
-      return;
     }
 
     return emptyTimes;

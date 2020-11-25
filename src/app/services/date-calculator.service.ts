@@ -8,8 +8,16 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class DateCalculatorService {
   private fullTimes: Date[] = [];
+  private lessons: Lesson[] = [];
+  private datetime: number;
 
-  constructor(private lessonService: LessonService) {}
+  constructor(private lessonService: LessonService) {
+    this.datetime = this.getDatetime();
+    lessonService.findAllAfterToday(this.datetime).subscribe((data) => {
+      this.lessons = data;
+      this.findFullTimes(data);
+    });
+  }
 
   get times() {
     return [
@@ -39,22 +47,22 @@ export class DateCalculatorService {
     return date;
   }
 
-  private addDays(dateParam: dayjs.Dayjs) {
-    let date = dayjs(dateParam);
+  private getDatetime() {
+    let today = new Date();
+    let date = dayjs(today);
 
     date = this.resetDate(date);
+
     if (date.day() === 5) {
       date = date.add(3, 'day');
     } else {
       date = date.add(1, 'day');
     }
 
-    return date;
+    return date.toDate().getTime();
   }
 
-  private findFullTimes(lessonsParam: Lesson[]) {
-    let lessons = new Array<Lesson>(...lessonsParam);
-
+  private findFullTimes(lessons: Lesson[]) {
     let j = 0;
     let count = 0;
     for (let i = 0; i < lessons.length; i++) {
@@ -102,27 +110,18 @@ export class DateCalculatorService {
   }
 
   public getFullTimes(): Observable<Date[]> {
-    const today = new Date();
+    let fullTimesSubject: BehaviorSubject<Date[]> = new BehaviorSubject([]);
 
-    let date = dayjs(today);
-    date = this.addDays(date);
+    fullTimesSubject.next(this.fullTimes);
 
-    let datetime = date.toDate().getTime();
-    let emptyDates: BehaviorSubject<Date[]> = new BehaviorSubject([]);
+    return fullTimesSubject.asObservable();
+  }
 
-    let lessons: Lesson[] = [];
-    this.lessonService.findAllAfterToday(datetime).subscribe(
-      (res) => {
-        lessons = res;
-      },
-      (err) => {
-        console.log(err);
-      },
-      () => {
-        emptyDates.next(this.findFullTimes(lessons));
-      }
-    );
+  public getFullDates(): Observable<Date[]> {
+    let fullDatesSubject: BehaviorSubject<Date[]> = new BehaviorSubject([]);
 
-    return emptyDates.asObservable();
+    fullDatesSubject.next(this.findFullDates(this.fullTimes));
+
+    return fullDatesSubject.asObservable();
   }
 }
