@@ -22,7 +22,7 @@ export class NewLessonDialogComponent implements OnInit {
 
   days: string[];
   times: string[];
-  emptyDates: Date[];
+  fullDates: Date[];
   emptyTimes: Date[];
   types = ['Tanóra', 'Gyakorló óra'];
 
