@@ -70,11 +70,35 @@ export class DateCalculatorService {
       }
 
       if (count === 3) {
-        emptyDates.push(new Date(lessons[j].date));
+        emptyTimes.push(new Date(lessons[j].date));
       }
     }
 
-    return emptyDates;
+    return emptyTimes;
+  }
+
+  private findFullDates(emptyTimes: Date[]) {
+    let j = 0;
+    let count = 0;
+    let fullDates: Date[] = [];
+
+    if (emptyTimes.length > 0) {
+      for (let i = 0; i < emptyTimes.length; i++) {
+        let time = emptyTimes[j];
+
+        if (time.getDate() === emptyTimes[i].getDate()) {
+          count++;
+        } else if (count === this.times.length) {
+          fullDates.push(emptyTimes[i]);
+          count = 0;
+          j = i;
+        }
+      }
+    } else {
+      return [];
+    }
+
+    return fullDates;
   }
 
   public getFullTimes(): Observable<Date[]> {
