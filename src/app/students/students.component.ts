@@ -37,7 +37,7 @@ export class StudentsComponent implements OnInit {
 
   editing = false;
 
-  lessons: Lesson[];
+  lessons$: Lesson[];
 
   constructor(
     private fb: FormBuilder,
@@ -48,7 +48,9 @@ export class StudentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.studentService.findAll().subscribe((data) => (this.students = data));
-    this.lessonService.findAll().subscribe((data) => (this.lessons = data));
+    this.lessonService
+      .findAllByStudentId(this.selectedStudent)
+      .subscribe((data) => (this.lessons$ = data));
   }
 
   openOkDialog(message: string) {
@@ -91,6 +93,10 @@ export class StudentsComponent implements OnInit {
       phone: this.selectedStudent.phone,
       birthDate: this.selectedStudent.birthDate,
     });
+
+    this.lessonService
+      .findAllByStudentId(this.selectedStudent)
+      .subscribe((data) => (this.lessons$ = data));
   }
 
   updateStudent() {
