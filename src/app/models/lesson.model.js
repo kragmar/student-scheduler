@@ -1,24 +1,29 @@
-const Student = require("./student.model");
-const Teacher = require("./teacher.model");
-const { Schema } = require("mongoose");
+const mongoose = require("mongoose");
 
-const studentSchema = new Schema(Student);
-const teacherSchema = new Schema(Teacher);
+const lessonSchema = new mongoose.Schema(
+  {
+    date: {
+      type: Date,
+      required: true,
+    },
+    type: {
+      type: String,
+      required: true,
+    },
+    recurring: {
+      type: Boolean,
+      required: true,
+    },
+    studentId: {
+      type: String,
+      required: true,
+    },
+    teacherId: {
+      type: String,
+      required: true,
+    },
+  },
+  { timestamps: true }
+);
 
-module.exports = (mongoose) => {
-  const Lesson = mongoose.model(
-    "lesson",
-    mongoose.Schema(
-      {
-        date: Date,
-        start: String,
-        type: String,
-        student: [studentSchema],
-        teacher: [teacherSchema],
-      },
-      { timestamps: true }
-    )
-  );
-
-  return Lesson;
-};
+mongoose.model("Lesson", lessonSchema);

@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>Új óra</h2>
+<mat-dialog-content class="new-lesson-dialog">
+  <form
+    class="new-lesson-form"
+    (ngSubmit)="onSubmit()"
+    [formGroup]="newLessonForm"
+  >
+    <mat-slide-toggle class="slide-toggle" formControlName="recurring"
+      >Fix időpont:
+      {{ getValue("recurring") ? "Igen" : "Nem" }}</mat-slide-toggle
+    >
+    <mat-form-field appearance="outline">
+      <mat-label>Óra dátuma</mat-label>
+      <input
+        matInput
+        [matDatepicker]="datepicker"
+        [matDatepickerFilter]="dateFilter"
+        placeholder="1970. 01. 01."
+        formControlName="date"
+      />
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="datepicker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #datepicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Óra időpontja</mat-label>
+      <mat-select
+        placeholder="Óra időpontja"
+        name="time"
+        formControlName="time"
+      >
+        <mat-option *ngFor="let time of emptyTimes" [value]="time">
+          {{ time | date: "HH:mm" }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Óra típusa</mat-label>
+      <mat-select placeholder="Óra típusa" name="type" formControlName="type">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="newLessonForm.invalid">
+      Hozzáadás
+    </button>
+  </form>
+</mat-dialog-content>

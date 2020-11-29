@@ -1,23 +1,25 @@
-module.exports = (app) => {
-  const lesson = require("../controllers/lesson.controller");
+const router = require("express").Router();
+const lessonCtrl = require("../controllers/lesson.controller");
 
-  var router = require("express").Router();
+// Create a new lesson
+router.post("/", lessonCtrl.create);
 
-  // Create a new lesson
-  router.post("/", lesson.create);
+// Retrieve all lessons
+router.get("/", lessonCtrl.findAll);
 
-  // Retrieve all lesson
-  router.get("/", lesson.findAll);
+// Retrieve a single lesson with id
+router.get("/:id", lessonCtrl.findOne);
 
-  // Retrieve a single lesson with id
-  router.get("/:id", lesson.findOne);
+// Retrieve all lessons by student id
+router.get("/student/:studentId", lessonCtrl.findAllByStudentId);
 
-  // Update a lesson with id
-  router.put("/:id", lesson.update);
+// Retrieve all lessons after today
+router.get("/date/:datetime", lessonCtrl.findAllAfterToday);
 
-  // Delete a lesson with id
-  router.delete("/:id", lesson.delete);
+// Update a lesson with id
+router.put("/:id", lessonCtrl.update);
 
-  // App uses this route
-  app.use("/api/lessons", router);
-};
+// Delete a lesson with id
+router.delete("/:id", lessonCtrl.delete);
+
+module.exports = router;

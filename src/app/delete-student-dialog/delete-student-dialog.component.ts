@@ -1,5 +1,5 @@
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { StudentPayload, StudentService } from './../services/student.service';
+import { Student, StudentService } from './../services/student.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit, Optional } from '@angular/core';
 
@@ -8,11 +8,11 @@ import { Component, Inject, OnInit, Optional } from '@angular/core';
   styleUrls: ['./delete-student-dialog.component.css'],
 })
 export class DeleteStudentDialogComponent implements OnInit {
-  studentsFromPage: StudentPayload[];
+  studentsFromPage: Student[];
   deleteStudentForm = this.fb.group({
     name: [''],
   });
-  selectedStudent: StudentPayload;
+  selectedStudent: Student;
 
   constructor(
     private fb: FormBuilder,

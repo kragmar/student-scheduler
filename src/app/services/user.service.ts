@@ -10,7 +10,7 @@ export class UserService {
 
   constructor() {}
 
-  get isLoggedIn() {
+  get loggedInUser() {
     return this.userDetails.asObservable();
   }
 }

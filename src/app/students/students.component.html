@@ -1,4 +1,6 @@
 <div class="student-grid">
+  <!-- STUDENTS SECTION -->
+  <!-- Options for students card -->
   <mat-card class="student-options" *ngIf="!search; else searching">
     <button mat-raised-button (click)="search = true">Keresés</button>
     <button mat-raised-button (click)="openNewStudentDialog()">
@@ -28,6 +30,8 @@
       </mat-select>
     </mat-card>
   </ng-template>
+
+  <!-- Students card -->
   <mat-card class="student-card">
     <mat-card-header>
       <mat-card-title>Tanuló adatai</mat-card-title>
@@ -125,6 +129,41 @@
           </ng-template>
         </div>
       </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- LESSONS SECTION -->
+  <!-- Options for lessons card -->
+  <mat-card class="lessons-options">
+    <mat-card-content>
+      <button
+        mat-raised-button
+        (click)="openNewLessonDialog()"
+        [disabled]="selectedStudent._id === undefined"
+      >
+        Új óra
+      </button>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Lessons grid -->
+  <mat-card class="lessons-card">
+    <mat-card-header>
+      <mat-card-title>Tanuló órái</mat-card-title>
+      <mat-card-subtitle>subtitle</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-accordion *ngIf="lessons">
+        <mat-expansion-panel *ngFor="let lesson of lessons">
+          <mat-expansion-panel-header
+            >{{ lesson.date | date: "EEEE":"":"hu" | uppercase }} |
+            {{
+              lesson.date | date: "HH:mm":"+0100"
+            }}</mat-expansion-panel-header
+          >
+          {{ lesson.type }}
+        </mat-expansion-panel>
+      </mat-accordion>
     </mat-card-content>
   </mat-card>
 </div>
