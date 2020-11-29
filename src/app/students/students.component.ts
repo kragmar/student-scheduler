@@ -37,7 +37,7 @@ export class StudentsComponent implements OnInit {
 
   editing = false;
 
-  lessons$: Lesson[];
+  lessons: Lesson[];
 
   constructor(
     private fb: FormBuilder,
@@ -50,7 +50,7 @@ export class StudentsComponent implements OnInit {
     this.studentService.findAll().subscribe((data) => (this.students = data));
     this.lessonService
       .findAllByStudentId(this.selectedStudent)
-      .subscribe((data) => (this.lessons$ = data));
+      .subscribe((data) => (this.lessons = data));
   }
 
   openOkDialog(message: string) {
@@ -96,7 +96,7 @@ export class StudentsComponent implements OnInit {
 
     this.lessonService
       .findAllByStudentId(this.selectedStudent)
-      .subscribe((data) => (this.lessons$ = data));
+      .subscribe((data) => (this.lessons = data));
   }
 
   updateStudent() {
