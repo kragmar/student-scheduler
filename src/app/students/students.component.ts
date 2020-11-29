@@ -105,7 +105,7 @@ export class StudentsComponent implements OnInit {
       return;
     }
 
-    let student: Student = {
+    const student: Student = {
       _id: this.selectedStudent._id,
       name: this.studentForm.get('name').value,
       email: this.studentForm.get('email').value,

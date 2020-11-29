@@ -93,7 +93,7 @@ export class AuthService {
       })
     );
 
-    let userDetails = this.getUserDetails();
+    const userDetails = this.getUserDetails();
     this.userService.userDetails.next(userDetails);
 
     return request;
