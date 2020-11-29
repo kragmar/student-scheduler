@@ -26,15 +26,15 @@ export class TeacherService {
   }
 
   public updateTeacher(teacher: Teacher) {
-    var id = teacher._id;
-    let url = this.apiUrl + id;
+    const id = teacher._id;
+    const url = this.apiUrl + id;
 
     return this.http.put(url, teacher, httpOptions);
   }
 
   public deleteTeacher(teacher: Teacher) {
-    let id = teacher._id;
-    let url = this.apiUrl + id;
+    const id = teacher._id;
+    const url = this.apiUrl + id;
 
     return this.http.delete(url, httpOptions);
   }

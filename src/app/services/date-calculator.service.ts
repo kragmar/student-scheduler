@@ -48,7 +48,7 @@ export class DateCalculatorService {
   }
 
   private getDatetime() {
-    let today = new Date();
+    const today = new Date();
     let date = dayjs(today);
 
     date = this.resetDate(date);
@@ -66,8 +66,8 @@ export class DateCalculatorService {
     let j = 0;
     let count = 0;
     for (let i = 0; i < lessons.length; i++) {
-      let lessonDate = new Date(lessons[i].date);
-      let date = new Date(lessons[j].date);
+      const lessonDate = new Date(lessons[i].date);
+      const date = new Date(lessons[j].date);
 
       if (lessonDate.getTime() === date.getTime()) {
         count++;
@@ -88,11 +88,11 @@ export class DateCalculatorService {
   private findFullDates(fullTimes: Date[]) {
     let j = 0;
     let count = 0;
-    let fullDates: Date[] = [];
+    const fullDates: Date[] = [];
 
     if (fullTimes.length > 0) {
       for (let i = 0; i < fullTimes.length; i++) {
-        let time = fullTimes[j];
+        const time = fullTimes[j];
 
         if (time.getDate() === fullTimes[i].getDate()) {
           count++;
@@ -110,7 +110,7 @@ export class DateCalculatorService {
   }
 
   public getFullTimes(): Observable<Date[]> {
-    let fullTimesSubject: BehaviorSubject<Date[]> = new BehaviorSubject([]);
+    const fullTimesSubject: BehaviorSubject<Date[]> = new BehaviorSubject([]);
 
     fullTimesSubject.next(this.fullTimes);
 
@@ -118,7 +118,7 @@ export class DateCalculatorService {
   }
 
   public getFullDates(): Observable<Date[]> {
-    let fullDatesSubject: BehaviorSubject<Date[]> = new BehaviorSubject([]);
+    const fullDatesSubject: BehaviorSubject<Date[]> = new BehaviorSubject([]);
 
     fullDatesSubject.next(this.findFullDates(this.fullTimes));
 

@@ -66,10 +66,10 @@ export class NewLessonDialogComponent implements OnInit {
       }
     });
 
-    let futureDates = date.getTime() > today.getTime();
+    const futureDates = date.getTime() > today.getTime();
 
     return result && date.getDay() !== 0 && date.getDay() !== 6 && futureDates;
-  };
+  }
 
   getEmptyTimes(dateParam: Date) {
     let date = dayjs(dateParam);
@@ -77,7 +77,7 @@ export class NewLessonDialogComponent implements OnInit {
     date = date.set('minute', 50);
     date = date.set('second', 0);
 
-    let emptyTimes: Date[] = [];
+    const emptyTimes: Date[] = [];
 
     for (let i = 0; i < 8; i++) {
       emptyTimes.push(date.toDate());
@@ -104,10 +104,10 @@ export class NewLessonDialogComponent implements OnInit {
       return;
     }
 
-    let date = new Date(this.getValue('time'));
+    const date = new Date(this.getValue('time'));
 
-    let newLesson: Lesson = {
-      date: date,
+    const newLesson: Lesson = {
+      date,
       type: this.getValue('type') === 'Tanóra' ? 'LECTURE' : 'PRACTICE',
       recurring: this.getValue('recurring'),
       studentId: this.student._id,
