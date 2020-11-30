@@ -50,7 +50,7 @@ module.exports.findOne = (req, res) => {
         res.send(data);
       }
     })
-    .catch((err) => {
+    .catch(() => {
       res
         .status(500)
         .send({ message: "Error retrieving lesson with id=" + id });
@@ -70,7 +70,7 @@ module.exports.findAllByStudentId = (req, res) => {
         res.send(data);
       }
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({
         message: "Error retrieving lesson with student id " + studentId,
       });
@@ -93,7 +93,7 @@ module.exports.findAllAfterToday = (req, res) => {
         res.send(data);
       }
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({
         message: "Error retrieving lesson with date greater than " + date,
       });
@@ -118,7 +118,7 @@ module.exports.update = (req, res) => {
         });
       } else res.send({ message: "Lesson was updated succesfully." });
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({
         message: "Error updating lesson with id=" + id,
       });
@@ -141,7 +141,7 @@ module.exports.delete = (req, res) => {
         });
       }
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({
         message: "Could not delete lesson with id=" + id,
       });
