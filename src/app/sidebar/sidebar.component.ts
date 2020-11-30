@@ -3,7 +3,7 @@ import { AuthService, UserDetails } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-sidebar',
+  selector: 'sg-app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
 })
@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
     );
   }
 
-  onLogout() {
+  onLogout(): void {
     this.authService.logout();
   }
 }

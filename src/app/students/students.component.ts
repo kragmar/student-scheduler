@@ -53,27 +53,27 @@ export class StudentsComponent implements OnInit {
       .subscribe((data) => (this.lessons = data));
   }
 
-  openOkDialog(message: string) {
+  openOkDialog(message: string): void {
     const dialogRef = this.dialog.open(OkDialogComponent, {
       width: 'fit-content',
       data: { fromPage: message },
     });
   }
 
-  openNewStudentDialog() {
+  openNewStudentDialog(): void {
     const dialogRef = this.dialog.open(NewStudentDialogComponent, {
       width: 'fit-content',
     });
   }
 
-  openDeleteStudentDialog() {
+  openDeleteStudentDialog(): void {
     const dialogRef = this.dialog.open(DeleteStudentDialogComponent, {
       width: 'fit-content',
       data: { studentsValue: this.students },
     });
   }
 
-  openNewLessonDialog() {
+  openNewLessonDialog(): void {
     const dialogRef = this.dialog.open(NewLessonDialogComponent, {
       width: 'fit-content',
       data: { student: this.selectedStudent },
@@ -85,7 +85,7 @@ export class StudentsComponent implements OnInit {
     });
   }
 
-  updateForm() {
+  updateForm(): void {
     // Update student form's values
     this.studentForm.setValue({
       name: this.selectedStudent.name,
@@ -99,7 +99,7 @@ export class StudentsComponent implements OnInit {
       .subscribe((data) => (this.lessons = data));
   }
 
-  updateStudent() {
+  updateStudent(): void {
     // Abort if student form is invalid
     if (this.studentForm.invalid) {
       return;
@@ -130,11 +130,9 @@ export class StudentsComponent implements OnInit {
     this.editing = false;
   }
 
-  cancelUpdate() {
+  cancelUpdate(): void {
     // Reset any changes
     this.updateForm();
     this.editing = false;
   }
-
-  onSubmit() {}
 }

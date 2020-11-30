@@ -25,12 +25,12 @@ export class DeleteStudentDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
+  onSubmit(): void {
     this.deleteStudent();
     this.dialogRef.close();
   }
 
-  deleteStudent() {
+  deleteStudent(): void {
     this.studentsService.delete(this.selectedStudent).subscribe(
       (data) => {
         console.log(data);

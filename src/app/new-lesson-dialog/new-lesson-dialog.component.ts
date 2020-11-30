@@ -69,9 +69,9 @@ export class NewLessonDialogComponent implements OnInit {
     const futureDates = date.getTime() > today.getTime();
 
     return result && date.getDay() !== 0 && date.getDay() !== 6 && futureDates;
-  }
+  };
 
-  getEmptyTimes(dateParam: Date) {
+  getEmptyTimes(dateParam: Date): Date[] {
     let date = dayjs(dateParam);
     date = date.set('hour', 12);
     date = date.set('minute', 50);
@@ -95,11 +95,11 @@ export class NewLessonDialogComponent implements OnInit {
     return emptyTimes;
   }
 
-  getValue(control: string) {
+  getValue(control: string): any {
     return this.newLessonForm.get(control).value;
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.newLessonForm.invalid) {
       return;
     }
@@ -119,7 +119,7 @@ export class NewLessonDialogComponent implements OnInit {
     this.dialogRef.close(true);
   }
 
-  createLesson(lesson: Lesson) {
+  createLesson(lesson: Lesson): void {
     this.lessonService.create(lesson).subscribe();
   }
 }

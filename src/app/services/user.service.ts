@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UserDetails } from './auth.service';
 
 @Injectable({
@@ -10,7 +10,7 @@ export class UserService {
 
   constructor() {}
 
-  get loggedInUser() {
+  get loggedInUser(): Observable<UserDetails> {
     return this.userDetails.asObservable();
   }
 }

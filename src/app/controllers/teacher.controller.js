@@ -47,7 +47,7 @@ exports.findOne = (req, res) => {
         res.send(data);
       }
     })
-    .catch((err) => {
+    .catch(() => {
       res
         .status(500)
         .send({ message: "Error retrieving teacher with id=" + id });
@@ -72,7 +72,7 @@ exports.update = (req, res) => {
         });
       } else res.send({ message: "teacher was updated succesfully." });
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({
         message: "Error updating teacher with id=" + id,
       });
@@ -95,7 +95,7 @@ exports.delete = (req, res) => {
         });
       }
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({
         message: "Could not delete teacher with id=" + id,
       });

@@ -50,7 +50,7 @@ exports.findOne = (req, res) => {
         res.status(404).send({ message: "Not found user with id " + id });
       else res.send(data);
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({ message: "Error retrieving user with id=" + id });
     });
 };
@@ -72,7 +72,7 @@ exports.update = (req, res) => {
         });
       } else res.send({ message: "User was updated successfully." });
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({
         message: "Error updating user with id=" + id,
       });
@@ -94,7 +94,7 @@ exports.delete = (req, res) => {
         });
       }
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({
         message: "Could not delete user with id=" + id,
       });

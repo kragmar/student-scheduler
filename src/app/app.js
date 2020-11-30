@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const passport = require("passport");
@@ -32,7 +31,7 @@ app.use(function (req, res, next) {
 });
 
 // error handlers
-app.use(function (err, req, res, next) {
+app.use(function (err, req, res) {
   if (err.name === "UnauthorizedError") {
     res.status(401);
     res.json({ message: err.name + ": " + err.message });

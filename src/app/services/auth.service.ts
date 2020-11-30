@@ -35,7 +35,7 @@ export class AuthService {
     private userService: UserService
   ) {}
 
-  private saveToken(token: string) {
+  private saveToken(token: string): void {
     localStorage.setItem('auth-token', token);
     this.token = token;
   }
@@ -107,7 +107,7 @@ export class AuthService {
     return this.request('post', 'login', user);
   }
 
-  public logout() {
+  public logout(): void {
     this.token = '';
     localStorage.removeItem('auth-token');
     this.router.navigateByUrl('/login');
