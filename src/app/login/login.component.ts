@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
+  selector: 'sg-app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
