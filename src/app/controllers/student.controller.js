@@ -50,7 +50,7 @@ module.exports.findOne = (req, res) => {
         res.send(data);
       }
     })
-    .catch((err) => {
+    .catch(() => {
       res
         .status(500)
         .send({ message: "Error retrieving student with id=" + id });
@@ -75,7 +75,7 @@ module.exports.update = (req, res) => {
         });
       } else res.send({ message: "student was updated succesfully." });
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({
         message: "Error updating student with id=" + id,
       });
@@ -98,7 +98,7 @@ module.exports.delete = (req, res) => {
         });
       }
     })
-    .catch((err) => {
+    .catch(() => {
       res.status(500).send({
         message: "Could not delete student with id=" + id,
       });
