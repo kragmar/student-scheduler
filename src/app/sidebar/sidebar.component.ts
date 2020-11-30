@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
     );
   }
 
-  onLogout() {
+  onLogout(): void {
     this.authService.logout();
   }
 }

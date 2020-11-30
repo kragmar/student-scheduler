@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  login() {
+  login(): void {
     this.auth.login(this.credentials).subscribe(
       () => {
         this.router.navigate(['/dashboard']);
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (!this.loginForm.valid) {
       return;
     }

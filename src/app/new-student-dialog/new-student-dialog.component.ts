@@ -36,7 +36,7 @@ export class NewStudentDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.newStudentForm.invalid) {
       return;
     }
@@ -47,7 +47,7 @@ export class NewStudentDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  createStudent() {
+  createStudent(): void {
     this.studentService.create(this.newStudent).subscribe(
       (data) => {
         console.log(data);
