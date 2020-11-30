@@ -135,6 +135,4 @@ export class StudentsComponent implements OnInit {
     this.updateForm();
     this.editing = false;
   }
-
-  onSubmit() {}
 }
