@@ -19,7 +19,7 @@ export class DateCalculatorService {
     });
   }
 
-  get times() {
+  get times(): string[] {
     return [
       '12:50',
       '13:40',
@@ -32,11 +32,11 @@ export class DateCalculatorService {
     ];
   }
 
-  get days() {
+  get days(): string[] {
     return ['Hétfő', 'Kedd', 'Szerda', 'Csütörtök', 'Péntek'];
   }
 
-  private resetDate(dateParam: dayjs.Dayjs) {
+  private resetDate(dateParam: dayjs.Dayjs): dayjs.Dayjs {
     let date = dayjs(dateParam);
 
     date = date.set('hour', 12);
@@ -47,7 +47,7 @@ export class DateCalculatorService {
     return date;
   }
 
-  private getDatetime() {
+  private getDatetime(): number {
     const today = new Date();
     let date = dayjs(today);
 
@@ -62,7 +62,7 @@ export class DateCalculatorService {
     return date.toDate().getTime();
   }
 
-  private findFullTimes(lessons: Lesson[]) {
+  private findFullTimes(lessons: Lesson[]): Date[] {
     let j = 0;
     let count = 0;
     for (let i = 0; i < lessons.length; i++) {
@@ -85,7 +85,7 @@ export class DateCalculatorService {
     return this.fullTimes;
   }
 
-  private findFullDates(fullTimes: Date[]) {
+  private findFullDates(fullTimes: Date[]): Date[] {
     let j = 0;
     let count = 0;
     const fullDates: Date[] = [];
