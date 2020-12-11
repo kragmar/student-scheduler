@@ -10,4 +10,5 @@
 
 .weekly-card {
   grid-area: weekly;
+  margin-left: 0.25rem;
 }
