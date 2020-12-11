@@ -1,0 +1,14 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  grid-template-rows: 60% 40%;
+  grid-template-areas:
+    "msg daily weekly"
+    "info daily weekly";
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.weekly-card {
+  grid-area: weekly;
+}
