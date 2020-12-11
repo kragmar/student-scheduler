@@ -5,7 +5,6 @@
   grid-template-areas:
     "msg daily weekly"
     "info daily weekly";
-  gap: 0.5rem;
   height: 100%;
 }
 
