@@ -9,6 +9,12 @@ import { LessonService } from '../services/lesson.service';
 })
 export class DashboardComponent implements OnInit {
   constructor() {}
+  lessons: Lesson[];
 
   ngOnInit(): void {}
+  constructor(private lessonService: LessonService) {}
+
+  ngOnInit(): void {
+    this.lessonService.findAll().subscribe((result) => (this.lessons = result));
+  }
 }
