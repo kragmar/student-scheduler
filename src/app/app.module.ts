@@ -17,6 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
@@ -61,6 +62,7 @@ import { NewLessonDialogComponent } from './new-lesson-dialog/new-lesson-dialog.
     MatSelectModule,
     MatSlideToggleModule,
     MatExpansionModule,
+    DragDropModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'hu-HU' }],
   bootstrap: [AppComponent],
