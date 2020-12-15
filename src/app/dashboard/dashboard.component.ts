@@ -50,4 +50,17 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  getLessonsOfTimeByDay(day: Date, time: string): Lesson[] {
+    const filteredLessons = new Array<Lesson>();
+
+    for (let i = 0; i < this.lessons.length; i++) {
+      const lessonDate = new Date(this.lessons[i].date);
+      const lessonTime = lessonDate.getHours + ':' + lessonDate.getMinutes();
+      if (lessonDate.getDate() === day.getDate() && lessonTime === time) {
+        filteredLessons.push(this.lessons[i]);
+      }
+    }
+
+    return filteredLessons;
+  }
 }
