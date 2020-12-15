@@ -33,4 +33,20 @@ export class DashboardComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string>): void {}
+
+  calcDiff(index: number): Date {
+    const diff = this.date.getDay() - 1 - index;
+    this.date.setDate(this.date.getDate() - diff);
+    return this.date;
+  }
+
+  createWeekArray(): void {
+    this.week = new Array<Date>();
+
+    for (let i = 0; i < this.days.length; i++) {
+      const day = new Date(this.calcDiff(i));
+      this.week.push(day);
+    }
+  }
+
 }
