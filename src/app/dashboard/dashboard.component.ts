@@ -30,6 +30,7 @@ export class DashboardComponent implements OnInit {
     this.lessonService.findAll().subscribe((result) => (this.lessons = result));
     this.days = this.dateCalcService.days;
     this.times = this.dateCalcService.times;
+    this.createWeekArray();
   }
 
   drop(event: CdkDragDrop<string>): void {}
