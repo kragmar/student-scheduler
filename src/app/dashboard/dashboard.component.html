@@ -4,7 +4,20 @@
       <mat-card-title>Heti órák</mat-card-title>
       <mat-card-subtitle>subtitle</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content> weekly </mat-card-content>
+    <mat-card-content>
+      <div cdkDropListGroup>
+        <div
+          cdkDropList
+          [cdkDropListData]="lessons"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)"
+        >
+          <div *ngFor="let lesson of lessons" cdkDrag>
+            {{ lesson.studentId }}
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
     <mat-card-actions>
       <button mat-button>Ok</button>
     </mat-card-actions>
