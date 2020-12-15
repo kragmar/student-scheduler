@@ -14,6 +14,10 @@ export class DashboardComponent implements OnInit {
   days: string[];
   times: string[];
 
+  private today: Date;
+  private date: Date;
+  week: Date[];
+
   constructor(
     private lessonService: LessonService,
     private dateCalcService: DateCalculatorService
