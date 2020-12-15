@@ -21,7 +21,10 @@ export class DashboardComponent implements OnInit {
   constructor(
     private lessonService: LessonService,
     private dateCalcService: DateCalculatorService
-  ) {}
+  ) {
+    this.today = new Date();
+    this.date = new Date(this.today);
+  }
 
   ngOnInit(): void {
     this.lessonService.findAll().subscribe((result) => (this.lessons = result));
