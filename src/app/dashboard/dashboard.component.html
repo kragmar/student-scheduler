@@ -20,23 +20,23 @@
             <tr *ngFor="let day of week">
               <th scope="row">{{ day }}</th>
               <td *ngFor="let time of times">
-                <div *ngFor="let lesson of getLessonsOfTimeByDay(day, time)">
-                  {{ lesson.type }}
+                <div
+                  cdkDropList
+                  [cdkDropListData]="lessons"
+                  class="example-list"
+                  (cdkDropListDropped)="drop($event)"
+                >
+                  <div
+                    *ngFor="let lesson of getLessonsOfTimeByDay(day, time)"
+                    cdkDrag
+                  >
+                    {{ lesson._id }}
+                  </div>
                 </div>
               </td>
             </tr>
           </tbody>
         </table>
-        <div
-          cdkDropList
-          [cdkDropListData]="lessons"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div *ngFor="let lesson of lessons" cdkDrag>
-            {{ lesson.studentId }}
-          </div>
-        </div>
       </div>
     </mat-card-content>
     <mat-card-actions>
