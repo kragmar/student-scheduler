@@ -10,7 +10,7 @@ import { CdkDragDrop } from '@angular/cdk/drag-drop';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  lessons: Lesson[];
+  lessons: Lesson[] = new Array<Lesson>();
   days: string[];
   times: string[];
 
