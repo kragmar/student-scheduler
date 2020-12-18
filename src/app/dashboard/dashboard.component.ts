@@ -2,7 +2,11 @@ import { DateCalculatorService } from './../services/date-calculator.service';
 import { Lesson } from './../services/lesson.service';
 import { Component, OnInit } from '@angular/core';
 import { LessonService } from '../services/lesson.service';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'sg-app-dashboard',
@@ -33,7 +37,22 @@ export class DashboardComponent implements OnInit {
     this.createWeekArray();
   }
 
-  drop(event: CdkDragDrop<string>): void {}
+  drop(event: CdkDragDrop<string[]>): void {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
+  }
 
   calcDiff(index: number): Date {
     const diff = this.date.getDay() - 1 - index;
