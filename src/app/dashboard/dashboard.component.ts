@@ -35,7 +35,10 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.lessonService.findAll().subscribe((result) => (this.lessons = result));
+    this.lessonService.findAll().subscribe((result) => {
+      this.lessons = result;
+      this.fillFilteredLessons();
+    });
     this.days = this.dateCalcService.days;
     this.times = this.dateCalcService.times;
     this.createWeekArray();
