@@ -12,3 +12,23 @@
   grid-area: weekly;
   margin-left: 0.25rem;
 }
+
+.mat-card-content {
+  height: 80%;
+}
+
+.cdk-group {
+  height: 100%;
+}
+
+.weekly-table {
+  height: 100%;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.weekly-table,
+th,
+td {
+  border: 1px solid black;
+}
