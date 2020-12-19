@@ -88,4 +88,18 @@ export class DashboardComponent implements OnInit {
 
     return filteredLessons;
   }
+
+  private fillFilteredLessons(): void {
+    let i = 0;
+    let j = 0;
+    for (const day of this.week) {
+      this.filteredLessons[i] = new Array();
+      for (const time of this.times) {
+        const lessons = this.filterLessonsByDayAndTime(day, time);
+        this.filteredLessons[i].push(lessons);
+        j++;
+      }
+      i++;
+    }
+  }
 }
