@@ -69,7 +69,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  getLessonsOfTimeByDay(day: Date, time: string): Lesson[] {
+  private filterLessonsByDayAndTime(day: Date, time: string): Lesson[] {
     const filteredLessons = new Array<Lesson>();
 
     for (let i = 0; i < this.lessons.length; i++) {
