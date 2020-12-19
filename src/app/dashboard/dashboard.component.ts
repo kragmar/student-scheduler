@@ -74,8 +74,8 @@ export class DashboardComponent implements OnInit {
 
     for (let i = 0; i < this.lessons.length; i++) {
       const lessonDate = new Date(this.lessons[i].date);
-      const timeVar = time.split(':');
-      day.setHours(+timeVar[0], +timeVar[1], 0, 0);
+      const splitTime = time.split(':');
+      day.setHours(+splitTime[0], +splitTime[1], 0, 0);
 
       if (lessonDate.getTime() === day.getTime()) {
         filteredLessons.push(this.lessons[i]);
