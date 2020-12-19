@@ -21,6 +21,10 @@ export class DashboardComponent implements OnInit {
   private today: Date;
   private date: Date;
   week: Date[];
+  filteredLessons: Lesson[][][] = new Array();
+
+  daysRange = [0, 1, 2, 3, 4];
+  timesRange = [0, 1, 2, 3, 4, 5, 6, 7];
 
   constructor(
     private lessonService: LessonService,
