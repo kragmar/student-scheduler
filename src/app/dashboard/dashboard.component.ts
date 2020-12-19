@@ -54,13 +54,13 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  calcDiff(index: number): Date {
+  private calcDiff(index: number): Date {
     const diff = this.date.getDay() - 1 - index;
     this.date.setDate(this.date.getDate() - diff);
     return this.date;
   }
 
-  createWeekArray(): void {
+  private createWeekArray(): void {
     this.week = new Array<Date>();
 
     for (let i = 0; i < this.days.length; i++) {
