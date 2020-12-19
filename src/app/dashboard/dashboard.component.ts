@@ -14,7 +14,7 @@ import {
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  lessons: Lesson[] = new Array<Lesson>();
+  lessons: Lesson[] = [];
   days: string[];
   times: string[];
 
