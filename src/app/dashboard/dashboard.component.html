@@ -15,7 +15,7 @@
             <th scope="col" *ngFor="let time of times">{{ time }}</th>
           </tr>
         </thead>
-        <tbody cdkDropListGroup>
+        <tbody cdkDropListGroup [cdkDropListGroupDisabled]="!editing">
           <tr *ngFor="let day of daysRange">
             <th scope="row">
               {{ week[day] | date: "EEEE":"":"hu" }}
