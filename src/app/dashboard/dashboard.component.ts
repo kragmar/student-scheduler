@@ -26,6 +26,8 @@ export class DashboardComponent implements OnInit {
   daysRange = [0, 1, 2, 3, 4];
   timesRange = [0, 1, 2, 3, 4, 5, 6, 7];
 
+  editing = false;
+
   constructor(
     private lessonService: LessonService,
     private dateCalcService: DateCalculatorService
