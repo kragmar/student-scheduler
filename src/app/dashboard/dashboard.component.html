@@ -28,11 +28,7 @@
               class="example-list"
               (cdkDropListDropped)="drop($event)"
             >
-              <div
-                *ngFor="let lesson of filteredLessons[day][time]"
-                cdkDrag
-                cdk
-              >
+              <div *ngFor="let lesson of filteredLessons[day][time]" cdkDrag>
                 {{ lesson._id }}
               </div>
             </td>
