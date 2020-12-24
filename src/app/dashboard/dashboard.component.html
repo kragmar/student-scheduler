@@ -5,7 +5,7 @@
       <mat-card-subtitle>subtitle</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-      <table class="weekly-table">
+      <!-- <table class="weekly-table">
         <colgroup>
           <col *ngFor="let time of times" />
         </colgroup>
@@ -25,16 +25,18 @@
               *ngFor="let time of timesRange"
               cdkDropList
               [cdkDropListData]="filteredLessons[day][time]"
-              class="example-list"
+              class="table-cell"
               (cdkDropListDropped)="drop($event)"
             >
-              <div *ngFor="let lesson of filteredLessons[day][time]" cdkDrag>
-                {{ lesson._id }}
+              <div class="lessons-cell">
+                <div *ngFor="let lesson of filteredLessons[day][time]" cdkDrag>
+                  {{ lesson._id }}
+                </div>
               </div>
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
       <div class="calendar">
         <div class="calendar__header">
           <div class="calendar__header__cell" *ngFor="let time of times">
