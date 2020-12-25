@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { NewTeacher } from '../models/new-teacher';
-import { Teacher } from './../models/teacher';
+import { NewTeacher } from '../../models/new-teacher';
+import { Teacher } from '../../models/teacher';
 
 const httpOptions = {
   headers: new HttpHeaders({

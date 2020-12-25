@@ -1,9 +1,9 @@
-import { UserService } from './../services/user.service';
-import { AuthService, UserDetails } from './../services/auth.service';
+import { UserService } from '../../core/services/user.service';
+import { AuthService, UserDetails } from '../../core/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sg-app-sidebar',
+  selector: 'sidebar-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
 })

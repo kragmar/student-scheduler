@@ -1,4 +1,4 @@
-import { StudentService, Student } from '../services/student.service';
+import { StudentService, Student } from '../../core/services/student.service';
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';

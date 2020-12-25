@@ -1,12 +1,12 @@
-import { Lesson, LessonService } from './../services/lesson.service';
-import { DeleteStudentDialogComponent } from './../delete-student-dialog/delete-student-dialog.component';
-import { Student, StudentService } from './../services/student.service';
-import { NewStudentDialogComponent } from '../new-student-dialog/new-student-dialog.component';
+import { Lesson, LessonService } from '../core/services/lesson.service';
+import { DeleteStudentDialogComponent } from './delete-student-dialog/delete-student-dialog.component';
+import { Student, StudentService } from '../core/services/student.service';
+import { NewStudentDialogComponent } from './new-student-dialog/new-student-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { OkDialogComponent } from '../ok-dialog/ok-dialog.component';
-import { NewLessonDialogComponent } from '../new-lesson-dialog/new-lesson-dialog.component';
+import { OkDialogComponent } from '../shared/ok-dialog/ok-dialog.component';
+import { NewLessonDialogComponent } from './new-lesson-dialog/new-lesson-dialog.component';
 
 // Date localization for date pipe
 import { registerLocaleData } from '@angular/common';

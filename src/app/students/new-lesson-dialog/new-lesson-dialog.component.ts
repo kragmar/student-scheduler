@@ -1,10 +1,10 @@
-import { DateCalculatorService } from './../services/date-calculator.service';
+import { DateCalculatorService } from '../../core/services/date-calculator.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LessonService, Lesson } from './../services/lesson.service';
+import { LessonService, Lesson } from '../../core/services/lesson.service';
 import { Optional } from '@angular/core';
-import { Student } from '../services/student.service';
+import { Student } from '../../core/services/student.service';
 import * as dayjs from 'dayjs';
 
 @Component({

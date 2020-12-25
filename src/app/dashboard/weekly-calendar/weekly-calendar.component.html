@@ -1,0 +1,67 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Heti órák</mat-card-title>
+    <mat-card-subtitle>subtitle</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- <table class="weekly-table">
+        <colgroup>
+          <col *ngFor="let time of times" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th></th>
+            <th scope="col" *ngFor="let time of times">{{ time }}</th>
+          </tr>
+        </thead>
+        <tbody cdkDropListGroup [cdkDropListGroupDisabled]="!editing">
+          <tr *ngFor="let day of daysRange">
+            <th scope="row">
+              {{ week[day] | date: "EEEE":"":"hu" }}
+              {{ week[day] | date: "dd":"":"hu" }}
+            </th>
+            <td
+              *ngFor="let time of timesRange"
+              cdkDropList
+              [cdkDropListData]="filteredLessons[day][time]"
+              class="table-cell"
+              (cdkDropListDropped)="drop($event)"
+            >
+              <div class="lessons-cell">
+                <div *ngFor="let lesson of filteredLessons[day][time]" cdkDrag>
+                  {{ lesson._id }}
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table> -->
+    <div class="calendar">
+      <div class="calendar__header">
+        <div class="calendar__header__cell" *ngFor="let time of times">
+          {{ time }}
+        </div>
+      </div>
+      <div class="calendar__side-header">
+        <div class="calendar__side-header__cell" *ngFor="let day of week">
+          {{ day | date: "EEEE":"":"hu" }}
+        </div>
+      </div>
+      <div class="calendar__body">
+        <div class="calendar__body__row" *ngFor="let day of daysRange">
+          <div class="calendar__body__cell" *ngFor="let time of timesRange">
+            <div
+              class="calendar__body__cell__data"
+              *ngFor="let lesson of filteredLessons[day][time]"
+            >
+              {{ lesson.studentId }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>Ok</button>
+  </mat-card-actions>
+</mat-card>
