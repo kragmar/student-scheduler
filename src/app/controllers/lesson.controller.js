@@ -77,6 +77,28 @@ module.exports.findAllByStudentId = (req, res) => {
     });
 };
 
+module.exports.findAllToday = (req, res) => {
+  const today = req.params.today;
+  const date = new Date(new Number(today));
+
+  Lesson.find({ date: date })
+    .sort({ date: 1 })
+    .then((data) => {
+      if (!data) {
+        res
+          .status(404)
+          .send({ message: "Not found lesson with date = " + date });
+      } else {
+        res.send(data);
+      }
+    })
+    .catch(() => {
+      res.status(500).send({
+        message: "Error retrieving lesson with date = " + date,
+      });
+    });
+};
+
 module.exports.findAllAfterToday = (req, res) => {
   const datetime = req.params.datetime;
   const num = new Number(datetime);
