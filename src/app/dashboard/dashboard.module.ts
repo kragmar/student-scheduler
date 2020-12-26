@@ -6,13 +6,8 @@ import { DashboardComponent } from './dashboard.component';
 import { WeeklyCalendarComponent } from './weekly-calendar/weekly-calendar.component';
 import { SharedModule } from '../shared/shared.module';
 
-
 @NgModule({
   declarations: [DashboardComponent, WeeklyCalendarComponent],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, SharedModule, DashboardRoutingModule],
 })
-export class DashboardModule { }
+export class DashboardModule {}
