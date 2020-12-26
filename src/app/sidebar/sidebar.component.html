@@ -1,25 +1,25 @@
-<nav *ngIf="authToken">
+<nav>
   <ul>
     <li>
-      <a routerLink="/dashboard" routerLinkActive="nav-active">
+      <a [routerLink]="['/dashboard']" routerLinkActive="nav-active">
         <mat-icon>dashboard</mat-icon>
         <div class="nav-title">Irányítópult</div>
       </a>
     </li>
     <li>
-      <a routerLink="/students" routerLinkActive="nav-active">
+      <a [routerLink]="['/students']" routerLinkActive="nav-active">
         <mat-icon>people_alt</mat-icon>
         <div class="nav-title">Tanulók</div>
       </a>
     </li>
     <li>
-      <a routerLink="/lessons" routerLinkActive="nav-active">
+      <a [routerLink]="['/lessons']" routerLinkActive="nav-active">
         <mat-icon>watch_later</mat-icon>
         <div class="nav-title">Órák</div>
       </a>
     </li>
     <li>
-      <a routerLink="/notifications" routerLinkActive="nav-active">
+      <a [routerLink]="['/notifications']" routerLinkActive="nav-active">
         <mat-icon>notifications</mat-icon>
         <div class="nav-title">Értesítések</div>
       </a>
