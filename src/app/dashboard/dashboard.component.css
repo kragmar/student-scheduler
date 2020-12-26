@@ -8,7 +8,7 @@
   height: 100%;
 }
 
-.weekly-card {
+.weekly-component {
   grid-area: weekly;
   margin-left: 0.25rem;
 }
