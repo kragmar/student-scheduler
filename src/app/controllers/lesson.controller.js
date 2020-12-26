@@ -78,10 +78,14 @@ module.exports.findAllByStudentId = (req, res) => {
 };
 
 module.exports.findAllToday = (req, res) => {
-  const today = req.params.today;
-  const date = new Date(new Number(today));
+  const start = new Date();
+  start.setHours(0, 0, 0, 0);
+  const end = new Date();
+  end.setHours(23, 59, 59, 999);
 
-  Lesson.find({ date: date })
+  Lesson.find({
+    date: { $gte: start, $lte: end },
+  })
     .sort({ date: 1 })
     .then((data) => {
       if (!data) {
