@@ -10,8 +10,8 @@
 
 .daily-component {
   grid-area: daily;
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 .weekly-component {
