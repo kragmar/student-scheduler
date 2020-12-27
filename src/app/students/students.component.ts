@@ -5,7 +5,7 @@ import { NewStudentDialogComponent } from './new-student-dialog/new-student-dial
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { OkDialogComponent } from '../shared/ok-dialog/ok-dialog.component';
+import { OkDialogComponent } from '../shared/components/ok-dialog/ok-dialog.component';
 import { NewLessonDialogComponent } from './new-lesson-dialog/new-lesson-dialog.component';
 
 // Date localization for date pipe
