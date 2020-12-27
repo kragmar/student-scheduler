@@ -1,3 +1,4 @@
+import { LessonService, Lesson } from './../../core/services/lesson.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./daily-schedule.component.css'],
 })
 export class DailyScheduleComponent implements OnInit {
-  constructor() {}
+  lessons: Lesson[];
 
-  ngOnInit(): void {}
+  constructor(private lessonService: LessonService) {}
+
+  ngOnInit(): void {
+    this.lessonService
+      .findAllToday()
+      .subscribe((data) => (this.lessons = data));
+  }
 }
