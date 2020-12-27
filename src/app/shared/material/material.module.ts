@@ -11,6 +11,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatTableModule } from '@angular/material/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
@@ -27,6 +28,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatSelectModule,
     MatSlideToggleModule,
     MatExpansionModule,
+    MatTableModule,
     DragDropModule,
   ],
   exports: [
@@ -41,6 +43,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatSelectModule,
     MatSlideToggleModule,
     MatExpansionModule,
+    MatTableModule,
     DragDropModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'hu-HU' }],
