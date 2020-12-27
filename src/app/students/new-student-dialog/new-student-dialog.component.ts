@@ -12,7 +12,7 @@ export class NewStudentDialogComponent implements OnInit {
   newStudentForm = this.fb.group({
     name: ['', Validators.required],
     email: ['', Validators.required],
-    telNum: ['', Validators.required],
+    phone: ['', Validators.required],
     birthDate: [''],
     firstTimeDate: [''],
     firstTimeTime: [''],
