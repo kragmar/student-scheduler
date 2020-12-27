@@ -10,8 +10,12 @@
         *ngFor="let lesson of lessons"
       >
         <mat-expansion-panel-header>
-          <mat-panel-title> title </mat-panel-title>
-          <mat-panel-description> </mat-panel-description>
+          <mat-panel-title>{{
+            lesson.date | date: "HH:mm":"":"hu"
+          }}</mat-panel-title>
+          <mat-panel-description>{{
+            lesson.studentId | studentName
+          }}</mat-panel-description>
         </mat-expansion-panel-header>
         content
       </mat-expansion-panel>
