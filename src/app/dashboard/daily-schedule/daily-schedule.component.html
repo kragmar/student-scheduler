@@ -4,8 +4,11 @@
     <mat-card-subtitle>subtitle</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <mat-accordion>
-      <mat-expansion-panel>
+    <mat-accordion class="daily-accordion">
+      <mat-expansion-panel
+        class="daily-accordion__panel"
+        *ngFor="let lesson of lessons"
+      >
         <mat-expansion-panel-header>
           <mat-panel-title> title </mat-panel-title>
           <mat-panel-description> </mat-panel-description>
