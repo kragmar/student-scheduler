@@ -7,17 +7,19 @@
     <mat-accordion class="daily-accordion">
       <mat-expansion-panel
         class="daily-accordion__panel"
-        *ngFor="let lesson of lessons"
+        *ngFor="let lessons of groupedLessons"
       >
         <mat-expansion-panel-header>
           <mat-panel-title>{{
-            lesson.date | date: "HH:mm":"":"hu"
+            lessons[0].date | date: "HH:mm":"":"hu"
           }}</mat-panel-title>
-          <mat-panel-description>{{
-            lesson.studentId | studentName
-          }}</mat-panel-description>
+          <mat-panel-description
+            >Órák száma: {{ lessons.length }}</mat-panel-description
+          >
         </mat-expansion-panel-header>
-        content
+        <div class="daily-accordion__content" *ngFor="let lesson of lessons">
+          {{ lesson.studentId | studentName }}
+        </div>
       </mat-expansion-panel>
       <!-- <mat-expansion-panel>
                 <mat-expansion-panel-header>
