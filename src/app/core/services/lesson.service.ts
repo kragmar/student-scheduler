@@ -40,8 +40,8 @@ export class LessonService {
     return this.http.get(this.apiUrl + 'student/' + studentId);
   }
 
-  public findAllToday(today: Date): Observable<any> {
-    return this.http.get(this.apiUrl + 'date/' + today.getTime());
+  public findAllToday(): Observable<any> {
+    return this.http.get(this.apiUrl + 'date/');
   }
 
   public findAllAfterToday(date: any): Observable<any> {
