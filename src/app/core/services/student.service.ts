@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map, publishReplay, refCount } from 'rxjs/operators';
 
 export interface Student {
   _id?: string;
@@ -16,14 +17,24 @@ export interface Student {
 export class StudentService {
   private readonly apiUrl = 'http://localhost:8080/api/students/';
 
+  public cachedStudents: Observable<Student[]>;
+
   constructor(private http: HttpClient) {}
 
   public create(student: Student): Observable<any> {
     return this.http.post(this.apiUrl, student);
   }
 
-  public findAll(): Observable<any> {
-    return this.http.get(this.apiUrl);
+  public findAll(): Observable<Student[]> {
+    if (!this.cachedStudents) {
+      this.cachedStudents = this.http.get(this.apiUrl).pipe(
+        map((data) => data as Student[]),
+        publishReplay(1),
+        refCount()
+      );
+    }
+
+    return this.cachedStudents;
   }
 
   public findOne(student: Student): Observable<any> {
