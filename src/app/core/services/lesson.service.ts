@@ -41,7 +41,9 @@ export class LessonService {
   }
 
   public findAllToday(): Observable<any> {
-    return this.http.get(this.apiUrl + 'date/');
+    const today = new Date();
+
+    return this.http.get(this.apiUrl + 'date/' + today.getTime());
   }
 
   public findAllAfterToday(date: any): Observable<any> {
