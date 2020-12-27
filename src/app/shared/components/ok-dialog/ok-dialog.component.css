@@ -1,8 +1,8 @@
-::ng-deep .mat-dialog-container {
+::ng-deep .ok-dialog .mat-dialog-container {
   background-color: #2ecc40;
 }
 
-.ok-dialog {
+.ok-dialog__content {
   color: #fff;
 }
 
