@@ -82,14 +82,15 @@ td {
 
 .calendar__body__cell {
   width: 100%;
-  white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
   border: 1px solid black;
   padding: 1px;
 }
 
 .calendar__body__cell__data {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background-color: grey;
   padding: 0.1rem;
   margin-bottom: 1px;
