@@ -42,4 +42,4 @@ process.on("SIGINT", function () {
 require("./user.model");
 require("./student.model");
 require("./lesson.model");
-require("./messages.model");
+require("./message.model");
