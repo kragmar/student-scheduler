@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Új üzenet</h1>
+<mat-card-content class="new-message-dialog">
+  <form
+    class="new-message-form"
+    (ngSubmit)="onSubmit()"
+    [formGroup]="messageForm"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Cím</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Cím"
+        value=""
+        formControlName="title"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Üzenet</mat-label>
+      <textarea
+        matInput
+        placeholder="Üzenet"
+        value=""
+        formControlName="message"
+        required
+      ></textarea>
+    </mat-form-field>
+  </form>
+</mat-card-content>
