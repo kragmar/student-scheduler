@@ -1,3 +1,4 @@
+import { MessageService, Message } from './../../core/services/message.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,7 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./message-board.component.css'],
 })
 export class MessageBoardComponent implements OnInit {
-  constructor() {}
+  messages: Message[];
 
-  ngOnInit(): void {}
+  constructor(private messageService: MessageService) {}
+
+  ngOnInit(): void {
+    this.messageService.findAll().subscribe((data) => (this.messages = data));
+  }
+
+  newMessage(): void {}
 }
