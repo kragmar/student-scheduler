@@ -9,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class DailyScheduleComponent implements OnInit {
   lessons: Lesson[];
   groupedLessons: Lesson[][] = new Array();
+  tableColumns: string[] = ['name', 'type', 'curriculum'];
 
   constructor(private lessonService: LessonService) {}
 
