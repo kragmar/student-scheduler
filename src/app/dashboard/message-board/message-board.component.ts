@@ -1,3 +1,5 @@
+import { NewMessageDialogComponent } from './../new-message-dialog/new-message-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 import { MessageService, Message } from './../../core/services/message.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,11 +11,18 @@ import { Component, OnInit } from '@angular/core';
 export class MessageBoardComponent implements OnInit {
   messages: Message[];
 
-  constructor(private messageService: MessageService) {}
+  constructor(
+    private messageService: MessageService,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.messageService.findAll().subscribe((data) => (this.messages = data));
   }
 
-  newMessage(): void {}
+  openNewMessageDialog(): void {
+    const dialogRef = this.dialog.open(NewMessageDialogComponent, {
+      width: 'fit-content',
+    });
+  }
 }
