@@ -14,6 +14,8 @@ export class NewMessageDialogComponent implements OnInit {
     type: ['', Validators.required],
   });
 
+  types: string[] = ['IMPORTANT', 'GENERAL'];
+
   newMessage: Message = <Message>{};
 
   constructor(
