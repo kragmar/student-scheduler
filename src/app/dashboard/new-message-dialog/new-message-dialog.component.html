@@ -20,11 +20,24 @@
       <mat-label>Üzenet</mat-label>
       <textarea
         matInput
+        rows="5"
+        cols="20"
         placeholder="Üzenet"
         value=""
         formControlName="message"
         required
       ></textarea>
     </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Típus</mat-label>
+      <mat-select placeholder="Típus" formControlName="type" name="type">
+        <mat-option *ngFor="let type of types" [value]="type">
+          {{ type === "IMPORTANT" ? "Fontos" : "Általános" }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="messageForm.invalid">
+      Létrehozás
+    </button>
   </form>
 </mat-card-content>
