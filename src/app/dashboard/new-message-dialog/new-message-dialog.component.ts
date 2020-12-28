@@ -32,12 +32,14 @@ export class NewMessageDialogComponent implements OnInit {
     }
 
     this.newMessage = this.messageForm.value;
+    this.newMessage.teacherId = '5f7225de8ee83902f8c3039f';
+
     this.createMessage();
 
     this.dialogRef.close();
   }
 
   createMessage(): void {
-    this.messageService.create(this.newMessage);
+    this.messageService.create(this.newMessage).subscribe();
   }
 }
