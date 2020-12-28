@@ -9,6 +9,10 @@
   height: 100%;
 }
 
+.message-component {
+  grid-area: msg;
+}
+
 .daily-component {
   grid-area: daily;
 }
