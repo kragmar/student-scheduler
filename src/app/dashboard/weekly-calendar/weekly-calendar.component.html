@@ -54,7 +54,7 @@
               class="calendar__body__cell__data"
               *ngFor="let lesson of filteredLessons[day][time]"
             >
-              {{ lesson.studentId }}
+              {{ lesson.studentId | studentName }}
             </div>
           </div>
         </div>
