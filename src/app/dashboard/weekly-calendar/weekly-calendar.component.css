@@ -39,8 +39,8 @@ td {
 
 .calendar {
   display: grid;
-  grid-template-columns: 0.1fr auto;
-  grid-template-rows: 0.1fr 1fr;
+  grid-template-columns: 0.1fr 1.9fr;
+  grid-template-rows: 0.1fr 1.9fr;
   grid-template-areas:
     ". header"
     "side-header body";
