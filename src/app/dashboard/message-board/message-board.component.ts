@@ -27,12 +27,19 @@ export class MessageBoardComponent implements OnInit {
       data: { message: message, editing: editing },
     });
 
-    dialogRef.afterClosed().subscribe(() => {
+    dialogRef.afterClosed().subscribe((result) => {
       let msg;
-      if (editing) {
-        msg = 'Üzenet frissítve!';
+
+      if (result === 'SUCCESS') {
+        if (editing) {
+          msg = 'Üzenet frissítve!';
+        } else {
+          msg = 'Új üzenet létrehozva!';
+        }
+      } else if (result === 'DELETION') {
+        msg = 'Üzenet törölve!';
       } else {
-        msg = 'Új üzenet létrehozva!';
+        return;
       }
 
       this.openOkDialog(msg);
