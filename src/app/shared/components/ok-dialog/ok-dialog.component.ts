@@ -12,7 +12,7 @@ export class OkDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<OkDialogComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.message = data.fromPage;
+    this.message = data.message;
   }
 
   ngOnInit(): void {}
