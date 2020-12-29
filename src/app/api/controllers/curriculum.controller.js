@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Curriculum = mongoose.model("curriculum");
+const Curriculum = mongoose.model("Curriculum");
 
 // Create and save new curriculum
 module.exports.create = (req, res) => {
