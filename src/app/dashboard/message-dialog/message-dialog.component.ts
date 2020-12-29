@@ -51,6 +51,7 @@ export class MessageDialogComponent implements OnInit {
     this.newMessage.teacherId = '5f7225de8ee83902f8c3039f';
 
     if (this.editing) {
+      this.newMessage._id = this.message._id;
       this.updateMessage();
     } else {
       this.createMessage();
