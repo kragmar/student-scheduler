@@ -14,3 +14,7 @@
 .edit-button:hover mat-icon {
   color: #000;
 }
+
+.message-content {
+  white-space: pre-line;
+}
