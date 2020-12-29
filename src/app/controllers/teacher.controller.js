@@ -5,7 +5,9 @@ const Teacher = mongoose.model("Teacher");
 module.exports.create = (req, res) => {
   // Create a new teacher
   const teacher = new Teacher({
+    userId: req.body.userId,
     name: req.body.name,
+    schedule: req.body.schedule,
   });
 
   // Save teacher in the db
