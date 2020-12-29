@@ -5,11 +5,10 @@ const Curriculum = mongoose.model("Curriculum");
 module.exports.create = (req, res) => {
   // Create a new curriculum
   const curriculum = new Curriculum({
-    date: req.body.date,
-    type: req.body.type,
-    recurring: req.body.recurring,
-    studentId: req.body.studentId,
-    teacherId: req.body.teacherId,
+    title: req.body.title,
+    subtitle: req.body.subtitle,
+    desc: req.body.desc,
+    group: req.body.group,
   });
 
   // Save curriculum in the db
