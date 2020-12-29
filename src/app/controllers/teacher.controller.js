@@ -1,8 +1,8 @@
-const db = require("../models");
-const Teacher = db.teacher;
+const mongoose = require("mongoose");
+const Teacher = mongoose.model("Teacher");
 
 // Create and save new teacher
-exports.create = (req, res) => {
+module.exports.create = (req, res) => {
   // Create a new teacher
   const teacher = new Teacher({
     name: req.body.name,
@@ -23,7 +23,7 @@ exports.create = (req, res) => {
 };
 
 // Find all teachers in the db
-exports.findAll = (req, res) => {
+module.exports.findAll = (req, res) => {
   Teacher.find()
     .then((data) => {
       res.send(data);
@@ -36,7 +36,7 @@ exports.findAll = (req, res) => {
 };
 
 // Find teacher by id
-exports.findOne = (req, res) => {
+module.exports.findOne = (req, res) => {
   const id = req.params.id;
 
   Teacher.findById(id)
@@ -55,7 +55,7 @@ exports.findOne = (req, res) => {
 };
 
 // Update teacher by id
-exports.update = (req, res) => {
+module.exports.update = (req, res) => {
   if (!req.body) {
     return res.status(400).send({
       message: "Data to update can not be empty!",
@@ -80,7 +80,7 @@ exports.update = (req, res) => {
 };
 
 // Delete teacher by id
-exports.delete = (req, res) => {
+module.exports.delete = (req, res) => {
   const id = req.params.id;
 
   Teacher.findByIdAndRemove(id)
