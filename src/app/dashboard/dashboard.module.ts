@@ -7,7 +7,7 @@ import { WeeklyCalendarComponent } from './weekly-calendar/weekly-calendar.compo
 import { SharedModule } from '../shared/shared.module';
 import { DailyScheduleComponent } from './daily-schedule/daily-schedule.component';
 import { MessageBoardComponent } from './message-board/message-board.component';
-import { NewMessageDialogComponent } from './new-message-dialog/new-message-dialog.component';
+import { MessageDialogComponent } from './message-dialog/message-dialog.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { NewMessageDialogComponent } from './new-message-dialog/new-message-dial
     WeeklyCalendarComponent,
     DailyScheduleComponent,
     MessageBoardComponent,
-    NewMessageDialogComponent,
+    MessageDialogComponent,
   ],
   imports: [CommonModule, SharedModule, DashboardRoutingModule],
 })
