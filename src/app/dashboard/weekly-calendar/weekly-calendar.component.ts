@@ -18,7 +18,7 @@ export class WeeklyCalendarComponent implements OnInit {
   days: string[];
   times: string[];
 
-  private today: Date;
+  today: Date;
   private date: Date;
   week: Date[];
   filteredLessons: Lesson[][][] = new Array();
@@ -76,6 +76,26 @@ export class WeeklyCalendarComponent implements OnInit {
       const day = new Date(this.calcDiff(i));
       this.week.push(day);
     }
+  }
+
+  public goToPrevWeek(): void {
+    this.date.setDate(this.date.getDate() - 7);
+    this.createWeekArray();
+    this.fillFilteredLessons();
+  }
+
+  public goToToday(): void {
+    this.date.setFullYear(this.today.getFullYear());
+    this.date.setMonth(this.today.getMonth());
+    this.date.setDate(this.today.getDate());
+    this.createWeekArray();
+    this.fillFilteredLessons();
+  }
+
+  public goToNextWeek(): void {
+    this.date.setDate(this.date.getDate() + 7);
+    this.createWeekArray();
+    this.fillFilteredLessons();
   }
 
   private filterLessonsByDayAndTime(day: Date, time: string): Lesson[] {
