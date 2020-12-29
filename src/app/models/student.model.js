@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-var studentSchema = new mongoose.Schema(
+const studentSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -10,7 +10,7 @@ var studentSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    telNum: {
+    phone: {
       type: String,
       required: true,
     },
