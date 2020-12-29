@@ -25,8 +25,8 @@ import { CurriculumModule } from './curriculum/curriculum.module';
     DashboardModule,
     StudentsModule,
     LoginModule,
-    AppRoutingModule,
     CurriculumModule,
+    AppRoutingModule,
   ],
   bootstrap: [AppComponent],
 })
