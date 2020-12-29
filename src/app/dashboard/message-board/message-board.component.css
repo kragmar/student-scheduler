@@ -1,3 +1,16 @@
 .message-card {
   height: 100%;
 }
+
+.edit-button {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.edit-button mat-icon {
+  color: #dfdfdf;
+}
+
+.edit-button:hover mat-icon {
+  color: #000;
+}
