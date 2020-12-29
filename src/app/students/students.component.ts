@@ -55,7 +55,7 @@ export class StudentsComponent implements OnInit {
   openOkDialog(message: string): void {
     const dialogRef = this.dialog.open(OkDialogComponent, {
       width: 'fit-content',
-      data: { fromPage: message },
+      data: { message: message },
       panelClass: 'ok-dialog',
     });
   }
