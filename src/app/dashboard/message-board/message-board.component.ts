@@ -1,3 +1,4 @@
+import { OkDialogComponent } from './../../shared/components/ok-dialog/ok-dialog.component';
 import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MessageService, Message } from './../../core/services/message.service';
@@ -24,6 +25,25 @@ export class MessageBoardComponent implements OnInit {
     const dialogRef = this.dialog.open(MessageDialogComponent, {
       width: 'fit-content',
       data: { message: message, editing: editing },
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      let msg;
+      if (editing) {
+        msg = 'Üzenet frissítve!';
+      } else {
+        msg = 'Új üzenet létrehozva!';
+      }
+
+      this.openOkDialog(msg);
+    });
+  }
+
+  openOkDialog(message: string): void {
+    const dialogRef = this.dialog.open(OkDialogComponent, {
+      width: 'fit-content',
+      data: { message: message },
+      panelClass: 'ok-dialog',
     });
   }
 }
