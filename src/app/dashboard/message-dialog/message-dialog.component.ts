@@ -57,7 +57,7 @@ export class MessageDialogComponent implements OnInit {
       this.createMessage();
     }
 
-    this.dialogRef.close();
+    this.dialogRef.close('SUCCESS');
   }
 
   createMessage(): void {
@@ -70,6 +70,6 @@ export class MessageDialogComponent implements OnInit {
 
   deleteMessage(): void {
     this.messageService.delete(this.message).subscribe();
-    this.dialogRef.close();
+    this.dialogRef.close('DELETION');
   }
 }
