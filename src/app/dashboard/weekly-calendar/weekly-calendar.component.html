@@ -4,38 +4,6 @@
     <mat-card-subtitle>subtitle</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <!-- <table class="weekly-table">
-        <colgroup>
-          <col *ngFor="let time of times" />
-        </colgroup>
-        <thead>
-          <tr>
-            <th></th>
-            <th scope="col" *ngFor="let time of times">{{ time }}</th>
-          </tr>
-        </thead>
-        <tbody cdkDropListGroup [cdkDropListGroupDisabled]="!editing">
-          <tr *ngFor="let day of daysRange">
-            <th scope="row">
-              {{ week[day] | date: "EEEE":"":"hu" }}
-              {{ week[day] | date: "dd":"":"hu" }}
-            </th>
-            <td
-              *ngFor="let time of timesRange"
-              cdkDropList
-              [cdkDropListData]="filteredLessons[day][time]"
-              class="table-cell"
-              (cdkDropListDropped)="drop($event)"
-            >
-              <div class="lessons-cell">
-                <div *ngFor="let lesson of filteredLessons[day][time]" cdkDrag>
-                  {{ lesson._id }}
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table> -->
     <div class="calendar">
       <div class="calendar__header">
         <div class="calendar__header__cell" *ngFor="let time of times">
