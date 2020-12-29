@@ -67,4 +67,9 @@ export class MessageDialogComponent implements OnInit {
   updateMessage(): void {
     this.messageService.update(this.newMessage).subscribe();
   }
+
+  deleteMessage(): void {
+    this.messageService.delete(this.message).subscribe();
+    this.dialogRef.close();
+  }
 }
