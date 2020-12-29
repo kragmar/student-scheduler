@@ -5,7 +5,7 @@
     "component-selector": [
       true,
       "element",
-      ["sg", "dashboard", "sidebar"],
+      ["sg", "dashboard", "sidebar", "curriculum"],
       "kebab-case"
     ],
     "directive-selector": [true, "attribute", "sg", "camelCase"],
