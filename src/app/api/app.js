@@ -12,6 +12,7 @@ const studentsApi = require("./routes/student.routes");
 const lessonsApi = require("./routes/lesson.routes");
 const messageApi = require("./routes/message.routes");
 const teacherApi = require("./routes/teacher.routes");
+const curriculumApi = require("./routes/curriculum.routes");
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use("/api/students", studentsApi);
 app.use("/api/lessons", lessonsApi);
 app.use("/api/messages", messageApi);
 app.use("/api/teachers", teacherApi);
+app.use("/api/curriculum", curriculumApi);
 
 app.use(function (req, res, next) {
   var err = new Error("Not found");

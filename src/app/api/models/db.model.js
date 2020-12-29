@@ -44,3 +44,4 @@ require("./student.model");
 require("./lesson.model");
 require("./message.model");
 require("./teacher.model");
+require("./curriculum.model");
