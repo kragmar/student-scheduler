@@ -7,7 +7,7 @@ module.exports.create = function (req, res) {
   const student = new Student({
     name: req.body.name,
     email: req.body.email,
-    telNum: req.body.telNum,
+    phone: req.body.phone,
     birthDate: req.body.birthDate,
   });
 
