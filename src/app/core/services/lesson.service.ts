@@ -10,6 +10,7 @@ export interface Lesson {
   recurring: boolean;
   studentId: string;
   teacherId: string;
+  curriculumId: string;
 }
 
 @Injectable({
