@@ -12,6 +12,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { StudentsModule } from './students/students.module';
 import { LoginModule } from './login/login.module';
+import { CurriculumModule } from './curriculum/curriculum.module';
 
 @NgModule({
   declarations: [AppComponent, SidebarComponent],
@@ -24,6 +25,7 @@ import { LoginModule } from './login/login.module';
     DashboardModule,
     StudentsModule,
     LoginModule,
+    CurriculumModule,
     AppRoutingModule,
   ],
   bootstrap: [AppComponent],
