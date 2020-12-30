@@ -27,7 +27,7 @@ app.use("/api/students", studentsApi);
 app.use("/api/lessons", lessonsApi);
 app.use("/api/messages", messageApi);
 app.use("/api/teachers", teacherApi);
-app.use("/api/curriculum", curriculumApi);
+app.use("/api/curriculums", curriculumApi);
 
 app.use(function (req, res, next) {
   var err = new Error("Not found");
