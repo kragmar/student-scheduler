@@ -14,7 +14,7 @@ export interface Curriculum {
   providedIn: 'root',
 })
 export class CurriculumService {
-  private readonly apiUrl = 'https://localhost:8080/api/curriculums/';
+  private readonly apiUrl = 'http://localhost:8080/api/curriculums/';
 
   constructor(private http: HttpClient) {}
 
