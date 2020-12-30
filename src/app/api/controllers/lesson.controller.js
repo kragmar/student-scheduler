@@ -62,6 +62,7 @@ module.exports.findAllByStudentId = (req, res) => {
   const studentId = req.params.studentId;
 
   Lesson.find({ studentId: studentId })
+    .sort({ date: -1 })
     .then((data) => {
       if (!data) {
         res
