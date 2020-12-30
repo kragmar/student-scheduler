@@ -1,0 +1,50 @@
+<h1 mat-dialog-title>Új lecke</h1>
+<button mat-raised-button *ngIf="editing" (click)="deleteCurriculum()">
+  <mat-icon>delete</mat-icon> TÖRLÉS
+</button>
+<mat-dialog-content class="curriculum-dialog">
+  <form
+    class="curriculum-form"
+    (ngSubmit)="onSubmit()"
+    [formGroup]="curriculumForm"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label>Cím</mat-label>
+      <input
+        matInput
+        placeholder="Cím"
+        value=""
+        formControlName="title"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Alcím</mat-label>
+      <input matInput placeholder="Alcím" value="" formControlName="subtitle" />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Leírás</mat-label>
+      <textarea
+        matInput
+        rows="5"
+        cols="20"
+        placeholder="Leírás"
+        value=""
+        formControlName="desc"
+      ></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Csoport</mat-label>
+      <input
+        matInput
+        placeholder="Csoport"
+        value=""
+        formControlName="group"
+        required
+      />
+    </mat-form-field>
+    <button mat-raised-button type="submit" [disabled]="curriculumForm.invalid">
+      {{ editing ? "Mentés" : "Hozzáadás" }}
+    </button>
+  </form>
+</mat-dialog-content>
