@@ -148,8 +148,37 @@
       <mat-card-title>Tanuló órái</mat-card-title>
       <mat-card-subtitle>subtitle</mat-card-subtitle>
     </mat-card-header>
-    <mat-card-content>
-      <mat-accordion *ngIf="lessons">
+    <mat-card-content class="lessons-card__content">
+      <table
+        mat-table
+        [dataSource]="lessons"
+        matSort
+        class="lessons-table"
+        *ngIf="selectedStudent._id"
+      >
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Dátum</th>
+          <td mat-cell *matCellDef="let lesson">
+            {{ lesson.date | date: "fullDate":"":"hu" }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="time">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Időpont</th>
+          <td mat-cell *matCellDef="let lesson">
+            {{ lesson.date | date: "HH:mm":"":"hu" }}
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="curriculum">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Tananyag</th>
+          <td mat-cell *matCellDef="let lesson">{{ lesson.curriculumId }}</td>
+        </ng-container>
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColums; sticky: true"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColums"></tr>
+      </table>
+      <!-- <mat-accordion *ngIf="lessons">
         <mat-expansion-panel *ngFor="let lesson of lessons">
           <mat-expansion-panel-header
             >{{ lesson.date | date: "EEEE":"":"hu" | uppercase }} |
@@ -159,7 +188,7 @@
           >
           {{ lesson.type }}
         </mat-expansion-panel>
-      </mat-accordion>
+      </mat-accordion> -->
     </mat-card-content>
   </mat-card>
 </div>
