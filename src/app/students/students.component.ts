@@ -1,8 +1,10 @@
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { Lesson, LessonService } from '../core/services/lesson.service';
 import { DeleteStudentDialogComponent } from './delete-student-dialog/delete-student-dialog.component';
 import { Student, StudentService } from '../core/services/student.service';
 import { NewStudentDialogComponent } from './new-student-dialog/new-student-dialog.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { OkDialogComponent } from '../shared/components/ok-dialog/ok-dialog.component';
@@ -17,7 +19,7 @@ registerLocaleData(localeHu, 'hu');
   templateUrl: './students.component.html',
   styleUrls: ['./students.component.css'],
 })
-export class StudentsComponent implements OnInit {
+export class StudentsComponent implements OnInit, AfterViewInit {
   studentForm = this.fb.group({
     name: ['', Validators.pattern('[a-zA-Z\u0080-\uFFFF ]*')],
     email: ['', Validators.email],
@@ -27,16 +29,15 @@ export class StudentsComponent implements OnInit {
 
   search = false;
   students: Student[];
-  selectedStudent: Student = {
-    name: '',
-    email: '',
-    phone: '',
-    birthDate: null,
-  };
+  selectedStudent: Student = <Student>{};
 
   editing = false;
 
   lessons: Lesson[];
+  displayedColums = ['date', 'time', 'curriculum'];
+  lessonsData = new MatTableDataSource<Lesson>(this.lessons);
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private fb: FormBuilder,
@@ -49,7 +50,14 @@ export class StudentsComponent implements OnInit {
     this.studentService.findAll().subscribe((data) => (this.students = data));
     this.lessonService
       .findAllByStudentId(this.selectedStudent)
-      .subscribe((data) => (this.lessons = data));
+      .subscribe((data: Lesson[]) => {
+        this.lessons = data;
+        this.lessonsData.data = this.lessons as Lesson[];
+      });
+  }
+
+  ngAfterViewInit(): void {
+    this.lessonsData.sort = this.sort;
   }
 
   openOkDialog(message: string): void {

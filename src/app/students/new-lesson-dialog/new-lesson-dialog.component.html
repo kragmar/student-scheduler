@@ -44,6 +44,21 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Tananyag</mat-label>
+      <mat-select
+        placeholder="Tananyag"
+        formControlName="curriculumId"
+        name="curriculum"
+      >
+        <mat-option
+          *ngFor="let curriculum of curriculums"
+          [value]="curriculum._id"
+        >
+          {{ curriculum.title }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <button mat-raised-button type="submit" [disabled]="newLessonForm.invalid">
       Hozzáadás
     </button>

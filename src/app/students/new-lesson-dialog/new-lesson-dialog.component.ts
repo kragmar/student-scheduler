@@ -1,3 +1,7 @@
+import {
+  Curriculum,
+  CurriculumService,
+} from './../../core/services/curriculum.service';
 import { DateCalculatorService } from '../../core/services/date-calculator.service';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -17,9 +21,11 @@ export class NewLessonDialogComponent implements OnInit {
     date: ['', Validators.required],
     time: ['', Validators.required],
     type: ['', Validators.required],
+    curriculumId: ['', Validators.required],
   });
 
   student: Student;
+  curriculums: Curriculum[];
 
   days: string[];
   times: string[];
@@ -31,6 +37,7 @@ export class NewLessonDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private lessonService: LessonService,
+    private curriculumService: CurriculumService,
     private dateCalcService: DateCalculatorService,
     public dialogRef: MatDialogRef<NewLessonDialogComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public data: any
@@ -39,6 +46,9 @@ export class NewLessonDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.curriculumService
+      .findAll()
+      .subscribe((data) => (this.curriculums = data));
     this.days = this.dateCalcService.days;
     this.times = this.dateCalcService.times;
     this.dateCalcService.getFullDates().subscribe((data) => {
@@ -112,6 +122,7 @@ export class NewLessonDialogComponent implements OnInit {
       recurring: this.getValue('recurring'),
       studentId: this.student._id,
       teacherId: '5f7225de8ee83902f8c3039f',
+      curriculumId: this.getValue('curriculumId'),
     };
 
     this.createLesson(newLesson);

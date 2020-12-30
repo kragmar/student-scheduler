@@ -22,6 +22,10 @@ const lessonSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    curriculumId: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );

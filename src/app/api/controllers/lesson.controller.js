@@ -10,6 +10,7 @@ module.exports.create = (req, res) => {
     recurring: req.body.recurring,
     studentId: req.body.studentId,
     teacherId: req.body.teacherId,
+    curriculumId: req.body.curriculumId,
   });
 
   // Save lesson in the db
@@ -61,6 +62,7 @@ module.exports.findAllByStudentId = (req, res) => {
   const studentId = req.params.studentId;
 
   Lesson.find({ studentId: studentId })
+    .sort({ date: -1 })
     .then((data) => {
       if (!data) {
         res
