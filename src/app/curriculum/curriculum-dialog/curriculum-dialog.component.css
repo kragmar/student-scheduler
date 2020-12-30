@@ -1,0 +1,9 @@
+.curriculum-dialog {
+  padding: 2rem;
+}
+
+.curriculum-form {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+}

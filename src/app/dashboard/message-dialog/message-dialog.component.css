@@ -1,0 +1,9 @@
+.new-message-dialog {
+  padding: 2rem;
+  width: 30rem;
+}
+
+.new-message-form {
+  display: flex;
+  flex-direction: column;
+}

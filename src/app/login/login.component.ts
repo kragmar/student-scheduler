@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { AuthService, TokenPayload } from './../services/auth.service';
+import { AuthService, TokenPayload } from '../core/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 

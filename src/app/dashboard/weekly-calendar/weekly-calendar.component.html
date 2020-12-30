@@ -1,0 +1,45 @@
+<mat-card class="weekly-card">
+  <mat-card-header>
+    <mat-card-title>Heti órák</mat-card-title>
+    <mat-card-subtitle>{{
+      today | date: "fullDate":"":"hu"
+    }}</mat-card-subtitle>
+    <mat-card-actions>
+      <button mat-button (click)="goToPrevWeek()">
+        <mat-icon>arrow_back</mat-icon> Előző hét
+      </button>
+      <button mat-button (click)="goToToday()">
+        <mat-icon>today</mat-icon> Mai nap
+      </button>
+      <button mat-button (click)="goToNextWeek()">
+        Következő hét <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="calendar">
+      <div class="calendar__header">
+        <div class="calendar__header__cell" *ngFor="let time of times">
+          {{ time }}
+        </div>
+      </div>
+      <div class="calendar__side-header">
+        <div class="calendar__side-header__cell" *ngFor="let day of week">
+          {{ day | date: "MMM d, EEEE":"":"hu" }}
+        </div>
+      </div>
+      <div class="calendar__body">
+        <div class="calendar__body__row" *ngFor="let day of daysRange">
+          <div class="calendar__body__cell" *ngFor="let time of timesRange">
+            <div
+              class="calendar__body__cell__data"
+              *ngFor="let lesson of filteredLessons[day][time]"
+            >
+              {{ lesson.studentId | studentName }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

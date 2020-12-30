@@ -1,4 +1,4 @@
-<nav *ngIf="authToken">
+<nav>
   <ul>
     <li>
       <a [routerLink]="['/dashboard']" routerLinkActive="nav-active">
@@ -8,20 +8,20 @@
     </li>
     <li>
       <a [routerLink]="['/students']" routerLinkActive="nav-active">
-        <mat-icon>people_alt</mat-icon>
+        <mat-icon>school</mat-icon>
         <div class="nav-title">Tanulók</div>
       </a>
     </li>
     <li>
-      <a [routerLink]="['/lessons']" routerLinkActive="nav-active">
-        <mat-icon>watch_later</mat-icon>
-        <div class="nav-title">Órák</div>
+      <a [routerLink]="['/curriculum']" routerLinkActive="nav-active">
+        <mat-icon>import_contacts</mat-icon>
+        <div class="nav-title">Tananyag</div>
       </a>
     </li>
     <li>
-      <a [routerLink]="['/notifications']" routerLinkActive="nav-active">
-        <mat-icon>notifications</mat-icon>
-        <div class="nav-title">Értesítések</div>
+      <a [routerLink]="['/teachers']" routerLinkActive="nav-active">
+        <mat-icon>people_alt</mat-icon>
+        <div class="nav-title">Tanárok</div>
       </a>
     </li>
     <li class="nav-logout">

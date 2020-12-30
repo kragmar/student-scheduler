@@ -1,0 +1,22 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 0.9fr 1.3fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "msg daily weekly"
+    "msg daily weekly";
+  column-gap: 0.75rem;
+  height: 100%;
+}
+
+.message-component {
+  grid-area: msg;
+}
+
+.daily-component {
+  grid-area: daily;
+}
+
+.weekly-component {
+  grid-area: weekly;
+}

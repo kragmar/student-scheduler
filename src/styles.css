@@ -17,3 +17,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: #f1ede4;
 }
+
+.app-root {
+  height: 100%;
+}

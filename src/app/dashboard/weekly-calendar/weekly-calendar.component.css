@@ -1,0 +1,98 @@
+.weekly-card {
+  height: 100%;
+}
+
+.mat-card-content {
+  height: 80%;
+}
+
+.cdk-group {
+  height: 100%;
+}
+
+.weekly-table {
+  table-layout: fixed;
+  height: 100%;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.weekly-table tbody tr th {
+  height: 100%;
+}
+
+.weekly-table,
+th,
+td {
+  border: 1px solid black;
+}
+
+.table-cell {
+  vertical-align: top;
+}
+
+.lessons-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.calendar {
+  display: grid;
+  grid-template-columns: 0.1fr 1.9fr;
+  grid-template-rows: 0.1fr 1.9fr;
+  grid-template-areas:
+    ". header"
+    "side-header body";
+  height: 100%;
+}
+
+.calendar__header {
+  grid-area: header;
+  display: flex;
+}
+
+.calendar__header__cell {
+  width: 100%;
+  border: 1px solid black;
+}
+
+.calendar__side-header {
+  grid-area: side-header;
+  display: flex;
+  flex-direction: column;
+  width: 6rem;
+}
+
+.calendar__side-header__cell {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.calendar__body {
+  grid-area: body;
+  display: grid;
+  grid-template-rows: repeat(5, minmax(1em, 1fr));
+}
+
+.calendar__body__row {
+  display: flex;
+}
+
+.calendar__body__cell {
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid black;
+  padding: 1px;
+}
+
+.calendar__body__cell__data {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: grey;
+  padding: 0.1rem;
+  margin-bottom: 1px;
+  border-radius: 2px;
+}

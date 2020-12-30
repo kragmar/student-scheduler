@@ -2,7 +2,12 @@
   "extends": ["tslint-angular"],
   "rulesDirectory": ["tslint-config-prettier"],
   "rules": {
-    "component-selector": [true, "element", "sg", "kebab-case"],
+    "component-selector": [
+      true,
+      "element",
+      ["sg", "dashboard", "sidebar", "curriculum"],
+      "kebab-case"
+    ],
     "directive-selector": [true, "attribute", "sg", "camelCase"],
 
     "component-max-inline-declarations": true,

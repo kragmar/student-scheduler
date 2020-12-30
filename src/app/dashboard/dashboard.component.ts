@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'sg-app-dashboard',
   templateUrl: './dashboard.component.html',

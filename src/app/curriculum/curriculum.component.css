@@ -1,0 +1,11 @@
+.curriculum-filter {
+  width: 100%;
+}
+
+.curriculum-table {
+  width: 100%;
+}
+
+.curriculum-table__desc {
+  white-space: pre-line;
+}
