@@ -13,6 +13,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatTableModule } from '@angular/material/table';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [],
@@ -29,6 +30,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatSlideToggleModule,
     MatExpansionModule,
     MatTableModule,
+    MatSortModule,
     DragDropModule,
   ],
   exports: [
@@ -44,6 +46,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MatSlideToggleModule,
     MatExpansionModule,
     MatTableModule,
+    MatSortModule,
     DragDropModule,
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'hu-HU' }],
