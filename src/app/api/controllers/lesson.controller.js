@@ -10,6 +10,7 @@ module.exports.create = (req, res) => {
     recurring: req.body.recurring,
     studentId: req.body.studentId,
     teacherId: req.body.teacherId,
+    curriculum: req.body.curriculum,
   });
 
   // Save lesson in the db
