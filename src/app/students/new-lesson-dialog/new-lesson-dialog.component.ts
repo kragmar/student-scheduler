@@ -21,7 +21,7 @@ export class NewLessonDialogComponent implements OnInit {
     date: ['', Validators.required],
     time: ['', Validators.required],
     type: ['', Validators.required],
-    curriculum: ['', Validators.required],
+    curriculumId: ['', Validators.required],
   });
 
   student: Student;
@@ -122,6 +122,7 @@ export class NewLessonDialogComponent implements OnInit {
       recurring: this.getValue('recurring'),
       studentId: this.student._id,
       teacherId: '5f7225de8ee83902f8c3039f',
+      curriculumId: this.getValue('curriculumId'),
     };
 
     this.createLesson(newLesson);
