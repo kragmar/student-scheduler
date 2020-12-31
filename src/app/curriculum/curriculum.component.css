@@ -1,5 +1,10 @@
+.curriculum-actions {
+  margin-left: 2rem;
+}
+
 .curriculum-filter {
   width: 100%;
+  padding: 1rem;
 }
 
 .curriculum-table {
@@ -8,4 +13,8 @@
 
 .curriculum-table__desc {
   white-space: pre-line;
+}
+
+.curriculum-table__row:nth-child(even) {
+  background-color: #e4e6f2;
 }

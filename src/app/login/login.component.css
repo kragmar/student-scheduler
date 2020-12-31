@@ -1,0 +1,10 @@
+.login-card {
+  width: 20rem;
+  height: 20rem;
+  padding: 2rem;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}

@@ -8,7 +8,7 @@
 }
 
 .edit-button mat-icon {
-  color: #dfdfdf;
+  color: #afafaf;
 }
 
 .edit-button:hover mat-icon {
@@ -17,4 +17,16 @@
 
 .message-content {
   white-space: pre-line;
+}
+
+.message-block {
+  margin-bottom: 0.5rem;
+}
+
+.important-type {
+  background-color: #ff4136;
+}
+
+.general-type {
+  background-color: #dfdfdf;
 }

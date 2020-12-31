@@ -38,6 +38,12 @@ export class CurriculumComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+  getCurriculums(): void {
+    this.curriculumService.findAll().subscribe((data) => {
+      this.dataSource.data = data as Curriculum[];
+    });
+  }
+
   applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -74,5 +80,6 @@ export class CurriculumComponent implements OnInit, AfterViewInit {
       data: { message: message },
       panelClass: 'ok-dialog',
     });
+    dialogRef.afterClosed().subscribe(() => this.getCurriculums());
   }
 }

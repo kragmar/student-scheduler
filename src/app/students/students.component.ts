@@ -84,6 +84,9 @@ export class StudentsComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(NewStudentDialogComponent, {
       width: 'fit-content',
     });
+    dialogRef
+      .afterClosed()
+      .subscribe(() => this.openOkDialog('Új tanuló létrehozva!'));
   }
 
   openDeleteStudentDialog(): void {
