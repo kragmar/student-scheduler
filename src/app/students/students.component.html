@@ -35,7 +35,11 @@
   <mat-card class="student-card">
     <mat-card-header>
       <mat-card-title>Tanuló adatai</mat-card-title>
-      <mat-card-subtitle>subtitle</mat-card-subtitle>
+      <mat-card-subtitle
+        ><i
+          >Tanuló kiválasztása után megjelennek az adatok</i
+        ></mat-card-subtitle
+      >
     </mat-card-header>
     <mat-card-content>
       <form class="student-form" [formGroup]="studentForm">
@@ -143,7 +147,11 @@
   <mat-card class="lessons-card">
     <mat-card-header>
       <mat-card-title>Tanuló órái</mat-card-title>
-      <mat-card-subtitle>subtitle</mat-card-subtitle>
+      <mat-card-subtitle
+        ><i
+          >Tanuló kiválasztása után megjelennek az adatok</i
+        ></mat-card-subtitle
+      >
     </mat-card-header>
     <mat-card-content class="lessons-card__content">
       <table
@@ -167,7 +175,9 @@
         </ng-container>
         <ng-container matColumnDef="curriculum">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Tananyag</th>
-          <td mat-cell *matCellDef="let lesson">{{ lesson.curriculumId }}</td>
+          <td mat-cell *matCellDef="let lesson">
+            {{ lesson.curriculumId | curriculumTitle }}
+          </td>
         </ng-container>
         <tr
           mat-header-row
@@ -175,17 +185,6 @@
         ></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColums"></tr>
       </table>
-      <!-- <mat-accordion *ngIf="lessons">
-        <mat-expansion-panel *ngFor="let lesson of lessons">
-          <mat-expansion-panel-header
-            >{{ lesson.date | date: "EEEE":"":"hu" | uppercase }} |
-            {{
-              lesson.date | date: "HH:mm":"+0100"
-            }}</mat-expansion-panel-header
-          >
-          {{ lesson.type }}
-        </mat-expansion-panel>
-      </mat-accordion> -->
     </mat-card-content>
   </mat-card>
 </div>
