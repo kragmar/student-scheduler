@@ -97,3 +97,7 @@
 .lessons-table {
   width: 100%;
 }
+
+.lessons-table__rows:nth-child(even) {
+  background-color: #e4e6f2;
+}

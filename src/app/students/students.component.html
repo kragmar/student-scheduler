@@ -185,7 +185,11 @@
           mat-header-row
           *matHeaderRowDef="displayedColums; sticky: true"
         ></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColums"></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: displayedColums"
+          class="lessons-table__rows"
+        ></tr>
       </table>
     </mat-card-content>
   </mat-card>
