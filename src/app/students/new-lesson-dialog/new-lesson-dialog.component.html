@@ -5,10 +5,6 @@
     (ngSubmit)="onSubmit()"
     [formGroup]="newLessonForm"
   >
-    <mat-slide-toggle class="slide-toggle" formControlName="recurring"
-      >Fix időpont:
-      {{ getValue("recurring") ? "Igen" : "Nem" }}</mat-slide-toggle
-    >
     <mat-form-field appearance="outline">
       <mat-label>Óra dátuma</mat-label>
       <input

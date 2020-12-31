@@ -17,7 +17,6 @@ import * as dayjs from 'dayjs';
 })
 export class NewLessonDialogComponent implements OnInit {
   newLessonForm = this.fb.group({
-    recurring: [false],
     date: ['', Validators.required],
     time: ['', Validators.required],
     type: ['', Validators.required],
@@ -119,7 +118,6 @@ export class NewLessonDialogComponent implements OnInit {
     const newLesson: Lesson = {
       date,
       type: this.getValue('type') === 'Tanóra' ? 'LECTURE' : 'PRACTICE',
-      recurring: this.getValue('recurring'),
       studentId: this.student._id,
       teacherId: '5f7225de8ee83902f8c3039f',
       curriculumId: this.getValue('curriculumId'),

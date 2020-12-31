@@ -7,7 +7,6 @@ module.exports.create = (req, res) => {
   const lesson = new Lesson({
     date: req.body.date,
     type: req.body.type,
-    recurring: req.body.recurring,
     studentId: req.body.studentId,
     teacherId: req.body.teacherId,
     curriculumId: req.body.curriculumId,

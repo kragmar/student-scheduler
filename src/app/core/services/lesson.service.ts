@@ -7,7 +7,6 @@ export interface Lesson {
   _id?: string;
   date: Date;
   type: string;
-  recurring: boolean;
   studentId: string;
   teacherId: string;
   curriculumId: string;
