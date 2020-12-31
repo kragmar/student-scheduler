@@ -1,3 +1,4 @@
+import { TeacherService } from './../../core/services/teacher.service';
 import {
   Curriculum,
   CurriculumService,
@@ -36,6 +37,7 @@ export class NewLessonDialogComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private lessonService: LessonService,
+    private teacherService: TeacherService,
     private curriculumService: CurriculumService,
     private dateCalcService: DateCalculatorService,
     public dialogRef: MatDialogRef<NewLessonDialogComponent>,
@@ -119,7 +121,7 @@ export class NewLessonDialogComponent implements OnInit {
       date,
       type: this.getValue('type') === 'Tanóra' ? 'LECTURE' : 'PRACTICE',
       studentId: this.student._id,
-      teacherId: '5f7225de8ee83902f8c3039f',
+      teacherId: this.teacherService.currentUser,
       curriculumId: this.getValue('curriculumId'),
     };
 
