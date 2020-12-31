@@ -1,3 +1,4 @@
+import { TeacherService } from './../../core/services/teacher.service';
 import { Component, OnInit } from '@angular/core';
 import { Lesson, LessonService } from '../../core/services/lesson.service';
 import { DateCalculatorService } from '../../core/services/date-calculator.service';
@@ -6,7 +7,6 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
-import { StudentService } from 'src/app/core/services/student.service';
 
 @Component({
   selector: 'dashboard-weekly-calendar',
@@ -30,6 +30,7 @@ export class WeeklyCalendarComponent implements OnInit {
 
   constructor(
     private lessonService: LessonService,
+    private teacherService: TeacherService,
     private dateCalcService: DateCalculatorService
   ) {
     this.today = new Date();
@@ -112,7 +113,7 @@ export class WeeklyCalendarComponent implements OnInit {
     this.fillFilteredLessons();
   }
 
-  private filterLessonsByDayAndTime(day: Date, time: string): Lesson[] {
+  private filterLessonsByDayTimeAndTeacher(day: Date, time: string): Lesson[] {
     const filteredLessons = new Array<Lesson>();
 
     for (let i = 0; i < this.lessons.length; i++) {
@@ -120,7 +121,10 @@ export class WeeklyCalendarComponent implements OnInit {
       const splitTime = time.split(':');
       day.setHours(+splitTime[0], +splitTime[1], 0, 0);
 
-      if (lessonDate.getTime() === day.getTime()) {
+      if (
+        lessonDate.getTime() === day.getTime() &&
+        this.lessons[i].teacherId === this.teacherService.currentUser
+      ) {
         filteredLessons.push(this.lessons[i]);
       }
     }
@@ -134,7 +138,7 @@ export class WeeklyCalendarComponent implements OnInit {
     for (const day of this.week) {
       this.filteredLessons[i] = new Array();
       for (const time of this.times) {
-        const lessons = this.filterLessonsByDayAndTime(day, time);
+        const lessons = this.filterLessonsByDayTimeAndTeacher(day, time);
         this.filteredLessons[i].push(lessons);
         j++;
       }
