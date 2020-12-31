@@ -9,7 +9,7 @@ export class StudentNamePipe implements PipeTransform {
   constructor(private studentService: StudentService) {}
 
   transform(studentId: string): string {
-    if (!this.studentService.findAll()) {
+    if (!this.studentService.cachedStudents) {
       return 'ERROR';
     }
 
