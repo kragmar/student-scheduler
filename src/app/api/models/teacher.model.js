@@ -6,14 +6,16 @@ const teacherSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    email: {
+      type: String,
+      required: true,
+    },
     name: {
       type: String,
       required: true,
     },
-    schedule: {
-      type: [Date],
-      required: true,
-    },
+    phone: String,
+    privileges: String,
   },
   {
     timestamps: true,

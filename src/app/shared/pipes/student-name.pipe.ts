@@ -1,6 +1,5 @@
 import { StudentService } from './../../core/services/student.service';
 import { Pipe, PipeTransform } from '@angular/core';
-import { map } from 'rxjs/operators';
 
 @Pipe({
   name: 'studentName',
@@ -9,7 +8,7 @@ export class StudentNamePipe implements PipeTransform {
   constructor(private studentService: StudentService) {}
 
   transform(studentId: string): string {
-    if (!this.studentService.findAll()) {
+    if (!this.studentService.cachedStudents) {
       return 'ERROR';
     }
 

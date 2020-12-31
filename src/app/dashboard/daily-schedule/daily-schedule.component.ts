@@ -1,3 +1,4 @@
+import { CurriculumService } from './../../core/services/curriculum.service';
 import { LessonService, Lesson } from './../../core/services/lesson.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,13 +12,17 @@ export class DailyScheduleComponent implements OnInit {
   groupedLessons: Lesson[][] = new Array();
   tableColumns: string[] = ['name', 'type', 'curriculum'];
 
-  constructor(private lessonService: LessonService) {}
+  constructor(
+    private lessonService: LessonService,
+    private curriculumService: CurriculumService
+  ) {}
 
   ngOnInit(): void {
     this.lessonService.findAllToday().subscribe((data) => {
       this.lessons = data;
       this.groupLessons();
     });
+    this.curriculumService.findAll().subscribe();
   }
 
   groupLessons(): void {

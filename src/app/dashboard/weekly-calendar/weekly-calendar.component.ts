@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Lesson, LessonService } from '../../core/services/lesson.service';
 import { DateCalculatorService } from '../../core/services/date-calculator.service';
 import {
@@ -6,12 +6,12 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import { StudentService } from 'src/app/core/services/student.service';
 
 @Component({
   selector: 'dashboard-weekly-calendar',
   templateUrl: './weekly-calendar.component.html',
   styleUrls: ['./weekly-calendar.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WeeklyCalendarComponent implements OnInit {
   lessons: Lesson[] = [];

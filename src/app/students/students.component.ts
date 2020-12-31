@@ -47,7 +47,15 @@ export class StudentsComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.getStudents();
+    this.getLessonsByStudentId();
+  }
+
+  getStudents(): void {
     this.studentService.findAll().subscribe((data) => (this.students = data));
+  }
+
+  getLessonsByStudentId(): void {
     this.lessonService
       .findAllByStudentId(this.selectedStudent)
       .subscribe((data: Lesson[]) => {
@@ -66,6 +74,7 @@ export class StudentsComponent implements OnInit, AfterViewInit {
       data: { message: message },
       panelClass: 'ok-dialog',
     });
+    dialogRef.afterClosed().subscribe(() => this.getStudents());
   }
 
   openNewStudentDialog(): void {
@@ -90,6 +99,7 @@ export class StudentsComponent implements OnInit, AfterViewInit {
       if (result) {
         this.openOkDialog('Új óra sikeresen hozzáadva');
       }
+      this.getLessonsByStudentId();
     });
   }
 
@@ -122,14 +132,7 @@ export class StudentsComponent implements OnInit, AfterViewInit {
     };
 
     // Update student data
-    this.studentService.update(student).subscribe(
-      (data) => {
-        console.log(data);
-      },
-      (err) => {
-        console.log(err);
-      }
-    );
+    this.studentService.update(student).subscribe();
 
     // Open dialog with OK message
     this.openOkDialog('A tanuló adatai frissültek!');

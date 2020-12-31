@@ -1,0 +1,40 @@
+.teacher-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.2fr 1.8fr;
+  grid-template-areas:
+    "options ."
+    "card .";
+  gap: 0.5rem;
+  height: 100%;
+}
+
+.teacher-options {
+  grid-area: options;
+}
+
+.teacher-options > button {
+  margin-right: 0.5rem;
+}
+
+.teacher-search {
+  grid-area: options;
+  display: flex;
+  align-items: center;
+  padding: 0.875rem;
+}
+
+.search-back-arrow {
+  margin-right: 0.5rem;
+}
+
+.teacher-card {
+  grid-area: card;
+  height: 100%;
+  padding: 2rem;
+}
+
+.teacher-form {
+  display: flex;
+  flex-direction: column;
+}

@@ -13,6 +13,7 @@ import { SharedModule } from './shared/shared.module';
 import { StudentsModule } from './students/students.module';
 import { LoginModule } from './login/login.module';
 import { CurriculumModule } from './curriculum/curriculum.module';
+import { TeachersModule } from './teachers/teachers.module';
 
 @NgModule({
   declarations: [AppComponent, SidebarComponent],
@@ -26,6 +27,7 @@ import { CurriculumModule } from './curriculum/curriculum.module';
     StudentsModule,
     LoginModule,
     CurriculumModule,
+    TeachersModule,
     AppRoutingModule,
   ],
   bootstrap: [AppComponent],

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map, publishReplay, refCount } from 'rxjs/operators';
 
 export interface Curriculum {
   _id?: string;
@@ -16,6 +17,8 @@ export interface Curriculum {
 export class CurriculumService {
   private readonly apiUrl = 'http://localhost:8080/api/curriculums/';
 
+  public cachedCurriculums: Observable<Curriculum[]>;
+
   constructor(private http: HttpClient) {}
 
   public create(curriculum: Curriculum): Observable<any> {
@@ -23,7 +26,15 @@ export class CurriculumService {
   }
 
   public findAll(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    if (!this.cachedCurriculums) {
+      this.cachedCurriculums = this.http.get(this.apiUrl).pipe(
+        map((data) => data as Curriculum[]),
+        publishReplay(1),
+        refCount()
+      );
+    }
+
+    return this.cachedCurriculums;
   }
 
   public findOne(curriculum: Curriculum): Observable<any> {
