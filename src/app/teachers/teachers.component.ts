@@ -1,6 +1,8 @@
+import { MatDialog } from '@angular/material/dialog';
 import { TeacherService, Teacher } from './../core/services/teacher.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { OkDialogComponent } from '../shared/components/ok-dialog/ok-dialog.component';
 
 @Component({
   templateUrl: './teachers.component.html',
@@ -19,7 +21,8 @@ export class TeachersComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private teacherService: TeacherService
+    private teacherService: TeacherService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -29,29 +32,57 @@ export class TeachersComponent implements OnInit {
       phone: [''],
       privileges: [{ value: '', disabled: !this.editing }],
     });
+    this.getTeachers();
+  }
 
+  getTeachers(): void {
     this.teacherService.findAll().subscribe((data) => (this.teachers = data));
   }
 
   updateForm(): void {
-    let privilege = '';
-    if (this.selectedTeacher.privileges === 'ADMIN') {
-      privilege = 'Admin';
-    } else if (this.selectedTeacher.privileges === 'DIRECTOR') {
-      privilege = 'Igazgató';
-    } else {
-      privilege = 'Tanár';
-    }
-
     this.teacherForm.setValue({
       name: this.selectedTeacher.name,
       email: this.selectedTeacher.email,
       phone: this.selectedTeacher.phone,
-      privileges: privilege,
+      privileges: this.selectedTeacher.privileges,
     });
   }
 
-  onSubmit(): void {}
+  editTeacher(): void {
+    this.editing = true;
+    this.teacherForm.get('privileges').enable();
+  }
 
-  openTeacherDialog(): void {}
+  updateTeacher(): void {
+    // Abort if student form is invalid
+    if (this.teacherForm.invalid) {
+      return;
+    }
+
+    const teacher = this.teacherForm.value;
+    teacher._id = this.selectedTeacher._id;
+
+    // Update student data
+    this.teacherService.update(teacher).subscribe();
+
+    // Open dialog with OK message
+    this.openOkDialog('A tanár adatai frissültek!');
+
+    // Reset editing button
+    this.editing = false;
+  }
+
+  cancelUpdate(): void {
+    this.updateForm();
+    this.editing = false;
+  }
+
+  openOkDialog(message: string): void {
+    const dialogRef = this.dialog.open(OkDialogComponent, {
+      width: 'fit-content',
+      data: { message: message },
+      panelClass: 'ok-dialog',
+    });
+    dialogRef.afterClosed().subscribe(() => this.getTeachers());
+  }
 }
