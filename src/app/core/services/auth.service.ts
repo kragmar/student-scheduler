@@ -1,4 +1,4 @@
-import { UserService } from './user.service';
+import { TeacherService } from './teacher.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -32,7 +32,7 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private router: Router,
-    private userService: UserService
+    private teacherService: TeacherService
   ) {}
 
   private saveToken(token: string): void {
@@ -94,7 +94,18 @@ export class AuthService {
     );
 
     const userDetails = this.getUserDetails();
-    this.userService.userDetails.next(userDetails);
+    if (type === 'register') {
+      const newTeacher = {
+        userId: userDetails._id,
+        email: userDetails.email,
+        name: userDetails.name,
+        phone: '',
+        privileges: 'TEACHER',
+      };
+      this.teacherService.create(newTeacher);
+    }
+
+    this.teacherService.userDetails.next(userDetails);
 
     return request;
   }
