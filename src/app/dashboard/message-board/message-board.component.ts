@@ -18,6 +18,10 @@ export class MessageBoardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getMessages();
+  }
+
+  getMessages(): void {
     this.messageService.findAll().subscribe((data) => (this.messages = data));
   }
 
@@ -52,5 +56,6 @@ export class MessageBoardComponent implements OnInit {
       data: { message: message },
       panelClass: 'ok-dialog',
     });
+    dialogRef.afterClosed().subscribe(() => this.getMessages());
   }
 }

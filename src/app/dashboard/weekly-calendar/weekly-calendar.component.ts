@@ -30,7 +30,6 @@ export class WeeklyCalendarComponent implements OnInit {
 
   constructor(
     private lessonService: LessonService,
-    private studentService: StudentService,
     private dateCalcService: DateCalculatorService
   ) {
     this.today = new Date();
@@ -42,7 +41,6 @@ export class WeeklyCalendarComponent implements OnInit {
       this.lessons = result;
       this.fillFilteredLessons();
     });
-    this.studentService.findAll().subscribe();
     this.days = this.dateCalcService.days;
     this.times = this.dateCalcService.times;
     this.createWeekArray();

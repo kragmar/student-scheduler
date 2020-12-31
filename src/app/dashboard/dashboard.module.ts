@@ -8,6 +8,8 @@ import { SharedModule } from '../shared/shared.module';
 import { DailyScheduleComponent } from './daily-schedule/daily-schedule.component';
 import { MessageBoardComponent } from './message-board/message-board.component';
 import { MessageDialogComponent } from './message-dialog/message-dialog.component';
+import { CurriculumTitlePipe } from './curriculum-title.pipe';
+import { TeacherNamePipe } from './teacher-name.pipe';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { MessageDialogComponent } from './message-dialog/message-dialog.componen
     DailyScheduleComponent,
     MessageBoardComponent,
     MessageDialogComponent,
+    CurriculumTitlePipe,
+    TeacherNamePipe,
   ],
   imports: [CommonModule, SharedModule, DashboardRoutingModule],
 })

@@ -1,6 +1,5 @@
 import { StudentService } from './../../core/services/student.service';
 import { Pipe, PipeTransform } from '@angular/core';
-import { map } from 'rxjs/operators';
 
 @Pipe({
   name: 'studentName',

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { UserDetails } from './auth.service';
+import { map, publishReplay, refCount } from 'rxjs/operators';
 
 export interface Teacher {
   _id?: string;
@@ -18,16 +19,40 @@ export interface Teacher {
 export class TeacherService {
   private readonly apiUrl = 'http://localhost:8080/api/teachers/';
   userDetails = new BehaviorSubject<UserDetails>(<UserDetails>{});
-  currentUserId: string;
+  currentTeacherId: string;
 
-  constructor(private http: HttpClient) {
-    this.userDetails.subscribe((data) => {
-      this.currentUserId = data._id;
-    });
+  cachedTeachers = new Map();
+
+  token: string;
+
+  constructor(private http: HttpClient) {}
+
+  private getToken(): string {
+    if (!this.token) {
+      this.token = localStorage.getItem('auth-token');
+    }
+    return this.token;
+  }
+
+  public getUserDetails(): UserDetails {
+    const token = this.getToken();
+    let payload;
+
+    if (token) {
+      payload = token.split('.')[1];
+      payload = atob(payload);
+      return JSON.parse(payload);
+    } else {
+      return null;
+    }
   }
 
   get currentUser(): string {
-    return this.currentUser;
+    const userDetails = this.getUserDetails();
+    this.currentTeacherId = this.cachedTeachers
+      .get(this.apiUrl)
+      .find((teacher) => teacher.userId === userDetails._id)._id;
+    return this.currentTeacherId;
   }
 
   public create(user: Teacher): Observable<any> {
@@ -35,7 +60,15 @@ export class TeacherService {
   }
 
   public findAll(): Observable<any> {
-    return this.http.get(this.apiUrl);
+    const teachersFromCache = this.cachedTeachers.get(this.apiUrl);
+    if (teachersFromCache) {
+      return of(teachersFromCache);
+    }
+    const response = this.http.get<any>(this.apiUrl);
+    response.subscribe((teachers) => {
+      this.cachedTeachers.set(this.apiUrl, teachers);
+    });
+    return response;
   }
 
   public findOne(user: Teacher): Observable<any> {

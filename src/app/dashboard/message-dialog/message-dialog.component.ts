@@ -1,3 +1,4 @@
+import { TeacherService } from './../../core/services/teacher.service';
 import { MessageService, Message } from '../../core/services/message.service';
 import { Component, OnInit, Optional, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -23,6 +24,7 @@ export class MessageDialogComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private teacherService: TeacherService,
     private messageService: MessageService,
     public dialogRef: MatDialogRef<MessageDialogComponent>,
     @Optional() @Inject(MAT_DIALOG_DATA) public receivedData: any
@@ -48,7 +50,7 @@ export class MessageDialogComponent implements OnInit {
     }
 
     this.newMessage = this.messageForm.value;
-    this.newMessage.teacherId = '5f7225de8ee83902f8c3039f';
+    this.newMessage.teacherId = this.teacherService.currentUser;
 
     if (this.editing) {
       this.newMessage._id = this.message._id;
