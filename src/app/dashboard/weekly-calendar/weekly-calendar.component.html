@@ -24,7 +24,11 @@
         </div>
       </div>
       <div class="calendar__side-header">
-        <div class="calendar__side-header__cell" *ngFor="let day of week">
+        <div
+          class="calendar__side-header__cell"
+          [class]="getActiveDay(day)"
+          *ngFor="let day of week"
+        >
           {{ day | date: "MMM d, EEEE":"":"hu" }}
         </div>
       </div>
@@ -33,6 +37,9 @@
           <div class="calendar__body__cell" *ngFor="let time of timesRange">
             <div
               class="calendar__body__cell__data"
+              [class]="
+                lesson.type === 'LECTURE' ? 'lesson-type' : 'practice-type'
+              "
               *ngFor="let lesson of filteredLessons[day][time]"
             >
               {{ lesson.studentId | studentName }}
