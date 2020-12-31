@@ -48,8 +48,11 @@ export class StudentsComponent implements OnInit, AfterViewInit {
       phone: ['', Validators.pattern('[2357][0][0-9]{7}')],
       birthDate: [''],
     });
-    this.getStudents();
-    this.getLessonsByStudentId();
+    this.studentService.findAll().subscribe(
+      (data) => (this.students = data),
+      () => ({}),
+      () => this.getLessonsByStudentId()
+    );
   }
 
   getStudents(): void {
