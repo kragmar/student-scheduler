@@ -1,4 +1,4 @@
-import { CurriculumService } from './../core/services/curriculum.service';
+import { CurriculumService } from '../../core/services/curriculum.service';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
