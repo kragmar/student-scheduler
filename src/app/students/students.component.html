@@ -2,9 +2,11 @@
   <!-- STUDENTS SECTION -->
   <!-- Options for students card -->
   <mat-card class="student-options" *ngIf="!search; else searching">
-    <button mat-raised-button (click)="search = true">Keresés</button>
+    <button mat-raised-button (click)="search = true">
+      <mat-icon>search</mat-icon> Keresés
+    </button>
     <button mat-raised-button (click)="openNewStudentDialog()">
-      Új tanuló
+      <mat-icon>add</mat-icon> Új tanuló
     </button>
   </mat-card>
   <ng-template #searching>
@@ -105,7 +107,7 @@
               *ngIf="!editing; else save"
               (click)="editing = true"
             >
-              Adatok szerkesztése
+              <mat-icon>edit</mat-icon> Adatok szerkesztése
             </button>
             <ng-template #save>
               <button
@@ -113,14 +115,14 @@
                 mat-raised-button
                 (click)="updateStudent()"
               >
-                Mentés
+                <mat-icon>save</mat-icon> Mentés
               </button>
               <button
                 class="cancel-btn"
                 mat-raised-button
                 (click)="cancelUpdate()"
               >
-                Mégse
+                <mat-icon>cancel</mat-icon> Mégse
               </button>
             </ng-template>
           </ng-container>
@@ -136,9 +138,9 @@
       <button
         mat-raised-button
         (click)="openNewLessonDialog()"
-        [disabled]="selectedStudent"
+        [disabled]="!selectedStudent"
       >
-        Új óra
+        <mat-icon>add</mat-icon> Új óra
       </button>
     </mat-card-content>
   </mat-card>
