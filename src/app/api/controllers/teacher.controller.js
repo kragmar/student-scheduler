@@ -6,8 +6,10 @@ module.exports.create = (req, res) => {
   // Create a new teacher
   const teacher = new Teacher({
     userId: req.body.userId,
+    email: req.body.email,
     name: req.body.name,
-    schedule: req.body.schedule,
+    phone: req.body.phone,
+    privileges: req.body.privileges,
   });
 
   // Save teacher in the db
