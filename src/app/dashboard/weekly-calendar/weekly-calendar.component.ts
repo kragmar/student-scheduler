@@ -63,6 +63,20 @@ export class WeeklyCalendarComponent implements OnInit {
     }
   }
 
+  getActiveDay(day: Date): string {
+    const datestring =
+      this.today.getFullYear() +
+      '-' +
+      this.today.getMonth() +
+      '-' +
+      this.today.getDate();
+    const date = day.getFullYear() + '-' + day.getMonth() + '-' + day.getDate();
+    if (datestring === date) {
+      return 'active-day';
+    }
+    return;
+  }
+
   private calcDiff(index: number): Date {
     const diff = this.date.getDay() - 1 - index;
     this.date.setDate(this.date.getDate() - diff);
