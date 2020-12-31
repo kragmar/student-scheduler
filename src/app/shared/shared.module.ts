@@ -1,3 +1,4 @@
+import { CurriculumTitlePipe } from './pipes/curriculum-title.pipe';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
@@ -6,7 +7,7 @@ import { OkDialogComponent } from './components/ok-dialog/ok-dialog.component';
 import { StudentNamePipe } from './pipes/student-name.pipe';
 
 @NgModule({
-  declarations: [OkDialogComponent, StudentNamePipe],
+  declarations: [OkDialogComponent, StudentNamePipe, CurriculumTitlePipe],
   imports: [CommonModule, MaterialModule, FormsModule, ReactiveFormsModule],
   exports: [
     CommonModule,
@@ -15,6 +16,7 @@ import { StudentNamePipe } from './pipes/student-name.pipe';
     ReactiveFormsModule,
     OkDialogComponent,
     StudentNamePipe,
+    CurriculumTitlePipe,
   ],
 })
 export class SharedModule {}
