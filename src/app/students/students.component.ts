@@ -5,7 +5,7 @@ import { DeleteStudentDialogComponent } from './delete-student-dialog/delete-stu
 import { Student, StudentService } from '../core/services/student.service';
 import { NewStudentDialogComponent } from './new-student-dialog/new-student-dialog.component';
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { OkDialogComponent } from '../shared/components/ok-dialog/ok-dialog.component';
 import { NewLessonDialogComponent } from './new-lesson-dialog/new-lesson-dialog.component';
@@ -20,16 +20,11 @@ registerLocaleData(localeHu, 'hu');
   styleUrls: ['./students.component.css'],
 })
 export class StudentsComponent implements OnInit, AfterViewInit {
-  studentForm = this.fb.group({
-    name: ['', Validators.pattern('[a-zA-Z\u0080-\uFFFF ]*')],
-    email: ['', Validators.email],
-    phone: ['', Validators.pattern('[2357][0][0-9]{7}')],
-    birthDate: [''],
-  });
+  studentForm: FormGroup;
 
   search = false;
   students: Student[];
-  selectedStudent: Student = <Student>{};
+  selectedStudent: Student;
 
   editing = false;
 
@@ -47,6 +42,12 @@ export class StudentsComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.studentForm = this.fb.group({
+      name: ['', Validators.pattern('[a-zA-Z\u0080-\uFFFF ]*')],
+      email: ['', Validators.email],
+      phone: ['', Validators.pattern('[2357][0][0-9]{7}')],
+      birthDate: [''],
+    });
     this.getStudents();
     this.getLessonsByStudentId();
   }
