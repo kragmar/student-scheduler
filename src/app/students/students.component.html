@@ -93,32 +93,34 @@
           ></mat-datepicker-toggle>
           <mat-datepicker #datepicker [disabled]="!editing"></mat-datepicker>
         </mat-form-field>
-        <div *ngIf="selectedStudent.name !== ''">
-          <button
-            mat-raised-button
-            type="submit"
-            *ngIf="!editing; else save"
-            (click)="editing = true"
-          >
-            Adatok szerkesztése
-          </button>
-          <ng-template #save>
+        <mat-card-actions>
+          <ng-container *ngIf="selectedStudent">
             <button
-              class="save-btn"
               mat-raised-button
-              (click)="updateStudent()"
+              type="submit"
+              *ngIf="!editing; else save"
+              (click)="editing = true"
             >
-              Mentés
+              Adatok szerkesztése
             </button>
-            <button
-              class="cancel-btn"
-              mat-raised-button
-              (click)="cancelUpdate()"
-            >
-              Mégse
-            </button>
-          </ng-template>
-        </div>
+            <ng-template #save>
+              <button
+                class="save-btn"
+                mat-raised-button
+                (click)="updateStudent()"
+              >
+                Mentés
+              </button>
+              <button
+                class="cancel-btn"
+                mat-raised-button
+                (click)="cancelUpdate()"
+              >
+                Mégse
+              </button>
+            </ng-template>
+          </ng-container>
+        </mat-card-actions>
       </form>
     </mat-card-content>
   </mat-card>
@@ -130,7 +132,7 @@
       <button
         mat-raised-button
         (click)="openNewLessonDialog()"
-        [disabled]="selectedStudent._id === undefined"
+        [disabled]="selectedStudent"
       >
         Új óra
       </button>
@@ -149,7 +151,7 @@
         [dataSource]="lessons"
         matSort
         class="lessons-table"
-        *ngIf="selectedStudent._id"
+        *ngIf="selectedStudent"
       >
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Dátum</th>
