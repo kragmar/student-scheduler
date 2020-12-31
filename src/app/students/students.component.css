@@ -85,6 +85,8 @@
 .lessons-card {
   grid-area: lessons;
   padding: 2rem;
+  height: 100%;
+  overflow: hidden;
 }
 
 .lessons-card__content {
