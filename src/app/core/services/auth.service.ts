@@ -100,7 +100,7 @@ export class AuthService {
         email: userDetails.email,
         name: userDetails.name,
         phone: '',
-        privileges: 'TEACHER',
+        privileges: 'Tanár',
       };
       this.teacherService.create(newTeacher);
     }
