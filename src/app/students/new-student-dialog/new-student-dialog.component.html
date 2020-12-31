@@ -52,34 +52,6 @@
       ></mat-datepicker-toggle>
       <mat-datepicker #datepicker disabled="false"></mat-datepicker>
     </mat-form-field>
-    <div class="first-time">
-      <mat-form-field class="first-time--date" appearance="outline">
-        <mat-label>Bemutató óra dátuma</mat-label>
-        <input
-          matInput
-          [matDatepicker]="firstTimePicker"
-          placeholder="1970. 01. 01."
-          formControlName="firstTimeDate"
-        />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="firstTimePicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #firstTimePicker></mat-datepicker>
-      </mat-form-field>
-      <mat-form-field appearance="outline">
-        <mat-label>Bemutató óra időpontja</mat-label>
-        <mat-select
-          placeholder="12:30"
-          name="time"
-          formControlName="firstTimeTime"
-        >
-          <mat-option *ngFor="let time of times" [value]="time">
-            {{ time.hours }}:{{ time.minutes }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
     <button mat-raised-button type="submit">Mentés</button>
   </form>
 </mat-dialog-content>
