@@ -1,39 +1,58 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { UserDetails } from './auth.service';
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  }),
-};
+export interface Teacher {
+  _id?: string;
+  userId: string;
+  email: string;
+  name: string;
+  phone: string;
+  privileges: string;
+}
 
 @Injectable({
   providedIn: 'root',
 })
 export class TeacherService {
   private readonly apiUrl = 'http://localhost:8080/api/teachers/';
+  userDetails = new BehaviorSubject<UserDetails>(<UserDetails>{});
+  currentUserId: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.userDetails.subscribe((data) => {
+      this.currentUserId = data._id;
+    });
+  }
 
-  /* public getAllTeachers() {
+  get currentUser(): string {
+    return this.currentUser;
+  }
+
+  public create(user: Teacher): Observable<any> {
+    return this.http.post(this.apiUrl, user);
+  }
+
+  public findAll(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
 
-  public postTeacher(newTeacher: NewTeacher) {
-    return this.http.post(this.apiUrl, newTeacher, httpOptions);
+  public findOne(user: Teacher): Observable<any> {
+    const id = user._id;
+
+    return this.http.get(this.apiUrl + id);
   }
 
-  public updateTeacher(teacher: Teacher) {
-    const id = teacher._id;
-    const url = this.apiUrl + id;
+  public update(user: Teacher): Observable<any> {
+    const id = user._id;
 
-    return this.http.put(url, teacher, httpOptions);
+    return this.http.put(this.apiUrl + id, user);
   }
 
-  public deleteTeacher(teacher: Teacher) {
-    const id = teacher._id;
-    const url = this.apiUrl + id;
+  public delete(user: Teacher): Observable<any> {
+    const id = user._id;
 
-    return this.http.delete(url, httpOptions);
-  } */
+    return this.http.delete(this.apiUrl + id);
+  }
 }
