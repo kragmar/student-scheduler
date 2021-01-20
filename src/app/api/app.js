@@ -29,6 +29,9 @@ app.use("/api/messages", messageApi);
 app.use("/api/teachers", teacherApi);
 app.use("/api/curriculums", curriculumApi);
 
+// Serve static files for the app
+app.use(express.static(__dirname + "/dist/student-scheduler"));
+
 app.use(function (req, res, next) {
   var err = new Error("Not found");
   err.status = 404;
