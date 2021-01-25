@@ -1,4 +1,4 @@
-<nav>
+<nav *ngIf="loggedIn">
   <ul>
     <li>
       <a [routerLink]="['/dashboard']" routerLinkActive="nav-active">

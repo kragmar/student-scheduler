@@ -1,3 +1,18 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.login-title {
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  text-shadow: 0.1rem 0.1rem 0.2rem #0007;
+  color: #3259e6;
+}
+
 .login-card {
   width: 20rem;
   height: 20rem;

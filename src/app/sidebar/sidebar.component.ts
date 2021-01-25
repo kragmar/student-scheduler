@@ -7,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
-  authToken: string;
+  loggedIn = false;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.authToken = localStorage.getItem('auth-token');
+    this.authService
+      .loggedInObservable()
+      .subscribe((data) => (this.loggedIn = data));
   }
 
   onLogout(): void {

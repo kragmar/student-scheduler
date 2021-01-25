@@ -2,7 +2,7 @@ import { TeacherService } from './teacher.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 export interface UserDetails {
@@ -28,6 +28,7 @@ export interface TokenPayload {
 })
 export class AuthService {
   private token: string;
+  private loggedIn: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(
     private http: HttpClient,
@@ -58,6 +59,10 @@ export class AuthService {
     } else {
       return null;
     }
+  }
+
+  public loggedInObservable(): Observable<any> {
+    return this.loggedIn.asObservable();
   }
 
   public isLoggedIn(): boolean {
@@ -107,6 +112,8 @@ export class AuthService {
 
     this.teacherService.userDetails.next(userDetails);
 
+    this.loggedIn.next(true);
+
     return request;
   }
 
@@ -121,6 +128,7 @@ export class AuthService {
   public logout(): void {
     this.token = '';
     localStorage.removeItem('auth-token');
+    this.loggedIn.next(false);
     this.router.navigateByUrl('/login');
   }
 }
