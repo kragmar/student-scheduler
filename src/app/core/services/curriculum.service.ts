@@ -15,7 +15,7 @@ export interface Curriculum {
   providedIn: 'root',
 })
 export class CurriculumService {
-  private readonly apiUrl = 'http://localhost:8080/api/curriculums/';
+  private readonly apiUrl = '/api/curriculums/';
 
   public cachedCurriculums: Observable<Curriculum[]>;
 

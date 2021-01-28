@@ -17,7 +17,7 @@ export interface Teacher {
   providedIn: 'root',
 })
 export class TeacherService {
-  private readonly apiUrl = 'http://localhost:8080/api/teachers/';
+  private readonly apiUrl = '/api/teachers/';
   userDetails = new BehaviorSubject<UserDetails>(<UserDetails>{});
   currentTeacherId: string;
 
