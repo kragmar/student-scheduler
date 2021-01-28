@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const passport = require("passport");
+const path = require("path");
 
 require("./models/db.model");
 require("./config/passport.config");
@@ -31,6 +32,10 @@ app.use("/api/curriculums", curriculumApi);
 
 // Serve static files for the app
 app.use(express.static(__dirname + "/dist/student-scheduler"));
+
+app.get('/*', function(req, res) {  
+  res.sendFile(path.join(__dirname + '/dist/student-scheduler/index.html'));
+});
 
 app.use(function (req, res, next) {
   var err = new Error("Not found");
