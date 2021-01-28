@@ -31,10 +31,10 @@ app.use("/api/teachers", teacherApi);
 app.use("/api/curriculums", curriculumApi);
 
 // Serve static files for the app
-app.use(express.static("./src/dist/student-scheduler"));
+app.use(express.static("dist/student-scheduler"));
 
 app.get('/*', function(req, res) {  
-  res.sendFile('index.html', { root: './src/dist/student-scheduler/' });
+  res.sendFile('index.html', { root: 'dist/student-scheduler/' });
 });
 
 app.use(function (req, res, next) {
