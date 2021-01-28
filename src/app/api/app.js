@@ -34,7 +34,7 @@ app.use("/api/curriculums", curriculumApi);
 app.use(express.static("./src/dist/student-scheduler"));
 
 app.get('/*', function(req, res) {  
-  res.sendFile(path.join('./src/dist/student-scheduler/index.html'));
+  res.sendFile('index.html', { root: './src/dist/student-scheduler/' });
 });
 
 app.use(function (req, res, next) {
