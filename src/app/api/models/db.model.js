@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 var gracefulShutdown;
-const dbUri =
-  "mongodb+srv://drumkiller:DrumkillerRoot24@devcluster0.c9rn0.mongodb.net/Drumkiller?retryWrites=true&w=majority";
+const dbUri = process.env.MONGODB_URI;
 
 mongoose.connect(dbUri, {
   useNewUrlParser: true,

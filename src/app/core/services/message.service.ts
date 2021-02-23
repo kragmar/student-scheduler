@@ -15,7 +15,7 @@ export interface Message {
   providedIn: 'root',
 })
 export class MessageService {
-  private readonly apiUrl = 'http://localhost:8080/api/messages/';
+  private readonly apiUrl = '/api/messages/';
 
   constructor(private http: HttpClient) {}
 

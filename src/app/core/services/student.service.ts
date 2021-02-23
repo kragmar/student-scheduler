@@ -15,7 +15,7 @@ export interface Student {
   providedIn: 'root',
 })
 export class StudentService {
-  private readonly apiUrl = 'http://localhost:8080/api/students/';
+  private readonly apiUrl = '/api/students/';
 
   public cachedStudents: Observable<Student[]>;
 
