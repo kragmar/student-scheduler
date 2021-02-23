@@ -37,6 +37,10 @@ export class StudentService {
     return this.cachedStudents;
   }
 
+  public findAllB(): Observable<any> {
+    return this.http.get(this.apiUrl);
+  }
+
   public findOne(student: Student): Observable<any> {
     const id = student._id;
 

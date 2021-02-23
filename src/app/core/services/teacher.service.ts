@@ -64,10 +64,21 @@ export class TeacherService {
     if (teachersFromCache) {
       return of(teachersFromCache);
     }
+
     const response = this.http.get<any>(this.apiUrl);
     response.subscribe((teachers) => {
       this.cachedTeachers.set(this.apiUrl, teachers);
     });
+
+    return response;
+  }
+
+  public findAllB(): Observable<any> {
+    const response = this.http.get<any>(this.apiUrl);
+    response.subscribe((teachers) => {
+      this.cachedTeachers.set(this.apiUrl, teachers);
+    });
+
     return response;
   }
 

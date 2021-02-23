@@ -44,7 +44,7 @@ export class NewStudentDialogComponent implements OnInit {
     this.newStudent = this.newStudentForm.value;
     this.createStudent();
 
-    this.dialogRef.close();
+    this.dialogRef.close(true);
   }
 
   createStudent(): void {

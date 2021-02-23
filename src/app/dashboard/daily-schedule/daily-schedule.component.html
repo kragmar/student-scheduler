@@ -34,7 +34,7 @@
           <ng-container matColumnDef="type">
             <th mat-header-cell *matHeaderCellDef>Óra típusa</th>
             <td mat-cell *matCellDef="let lesson">
-              {{ lesson.type === "LESSON" ? "Tanóra" : "Gyakorló" }}
+              {{ lesson.type === "LECTURE" ? "Tanóra" : "Gyakorló" }}
             </td>
           </ng-container>
           <ng-container matColumnDef="curriculum">

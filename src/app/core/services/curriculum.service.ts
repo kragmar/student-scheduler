@@ -37,6 +37,10 @@ export class CurriculumService {
     return this.cachedCurriculums;
   }
 
+  public findAllB(): Observable<any> {
+    return this.http.get(this.apiUrl);
+  }
+
   public findOne(curriculum: Curriculum): Observable<any> {
     const id = curriculum._id;
 

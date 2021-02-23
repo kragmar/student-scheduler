@@ -29,7 +29,7 @@ export class CurriculumComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.curriculumService.findAll().subscribe((data) => {
+    this.curriculumService.findAllB().subscribe((data) => {
       this.dataSource.data = data as Curriculum[];
     });
   }
@@ -39,7 +39,7 @@ export class CurriculumComponent implements OnInit, AfterViewInit {
   }
 
   getCurriculums(): void {
-    this.curriculumService.findAll().subscribe((data) => {
+    this.curriculumService.findAllB().subscribe((data) => {
       this.dataSource.data = data as Curriculum[];
     });
   }
@@ -71,6 +71,7 @@ export class CurriculumComponent implements OnInit, AfterViewInit {
       }
 
       this.openOkDialog(msg);
+      this.getCurriculums();
     });
   }
 

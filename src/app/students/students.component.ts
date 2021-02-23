@@ -55,7 +55,7 @@ export class StudentsComponent implements OnInit, AfterViewInit {
   }
 
   getStudents(): void {
-    this.studentService.findAll().subscribe((data) => (this.students = data));
+    this.studentService.findAllB().subscribe((data) => (this.students = data));
   }
 
   getLessonsByStudentId(): void {
@@ -84,9 +84,12 @@ export class StudentsComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(NewStudentDialogComponent, {
       width: 'fit-content',
     });
-    dialogRef
-      .afterClosed()
-      .subscribe(() => this.openOkDialog('Új tanuló létrehozva!'));
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.openOkDialog('Új tanuló létrehozva!');
+      }
+      this.getStudents();
+    });
   }
 
   openDeleteStudentDialog(): void {

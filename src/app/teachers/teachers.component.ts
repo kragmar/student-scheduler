@@ -36,7 +36,7 @@ export class TeachersComponent implements OnInit {
   }
 
   getTeachers(): void {
-    this.teacherService.findAll().subscribe((data) => (this.teachers = data));
+    this.teacherService.findAllB().subscribe((data) => (this.teachers = data));
   }
 
   updateForm(): void {
@@ -64,6 +64,8 @@ export class TeachersComponent implements OnInit {
 
     // Update student data
     this.teacherService.update(teacher).subscribe();
+
+    this.getTeachers();
 
     // Open dialog with OK message
     this.openOkDialog('A tanár adatai frissültek!');
