@@ -1,5 +1,11 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 var gracefulShutdown;
+
+if (process.env.NODE_ENV !== 'PRODUCTION') {
+  dotenv.config();
+}
+
 const dbUri = process.env.MONGODB_URI;
 
 mongoose.connect(dbUri, {
